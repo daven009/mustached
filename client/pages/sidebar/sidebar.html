@@ -5,29 +5,14 @@
         <section>
           {{#if currentUser}}
           <div class="wrapper-sm">
-            <div class="panel no-borders bg-dark m-b-none">
-              <div class="panel-heading bg-dark r-2x">
-                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#userAction">
-                  <span class="thumb-sm">
-                    <img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer">
-                  </span>
-                  <span class="text-xl m-l-sm"> Guanhao Shen </span>
-                </a>
-              </div>
-              <div id="userAction" class="panel-collapse collapse">
-                <div class="panel-body bg-dark r-b-2x no-padder">
-                  <ul class="nav nav-pills nav-stacked no-radius text-md m-b-sm">
-                    <li class="padder l-h-2x">
-                      <i class="fa fa-home"></i> 主页
-                    </li>
-                    <li class="padder l-h-2x">
-                      <i class="fa fa-user"></i> 个人资料
-                    </li>
-                    <li class="padder l-h-2x pointer" id="signout">
-                      <i class="fa fa-sign-out"></i>登出
-                    </li>
-                  </ul>
-                </div>
+            <div class="panel-body">
+              <a href="#" class="thumb pull-left m-r">
+                <img src="/images/avatar.jpg" class="img-circle">
+              </a>
+              <div class="clear">
+                <a href="#" class="text-info">@{{getCurrentUsername}} </a>
+                <small class="block text-muted">2,415 粉丝 / 225 主题</small>
+                <a href="javascript:void(0)" id="signout" class="btn btn-xs btn-danger m-t-xs">登出</a>
               </div>
             </div>
           </div>
