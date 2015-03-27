@@ -1,0 +1,70 @@
+<template name="content">
+  <section class="vbox">
+    <header class="bg-white wrapper header header-min-height">
+      <div class="clearfix">
+        <a href="#" class="pull-left thumb m-r">
+          <img src="/images/avatar.jpg" class="img-rounded">
+        </a>
+        <div class="clear">
+          <div class="h3 m-t-xs m-b-xs">做了一个澳门的地产网站</div>
+          <small class="text-muted">Christ · 23 小时 56 分钟前 · 3639 次点击</small>
+        </div>                
+      </div>
+    </header>            
+    <section class="bg-white">
+      <ul class="list-group alt">
+        <li class="list-group-item no-borders">
+          <div class="media padder-xl">
+            <span class="pull-left thumb-sm"><img src="/images/avatar_default.jpg" alt="John said" class="img-rounded pointer"></span>
+            <div class="media-body">
+              <div>
+                <small class="text-muted pointer">Daven
+                  <span class="chat-time">
+                    <span>
+                      <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+                    </span>
+                  </span>
+                </small>
+              </div>
+              <div class="font-14">我发现Andriod上浏览格式出现偏差</div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item no-borders">
+          <div class="media padder-xl">
+            <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
+            <div class="pull-right text-success m-t-sm">
+              <i class="fa fa-circle"></i>
+            </div>
+            <div class="media-body">
+              <div>
+                <small class="text-muted pointer">Chris Fox
+                  <span class="chat-time">
+                    <span>
+                      <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+                    </span>
+                  </span>
+                </small>
+              </div>
+              <div class="font-14">Desktop上的Chrome，和Firefox，iOS上的Safari没有发现这个问题，回头我试试用Android访问。谢谢你的反馈。</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    {{#if currentUser}}
+    <footer class="footer b-t bg-white-only">
+      <li class="list-group-item no-borders">
+        <div class="media padder-xl">
+          <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
+          <div class="media-body">
+            <div>
+              <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="Click here to type a chat message. Supports GitHub flavoured markdown." autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>
+            </div>
+          </div>
+        </div>
+      </li>
+    </footer>
+    {{/if}}
+  </section>
+</template>

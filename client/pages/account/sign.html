@@ -1,0 +1,37 @@
+<template name="sign">
+  <div id="signModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form id="signForm">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="modal-title center">
+              <span id="signLabel">用户登录</span><br>
+              <small class="text-sm">未存在用户将可选择是否直接新建账户</small>
+            </h3>
+          </div>
+          <div class="modal-body center no-padder b-b">
+            <div class="ui-TextField ui-Field">
+              <input type="text" name="username" class="content no-borders" placeholder="用户名">
+            </div>
+          </div>
+          <div class="modal-body center no-padder">
+            <div class="ui-TextField ui-Field">
+              <input type="password" name="password" class="content no-borders" placeholder="密码">
+            </div>
+          </div>
+          <div id="emailField" class="modal-body center no-padder b-t hide">
+            <div class="ui-TextField ui-Field">
+              <input type="email" name="email" class="content no-borders" placeholder="电子邮箱">
+            </div>
+          </div>
+          <div class="modal-footer m-t-none">
+            <input type="submit" class="btn btn-default btn-block m-b-sm" value="登陆">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,107 @@
+.transition {
+  -webkit-transition: background-color 500ms ease;
+  -moz-transition: background-color 500ms ease;
+  -o-transition: background-color 500ms ease;
+  -ms-transition: background-color 500ms ease;
+  transition: background-color 500ms ease;
+}
+
+.transition:hover {
+  background-color: #162e34;
+}
+
+.font-14 {
+  font-size:14px;
+}
+
+.m-t-2 {
+  margin-top: 3px;
+}
+
+.max-200 {
+  max-width: 200px;
+}
+
+/* Remove Glowing */
+textarea, input, button, select { 
+  outline: none !important; 
+}
+
+.chat-time {
+  vertical-align: middle;
+  display: inline-block;
+  opacity: .8;
+  color: #aaa;
+}
+
+.chat-time:before {
+  content: '\0020\2022\0020';
+}
+
+.chat-input-text-area {
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  outline: none;
+  padding: 0;
+  border: 0;
+  resize: none;
+  margin: 0;
+  height: 44px;
+  color: black;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.r-l-2x {
+  border-radius: 5px 0 0 5px !important;
+}
+
+.header-min-height {
+  min-height: 94px;
+}
+
+.ui-Field {
+    cursor: text;
+    font-size: 13px;
+    position: relative;
+}
+
+.ui-Field .content {
+    background: #f0f0f0;
+    border: 1px solid #d1d1d1;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #333;
+    display: block;
+    margin: 0;
+}
+
+.ui-TextField .content {
+    border-radius: 3px;
+    min-height: 1em;
+    padding: 8px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.ui-Field .content {
+    background: #fff;
+    border: none;
+    border-radius: 0 0 6px 6px;
+    border-top: 1px solid #d4d4d4;
+    box-shadow: none;
+    color: #333;
+    font-size: 13px;
+    line-height: 16px;
+    height: 37px;
+    padding: 10px;
+    resize: none;
+}
+
+.ui-TextField .content.autogrow {
+    overflow: hidden;
+}

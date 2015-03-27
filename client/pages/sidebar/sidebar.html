@@ -1,0 +1,94 @@
+<template name="sidebar">
+  <section class="vbox">
+    <section>
+      <section>
+        <section>
+          {{#if currentUser}}
+          <div class="wrapper-sm">
+            <div class="panel no-borders bg-dark m-b-none">
+              <div class="panel-heading bg-dark r-2x">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#userAction">
+                  <span class="thumb-sm">
+                    <img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer">
+                  </span>
+                  <span class="text-xl m-l-sm"> Guanhao Shen </span>
+                </a>
+              </div>
+              <div id="userAction" class="panel-collapse collapse">
+                <div class="panel-body bg-dark r-b-2x no-padder">
+                  <ul class="nav nav-pills nav-stacked no-radius text-md m-b-sm">
+                    <li class="padder l-h-2x">
+                      <i class="fa fa-home"></i> 主页
+                    </li>
+                    <li class="padder l-h-2x">
+                      <i class="fa fa-user"></i> 个人资料
+                    </li>
+                    <li class="padder l-h-2x pointer" id="signout">
+                      <i class="fa fa-sign-out"></i>登出
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{else}}
+          <div class="wrapper m-b">
+            <div class="h3">
+              胡子客
+              <button class="btn btn-icon btn-default btn-sm pull-right bg-dark no-borders tool-tip" data-toggle="tooltip" data-placement="right" title="" data-original-title="登陆加入讨论" id="loginBtn">
+                <i class="fa fa-sign-in"></i>
+              </button>
+            </div>
+          </div>
+          {{/if}}
+          <ul class="nav nav-pills nav-stacked no-radius">
+            <li class="padder dk text-sm l-h-2x">
+              <p>当前话题</p>
+            </li>
+            <li class="active m-l-xs">
+              <a href="#" class="r-l-2x clear">
+                <i class="fa fa-fw fa-book pull-left m-r-xs m-t-2"></i>
+                <span class="pull-left m-r-xs max-200">做了一个澳门的地产网站</span>
+              </a>
+            </li>
+            <li class="m-l-xs">
+              <a href="#" class="r-l-2x clear">
+                <i class="fa fa-fw fa-book pull-left m-r-xs m-t-2"></i>
+                <span class="pull-left m-r-xs max-200">[朱一填坑向］妈妈再也不用担心我的 macbook 发热计划 2+众人拾材火焰高计划</span>
+                <div class="pull-right"><span class="btn btn-success btn-xs">15</span></div>
+              </a>
+            </li>
+          </ul>
+<!--           <ul class="nav nav-pills nav-stacked no-radius m-t-sm">
+            <li class="padder dk text-sm l-h-2x">
+              <p>推荐主题</p>
+            </li>
+            <li class="m-l-xs">
+              <a href="#" class="r-l-2x">
+                <i class="fa fa-circle text-danger pull-right m-t-xs"></i>
+                Work
+              </a>
+            </li>
+            <li class="m-l-xs">
+              <a href="#" class="r-l-2x">
+                <i class="fa fa-circle pull-right m-t-xs"></i>
+                Private
+              </a>
+            </li>
+            <li class="m-l-xs">
+              <a href="#" class="r-l-2x">
+                <i class="fa fa-circle text-success pull-right m-t-xs"></i>
+                Clients
+              </a>
+            </li>
+          </ul> -->
+        </section>
+      </section>
+    </section>
+    <footer class="footer text-center">
+      {{#if currentUser}}
+      <button class="btn btn-info btn-block">创作新主题</button>
+      {{/if}}
+    </footer>        
+  </section>
+</template>
