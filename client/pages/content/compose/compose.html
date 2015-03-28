@@ -1,0 +1,27 @@
+<template name="compose">
+  <aside class="bg-light lter">
+    <section class="vbox">
+      <header class="bg-white wrapper header header-min-height">
+        <div class="clearfix">
+          <a href="#" class="pull-left thumb m-r">
+            <img src="{{getCurrentUserAvatar 64}}" class="img-rounded">
+          </a>
+          <div class="clear">
+            <div class="h3 m-t-xs m-b-xs">
+              <div class="ui-TextField">
+                <input type="text" name="title" class="content no-borders no-padder" placeholder="正文标题">
+              </div>
+            </div>
+            <small class="text-muted">请输入主题标题，如果标题能够表达完整内容，则正文可以为空</small>
+          </div>                
+        </div>
+      </header>            
+      <section class="bg-white">
+
+      </section>
+    </section>
+  </aside>
+  <aside class="aside-xl">
+    {{> toolbar}}
+  </aside>
+</template>

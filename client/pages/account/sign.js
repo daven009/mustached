@@ -7,18 +7,18 @@ Template.sign.events({
       if (0 == count) {
         $('#emailField').removeClass('hide');
         $('#signLabel').html('新用户注册');
-        $('#modalLoginBtn').html('注册');
+        $('#modalSubmitBtn').val('注册');
       }
       else {
         $('#emailField').addClass('hide');
         $('#signLabel').html('用户登录');
-        $('#modalLoginBtn').html('登陆');
+        $('#modalSubmitBtn').val('登陆');
       }
     }
     else {
       $('#emailField').addClass('hide');
       $('#signLabel').html('用户登录');
-      $('#modalLoginBtn').html('登陆');
+      $('#modalSubmitBtn').val('登陆');
     }
   },
   'submit #signForm' : function(e, t) {

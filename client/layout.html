@@ -34,15 +34,12 @@
         <aside class="aside aside-lg bg-dark transition">
           {{> sidebar}}
         </aside>
-        <aside class="bg-light lter">
-          {{> yield}}
-        </aside>
-        <aside class="aside-xl">
-          {{> toolbar}}
-        </aside>
+        {{> yield}}
       </section>
     </section>
     <!-- /.vbox -->
   </section>
+  {{#if currentUser}}{{else}}
   {{> sign}}
+  {{/if}}
 </template>

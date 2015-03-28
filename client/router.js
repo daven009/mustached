@@ -20,11 +20,13 @@ Router.configure({
 
 if (Meteor.isClient) {
   // Show the loading screen on desktop
-  // Router.onBeforeAction('loading', {except: ['join', 'signin']});
-  // Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
+  Router.onBeforeAction('loading', {except: ['join', 'signin']});
+  Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
 }
 
 Router.map(function() {
+  this.route('compose');
+  
   this.route('home', {
     path: '/',
     template: 'content',
@@ -33,17 +35,10 @@ Router.map(function() {
     }
   });
 
-  this.route('listsShow', {
-    path: '/lists/:_id',
-    // subscribe to todos before the page is rendered but don't wait on the
-    // subscription, we'll just render the items as they arrive
+  this.route('topicShow', {
+    path: '/topic/:_id',
     onBeforeAction: function () {
       this.todosHandle = Meteor.subscribe('todos', this.params._id);
-
-      if (this.ready()) {
-        // Handle for launch screen defined in app-body.js
-        dataReadyHold.release();
-      }
     },
     data: function () {
       return Lists.findOne(this.params._id);
