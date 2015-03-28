@@ -9,3 +9,12 @@ Handlebars.registerHelper('getUsernameByUserId', function(userId){
 Handlebars.registerHelper('getCurrentUsername', function(){
   return Meteor.user().username;
 });
+
+Handlebars.registerHelper('getCurrentUserAvatar', function(size){
+  var email =  Meteor.user().emails[0].address;
+  var url = Gravatar.imageUrl(email, {
+    s: size,
+    d: 'retro'
+  });
+  return url;
+});
