@@ -1621,15 +1621,6 @@ fieldset[disabled] .btn-gplus.active {
 .comment-list .comment-reply {
   margin-left: 46px;
 }
-.comment-list:before {
-  position: absolute;
-  top: 0;
-  bottom: 0px;
-  left: 18px;
-  width: 1px;
-  background: #e0e4e8;
-  content: '';
-}
 .timeline {
   display: table;
   width: 100%;

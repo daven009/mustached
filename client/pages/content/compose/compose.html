@@ -1,4 +1,16 @@
 <template name="compose">
+  <style>
+    .CodeMirror 
+    {
+      height: 100%;
+    }
+    .markdown-body {
+      width:100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  </style>
   <aside class="bg-light lter">
     <section class="vbox">
       <header class="bg-white wrapper header header-min-height">
@@ -13,15 +25,88 @@
               </div>
             </div>
             <small class="text-muted">请输入主题标题，如果标题能够表达完整内容，则正文可以为空</small>
-          </div>                
+          </div>
         </div>
-      </header>            
+      </header>
       <section class="bg-white">
-
+        <textarea id="code" style="display:none"></textarea>
+        <div id="codePreview" style="display:none" class="markdown-body wrapper">
+          {{#markdown}}{{previewMarkdown}}{{/markdown}}
+        </div>
       </section>
     </section>
   </aside>
   <aside class="aside-xl">
-    {{> toolbar}}
+    <section class="vbox">
+      <header class="bg-light lter wrapper header header-min-height">
+
+      </header>
+      <section class="bg-light lter wrapper-sm">
+        <section class="comment-list block">
+          <article id="rule-1" class="comment-item">
+            <span class="fa-stack pull-left m-l-xs">
+              <i class="fa fa-circle text-info fa-stack-2x"></i>
+              <i class="fa fa-pencil fa-stack-1x text-white"></i>
+            </span>
+            <section class="comment-body m-b-lg">
+              <header>
+                <strong>主题标题</strong>
+              </header>
+              <div>请在标题中描述内容要点。如果一件事情在标题的长度内就已经可以说清楚，那就没有必要写正文了。</div>
+            </section>
+          </article>
+          <article id="rule-2" class="comment-item">
+            <span class="fa-stack pull-left m-l-xs">
+              <i class="fa fa-circle text-success fa-stack-2x"></i>
+              <i class="fa fa-file-text-o text-white fa-stack-1x"></i>
+            </span>
+            <section class="comment-body m-b-lg">
+              <header>
+                <strong>正文</strong>
+              </header>
+              <div>
+                可以在正文中为你要发布的主题添加更多细节。胡子客 支持 GitHub Flavored Markdown 文本标记语法。<br/><br/>
+                在正式提交之前，你可以点击本页面下方的“预览主题”来查看 Markdown 正文的实际渲染效果。
+              </div>
+            </section>
+          </article>
+          <article id="rule-3" class="comment-item">
+            <span class="fa-stack pull-left m-l-xs">
+              <i class="fa fa-circle text-danger fa-stack-2x"></i>
+              <i class="fa fa-check fa-stack-1x text-white"></i>
+            </span>
+            <section class="comment-body m-b-lg">
+              <header>
+                <strong>选择节点</strong>
+              </header>
+              <div>
+                在最后，请为你的主题选择一个节点。恰当的归类会让你发布的信息更加有用。<br/><br/>
+                你可以在主题发布后 300 秒内，对标题或者正文进行编辑。同时，在 300 秒内，你可以重新为主题选择节点。
+              </div>
+            </section>
+          </article>
+          <article id="rule-4" class="comment-item">
+            <span class="fa-stack pull-left m-l-xs">
+              <i class="fa fa-circle text-warning fa-stack-2x"></i>
+              <i class="fa fa-warning fa-stack-1x text-white"></i>
+            </span>
+            <section class="comment-body m-b-lg">
+              <header>
+                <strong>尊重原创</strong>
+              </header>
+              <div>
+                请不要在 胡子客 发布任何盗版下载链接，包括软件、音乐、电影等等。胡子客 是创意工作者的社区，我们尊重原创。
+              </div>
+            </section>
+          </article>
+        </section>
+        <div class="m-t">
+          <div class="btn-group btn-group-justified">
+            <a href="javascript:void(0)" class="btn btn-primary" id="preview">预览</a>
+            <a href="javascript:void(0)" class="btn btn-info" id="publish">发布</a>
+          </div>
+        </div>
+      </section>
+    </section>
   </aside>
 </template>

@@ -5,18 +5,18 @@ Template.sign.events({
     if (CommonHelper.isValidName(username)) {
       var count = Meteor.users.find({username:username}).count();
       if (0 == count) {
-        $('#emailField').removeClass('hide');
+        $('#emailField').show();
         $('#signLabel').html('新用户注册');
         $('#modalSubmitBtn').val('注册');
       }
       else {
-        $('#emailField').addClass('hide');
+        $('#emailField').hide();
         $('#signLabel').html('用户登录');
         $('#modalSubmitBtn').val('登陆');
       }
     }
     else {
-      $('#emailField').addClass('hide');
+      $('#emailField').hide();
       $('#signLabel').html('用户登录');
       $('#modalSubmitBtn').val('登陆');
     }

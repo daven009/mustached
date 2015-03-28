@@ -11,10 +11,15 @@ Handlebars.registerHelper('getCurrentUsername', function(){
 });
 
 Handlebars.registerHelper('getCurrentUserAvatar', function(size){
-  var email =  Meteor.user().emails[0].address;
-  var url = Gravatar.imageUrl(email, {
-    s: size,
-    d: 'retro'
-  });
-  return url;
+  if (Meteor.user()) {
+    var email =  Meteor.user().emails[0].address;
+    var url = Gravatar.imageUrl(email, {
+      s: size,
+      d: 'retro'
+    });
+    return url;
+  }
+  else {
+    return null;
+  }
 });
