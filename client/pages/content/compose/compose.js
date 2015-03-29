@@ -23,10 +23,25 @@ Template.compose.rendered = function () {
       $('#codePreview').hide();
     }
   });
+
+  $('#githubHelp').off('click').on('click',function(){
+    $('#githubHelpModal').modal('show');
+  })
 };
 
 Template.compose.helpers({
   'previewMarkdown': function(){
-    return Session.get('previewMarkdown');
+    var renderer = new marked.Renderer();
+
+    renderer.code = function(code, lang) {
+      console.log(code);
+      console.log(lang);
+      var language = lang && ('language-' + lang) || '';
+      return '<pre class="' + language + '">'
+      + '<code>' + hljs.highlight(lang, code).value + '</code>'
+      + '</pre>';
+    };
+
+    return marked(Session.get('previewMarkdown'),{renderer:renderer});
   }
 })
