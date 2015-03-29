@@ -1,5 +1,6 @@
-<template name="content">
+<template name="topic">
   <aside class="bg-light lter">
+    {{#with topic}}
     <section class="vbox">
       <header class="bg-white wrapper header header-min-height">
         <div class="clearfix">
@@ -7,7 +8,7 @@
             <img src="/images/avatar.jpg" class="img-rounded">
           </a>
           <div class="clear">
-            <div class="h3 m-t-xs m-b-xs">做了一个澳门的地产网站</div>
+            <div class="h3 m-t-xs m-b-xs">{{title}}</div>
             <small class="text-muted">Christ · 23 小时 56 分钟前 · 3639 次点击</small>
           </div>                
         </div>
@@ -68,6 +69,7 @@
       </footer>
       {{/if}}
     </section>
+    {{/with}}
   </aside>
   <aside class="aside-xl">
     {{> toolbar}}

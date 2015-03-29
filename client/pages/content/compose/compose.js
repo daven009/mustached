@@ -24,24 +24,61 @@ Template.compose.rendered = function () {
     }
   });
 
+  $('#publish').off('click').on('click',function(){
+    swal({
+      title: "确定发布",
+      text: "你可以在主题发布后 300 秒内，对标题或者正文进行编辑。同时，在 300 秒内，你可以重新为主题选择节点。",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes!",
+      closeOnConfirm: false
+    }, function(){
+      var title = $('input[name=title]').val();
+      var content = editor.getValue();
+      var formObj = {
+        creator: Meteor.userId(),
+        title: title,
+        content: content
+      };
+      Meteor.call('addTopic', formObj, function(err, topicId){
+        if(err){
+          //此处应该有alert
+          return false;
+        }
+        else {
+          Router.go('topic',{id:topicId});
+        }
+      });
+    });
+  });
+
   $('#githubHelp').off('click').on('click',function(){
     $('#githubHelpModal').modal('show');
-  })
+  });
 };
 
 Template.compose.helpers({
   'previewMarkdown': function(){
-    var renderer = new marked.Renderer();
+    if (Session.get('previewMarkdown')) {
+      var renderer = new marked.Renderer();
 
-    renderer.code = function(code, lang) {
-      console.log(code);
-      console.log(lang);
-      var language = lang && ('language-' + lang) || '';
-      return '<pre class="' + language + '">'
-      + '<code>' + hljs.highlight(lang, code).value + '</code>'
-      + '</pre>';
-    };
-
-    return marked(Session.get('previewMarkdown'),{renderer:renderer});
+      renderer.code = function(code, lang) {
+        if (!lang) {
+          return '<pre class="no-padder"><code class="hljs">'
+          + hljs.highlightAuto(code).value
+          + '\n</code></pre>';
+        }
+        else{
+          return '<pre class="no-padder">'
+          + '<code class="hljs ' + language + '">' + hljs.highlight(lang, code).value + '</code>'
+          + '</pre>';
+        }
+      };
+      return marked(Session.get('previewMarkdown'),{renderer:renderer});
+    }
+    else {
+      return null;
+    }
   }
 })

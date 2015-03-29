@@ -3,19 +3,10 @@ Router.configure({
   layoutTemplate: 'layout'
 
   // the appNotFound template is used for unknown routes and missing lists
-  // notFoundTemplate: 'appNotFound',
+  // notFoundTemplate: 'notFound',
 
   // show the appLoading template whilst the subscriptions below load their data
-  // loadingTemplate: 'appLoading',
-
-  // wait on the following subscriptions before rendering the page to ensure
-  // the data it's expecting is present
-  // waitOn: function() {
-  //   return [
-  //   Meteor.subscribe('publicLists'),
-  //   Meteor.subscribe('privateLists')
-  //   ];
-  // }
+  // loadingTemplate: 'loading',
 });
 
 if (Meteor.isClient) {
@@ -35,16 +26,18 @@ Router.map(function() {
     }
   });
 
-  this.route('topicShow', {
-    path: '/topic/:_id',
-    onBeforeAction: function () {
-      this.todosHandle = Meteor.subscribe('todos', this.params._id);
-    },
-    data: function () {
-      return Lists.findOne(this.params._id);
-    },
-    action: function () {
-      this.render();
-    }
+  this.route('topic', {
+    path: '/topic/:id',
+    controller: 'TopicController'
   });
+
+  // this.route('topic', {
+  //   path: '/topic/:_id',
+  //   waiton: function () {
+  //     return Meteor.subscribe('topics', this.params._id);
+  //   },
+  //   action: function () {
+  //     this.render();
+  //   }
+  // });
 });
