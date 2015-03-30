@@ -1,16 +1,21 @@
 <template name="topic">
-  <aside class="bg-light lter">
+<aside class="bg-light lter">
     {{#with topic}}
     <section class="vbox">
       <header class="bg-white wrapper header header-min-height">
         <div class="clearfix">
-          <a href="#" class="pull-left thumb m-r">
-            <img src="/images/avatar.jpg" class="img-rounded">
-          </a>
-          <div class="clear">
-            <div class="h3 m-t-xs m-b-xs">{{title}}</div>
-            <small class="text-muted">Christ · 23 小时 56 分钟前 · 3639 次点击</small>
-          </div>                
+          <div class="col-xs-10 no-padder">
+            <a href="#" class="pull-left thumb m-r">
+              <img src="/images/avatar.jpg" class="img-rounded">
+            </a>
+            <div class="clear">
+              <div class="h3 m-t-xs m-b-xs">{{title}}</div>
+              <small class="text-muted">{{getUsernameByUserId creator}} · {{momentDatetime createdAt}} · 3639 次点击</small>
+            </div>
+          </div>
+          <div class="col-xs-2 no-padder">
+            <i class="fa fa-eye fa-3"></i>
+          </div>
         </div>
       </header>         
       <section class="bg-white">
@@ -55,13 +60,13 @@
         </ul>
       </section>
       {{#if currentUser}}
-      <footer class="footer b-t bg-white-only">
+      <footer class="footer b-t bg-white-only no-padder">
         <li class="list-group-item no-borders">
           <div class="media padder-xl">
-            <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
+            <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
             <div class="media-body">
               <div>
-                <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="Click here to type a chat message. Supports GitHub flavoured markdown." autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>
+                <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="点击此处并输入留言. 支持GitHub flavoured markdown语言." autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>
               </div>
             </div>
           </div>

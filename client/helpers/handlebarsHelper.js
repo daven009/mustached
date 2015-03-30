@@ -23,3 +23,15 @@ Handlebars.registerHelper('getCurrentUserAvatar', function(size){
     return null;
   }
 });
+
+Handlebars.registerHelper('momentDatetime',function(date, format){
+  if(date == undefined) return;
+
+  var diff = 86400000; //one day, 24 hrs
+  if (moment().diff(moment(date)) >= 86400000) {
+    return moment(date).format(format);
+  }
+  else {
+    return moment(date).fromNow();
+  }
+});

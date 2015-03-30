@@ -48,6 +48,7 @@ Template.compose.rendered = function () {
         }
         else {
           Router.go('topic',{id:topicId});
+          swal.close();
         }
       });
     });
@@ -71,7 +72,7 @@ Template.compose.helpers({
         }
         else{
           return '<pre class="no-padder">'
-          + '<code class="hljs ' + language + '">' + hljs.highlight(lang, code).value + '</code>'
+          + '<code class="hljs ' + lang + '">' + hljs.highlight(lang, code).value + '</code>'
           + '</pre>';
         }
       };
