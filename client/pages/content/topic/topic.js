@@ -2,6 +2,23 @@ Template.topic.rendered = function() {
   render();
 }
 
+Template.topic.events({
+  'click #showContent':function(e, t){
+    $('#contentArea').fadeIn();
+    $('#messageArea').hide();
+    $('#inputArea').hide();
+    $('#showContent').hide();
+    $('#showMessage').show();
+  },
+  'click #showMessage':function(e, t){
+    $('#contentArea').hide();
+    $('#messageArea').fadeIn();
+    $('#inputArea').fadeIn();
+    $('#showContent').show();
+    $('#showMessage').hide();
+  }
+})
+
 TopicController = RouteController.extend({
   waitOn: function () {
     return Meteor.subscribe('topics', this.params.id);

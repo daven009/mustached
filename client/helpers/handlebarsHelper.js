@@ -24,6 +24,20 @@ Handlebars.registerHelper('getCurrentUserAvatar', function(size){
   }
 });
 
+Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
+  if (Meteor.users.findOne({_id:userId})) {
+    var email =  Meteor.users.findOne({_id:userId}).emails[0].address;
+    var url = Gravatar.imageUrl(email, {
+      s: size,
+      d: 'retro'
+    });
+    return url;
+  }
+  else {
+    return null;
+  }
+});
+
 Handlebars.registerHelper('momentDatetime',function(date, format){
   if(date == undefined) return;
 
@@ -35,3 +49,25 @@ Handlebars.registerHelper('momentDatetime',function(date, format){
     return moment(date).fromNow();
   }
 });
+
+Handlebars.registerHelper('markdown',function(content){
+  if (content) {
+    var renderer = new marked.Renderer();
+    renderer.code = function(code, lang) {
+      if (!lang) {
+        return '<pre class="no-padder"><code class="hljs">'
+        + hljs.highlightAuto(code).value
+        + '\n</code></pre>';
+      }
+      else{
+        return '<pre class="no-padder">'
+        + '<code class="hljs ' + lang + '">' + hljs.highlight(lang, code).value + '</code>'
+        + '</pre>';
+      }
+    };
+    return marked(content,{renderer:renderer});
+  }
+  else {
+    return null;
+  }
+})

@@ -62,21 +62,7 @@ Template.compose.rendered = function () {
 Template.compose.helpers({
   'previewMarkdown': function(){
     if (Session.get('previewMarkdown')) {
-      var renderer = new marked.Renderer();
-
-      renderer.code = function(code, lang) {
-        if (!lang) {
-          return '<pre class="no-padder"><code class="hljs">'
-          + hljs.highlightAuto(code).value
-          + '\n</code></pre>';
-        }
-        else{
-          return '<pre class="no-padder">'
-          + '<code class="hljs ' + lang + '">' + hljs.highlight(lang, code).value + '</code>'
-          + '</pre>';
-        }
-      };
-      return marked(Session.get('previewMarkdown'),{renderer:renderer});
+      return Session.get('previewMarkdown')
     }
     else {
       return null;

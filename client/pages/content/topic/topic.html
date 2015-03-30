@@ -1,66 +1,82 @@
 <template name="topic">
-<aside class="bg-light lter">
+  <style>
+    .markdown-content {
+      width:100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  </style>
+  <aside class="bg-light lter">
     {{#with topic}}
     <section class="vbox">
       <header class="bg-white wrapper header header-min-height">
         <div class="clearfix">
           <div class="col-xs-10 no-padder">
             <a href="#" class="pull-left thumb m-r">
-              <img src="/images/avatar.jpg" class="img-rounded">
+              <img src="{{getUserAvatarByUserId creator 64}}" class="img-rounded">
             </a>
             <div class="clear">
               <div class="h3 m-t-xs m-b-xs">{{title}}</div>
               <small class="text-muted">{{getUsernameByUserId creator}} · {{momentDatetime createdAt}} · 3639 次点击</small>
             </div>
           </div>
-          <div class="col-xs-2 no-padder">
-            <i class="fa fa-eye fa-3"></i>
+          <div class="col-xs-2 no-padder" style="height: 64px;display: table;">
+            <div style="vertical-align: middle;display: table-cell;">
+              <i class="fa fa-file-text-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看原文" id="showContent"></i>
+              <i class="fa fa-comment-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看留言" id="showMessage" style="display:none"></i>
+            </div>
           </div>
         </div>
       </header>         
-      <section class="bg-white">
-        <ul class="list-group alt">
-          <li class="list-group-item no-borders">
-            <div class="media padder-xl">
-              <span class="pull-left thumb-sm"><img src="/images/avatar_default.jpg" alt="John said" class="img-rounded pointer"></span>
-              <div class="media-body">
-                <div>
-                  <small class="text-muted pointer">Daven
-                    <span class="chat-time">
-                      <span>
-                        <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+      <section class="bg-white-only">
+        <div class="markdown-body markdown-content wrapper" id="contentArea" style="display:none">
+          {{{markdown content}}}
+        </div>
+        <div id="messageArea" class="markdown-body">
+          <ul class="list-group alt no-padder">
+            <li class="list-group-item no-borders no-radius">
+              <div class="media padder-xl">
+                <span class="pull-left thumb-sm"><img src="/images/avatar_default.jpg" alt="John said" class="img-rounded pointer"></span>
+                <div class="media-body">
+                  <div>
+                    <small class="text-muted pointer">Daven
+                      <span class="chat-time">
+                        <span>
+                          <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+                        </span>
                       </span>
-                    </span>
-                  </small>
+                    </small>
+                  </div>
+                  <div class="font-14">我发现Andriod上浏览格式出现偏差</div>
                 </div>
-                <div class="font-14">我发现Andriod上浏览格式出现偏差</div>
               </div>
-            </div>
-          </li>
-          <li class="list-group-item no-borders no-radius">
-            <div class="media padder-xl">
-              <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
-              <div class="pull-right text-success m-t-sm">
-                <i class="fa fa-circle"></i>
-              </div>
-              <div class="media-body">
-                <div>
-                  <small class="text-muted pointer">Chris Fox
-                    <span class="chat-time">
-                      <span>
-                        <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+            </li>
+            <li class="list-group-item no-borders no-radius">
+              <div class="media padder-xl">
+                <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
+                <div class="pull-right text-success m-t-sm">
+                  <i class="fa fa-circle"></i>
+                </div>
+                <div class="media-body">
+                  <div>
+                    <small class="text-muted pointer">Chris Fox
+                      <span class="chat-time">
+                        <span>
+                          <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+                        </span>
                       </span>
-                    </span>
-                  </small>
+                    </small>
+                  </div>
+                  <div class="font-14">Desktop上的Chrome，和Firefox，iOS上的Safari没有发现这个问题，回头我试试用Android访问。谢谢你的反馈。</div>
                 </div>
-                <div class="font-14">Desktop上的Chrome，和Firefox，iOS上的Safari没有发现这个问题，回头我试试用Android访问。谢谢你的反馈。</div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </section>
       {{#if currentUser}}
-      <footer class="footer b-t bg-white-only no-padder">
+      <footer class="footer b-t bg-white-only no-padder" id="inputArea">
         <li class="list-group-item no-borders">
           <div class="media padder-xl">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
