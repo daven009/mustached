@@ -21,7 +21,7 @@ Template.topic.events({
 
 TopicController = RouteController.extend({
   waitOn: function () {
-    return Meteor.subscribe('topics', this.params.id);
+    return Meteor.subscribe('topics', this.params._id);
   },
   action: function () {
     if (this.ready()){
