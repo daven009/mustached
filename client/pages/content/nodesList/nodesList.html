@@ -1,0 +1,43 @@
+<template name="home">
+  <aside class="bg-white-only">
+    <section class="vbox">
+      <div class="wrapper-sm">
+        Loading...
+      </div>
+    </section>
+  </aside>
+</template>
+
+<template name="nodesList">
+  <aside class="bg-white-only">
+    <section class="vbox">
+      <div class="wrapper-sm">
+        <ul class="nav nav-pills">
+          {{#each arrayify nodes}}
+          <li role="presentation" class="{{activeClass name}}"><a href="{{pathFor 'nodesList' category=name}}">{{value.name}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="full-width bg-light lter wrapper-sm clearfix">
+        {{#each arrayify subNodes}}
+        <div class="pull-left m-r"><a href="{{pathFor 'nodesList' category=../category node=name}}">{{value.name}}</a></div>
+        {{/each}}
+      </div>
+    </section>
+  </aside>
+  <aside class="aside-xl">
+    <section class="vbox">
+      <header class="bg-light lter wrapper header header-min-height">
+
+      </header>
+      <section class="bg-light lter">
+        <div class="list-group list-group-alt no-radius no-borders">
+
+        </div>
+      </section>
+      <footer class="footer text-center b-t" style="height:65px;">
+
+      </footer>
+    </section>
+  </aside>
+</template>

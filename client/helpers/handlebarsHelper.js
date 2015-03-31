@@ -71,3 +71,20 @@ Handlebars.registerHelper('markdown',function(content){
     return null;
   }
 })
+
+Handlebars.registerHelper('arrayify',function(obj){
+    result = [];
+    for (var key in obj) result.push({name:key,value:obj[key]});
+    return result;
+});
+
+Handlebars.registerHelper('equals', function(val1, val2){
+  console.log(val1);
+  console.log(val2);
+  if (val1 == val2) {
+    return true;
+  }
+  else {
+    return false;
+  }
+})

@@ -20,24 +20,24 @@ Router.map(function() {
   
   this.route('home', {
     path: '/',
-    template: 'content',
-    action: function () {
-      this.render();
+    action: function() {
+      Meteor.call('fetchNodes',function(err, nodes){
+        _.each(nodes, function(node, key) {
+          if (node.peak) {
+            Router.go('nodesList', {category:key});
+          }
+        })
+      })
     }
   });
 
+  this.route('nodesList', {
+    path:'/:category/:node?',
+    controller: 'NodesListController'
+  })
+
   this.route('topic', {
-    path: '/topic/:id',
+    path: '/topic/:_id',
     controller: 'TopicController'
   });
-
-  // this.route('topic', {
-  //   path: '/topic/:_id',
-  //   waiton: function () {
-  //     return Meteor.subscribe('topics', this.params._id);
-  //   },
-  //   action: function () {
-  //     this.render();
-  //   }
-  // });
 });

@@ -211,11 +211,22 @@ a:hover .caret-white {
 .nav-pills.no-radius > li > a {
   border-radius: 0;
 }
-.nav-pills > li.active > a {
+.nav-pills > li.active.white > a {
   /*color: #fff !important;
   background-color: #5dcff3 !important;*/
   color: black !important;
   background-color: white !important;
+}
+.nav-pills > li.active.dark > a {
+  /*color: #fff !important;
+  background-color: #5dcff3 !important;*/
+  color: white !important;
+  background-color: #1E3E46 !important;
+}
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 5px 15px;
 }
 .nav.nav-sm > li > a {
   padding: 6px 8px;
