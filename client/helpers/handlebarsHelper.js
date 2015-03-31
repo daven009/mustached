@@ -39,10 +39,12 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
 });
 
 Handlebars.registerHelper('momentDatetime',function(date, format){
-  if(date == undefined) return;
-
   var diff = 86400000; //one day, 24 hrs
-  if (moment().diff(moment(date)) >= 86400000) {
+  console.log(moment().diff(moment(date)));
+  if (moment().diff(moment(date)) >= diff) {
+    if (typeof format == 'undefined') {
+      return moment(date).fromNow();
+    }
     return moment(date).format(format);
   }
   else {
