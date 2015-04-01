@@ -33,8 +33,7 @@ TopicController = RouteController.extend({
   },
   data: function () {
     var params = this.params;
-    var topic = Topics.findOne({_id: params.id});
-
+    var topic = Topics.findOne({_id: params._id});
     if(!topic){
       this.render('notFound');
       return;

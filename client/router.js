@@ -28,13 +28,13 @@ Router.map(function() {
     }
   });
 
-  this.route('nodesList', {
-    path:'/:category/:node?',
-    controller: 'NodesListController'
-  })
-
   this.route('topic', {
     path: '/topic/:_id',
     controller: 'TopicController'
   });
+  
+  this.route('nodesList', {
+    path:'/:category/:node?',
+    controller: 'NodesListController'
+  })
 });

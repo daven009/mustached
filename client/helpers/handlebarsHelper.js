@@ -40,7 +40,6 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
 
 Handlebars.registerHelper('momentDatetime',function(date, format){
   var diff = 86400000; //one day, 24 hrs
-  console.log(moment().diff(moment(date)));
   if (moment().diff(moment(date)) >= diff) {
     if (typeof format == 'undefined') {
       return moment(date).fromNow();
@@ -56,7 +55,7 @@ Handlebars.registerHelper('markdown',function(content){
   if (content) {
     var renderer = new marked.Renderer();
     renderer.code = function(code, lang) {
-      if (!lang) {
+      if (!lang || !hljs.getLanguage(lang)) {
         return '<pre class="no-padder"><code class="hljs">'
         + hljs.highlightAuto(code).value
         + '\n</code></pre>';

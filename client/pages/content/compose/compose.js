@@ -39,7 +39,9 @@ Template.compose.rendered = function () {
       var formObj = {
         creator: Meteor.userId(),
         title: title,
-        content: content
+        content: content,
+        category:'skill',
+        node:'meteor'
       };
       Meteor.call('addTopic', formObj, function(err, topicId){
         if(err){
@@ -47,7 +49,7 @@ Template.compose.rendered = function () {
           return false;
         }
         else {
-          Router.go('topic',{id:topicId});
+          Router.go('topic',{_id:topicId});
           swal.close();
         }
       });
