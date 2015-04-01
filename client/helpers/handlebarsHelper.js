@@ -80,12 +80,25 @@ Handlebars.registerHelper('arrayify',function(obj){
 });
 
 Handlebars.registerHelper('equals', function(val1, val2){
-  console.log(val1);
-  console.log(val2);
   if (val1 == val2) {
     return true;
   }
   else {
     return false;
   }
+})
+
+Handlebars.registerHelper('getFullNodeName', function(category, node){
+  var result = Nodes.findOne({tag:category,"sub.tag":node});
+  if (result) {
+    var tagName = result.name;
+    var nodeName = '';
+    _.each(result.sub,function(sub) {
+      if (sub.tag == node) {
+        nodeName = sub.name;
+      }
+    })
+    return '['+tagName+'/'+nodeName+']';
+  }
+  return null;
 })
