@@ -1,4 +1,6 @@
 Template.compose.rendered = function () {
+  $(".nodeSelect").select2();
+  
   Session.set('previewMarkdown','');
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     mode: 'markdown',
