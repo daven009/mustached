@@ -1,6 +1,6 @@
 Template.compose.rendered = function () {
-  $(".nodeSelect").select2();
-  
+  // $(".nodeSelect").select2();
+
   Session.set('previewMarkdown','');
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     mode: 'markdown',
@@ -71,5 +71,12 @@ Template.compose.helpers({
     else {
       return null;
     }
+  },
+  'nodes': function(){
+    var nodes = Nodes.find({}).fetch();
+    if (nodes) {
+      return nodes;
+    }
   }
+
 })

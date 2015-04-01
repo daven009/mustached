@@ -40,11 +40,15 @@
     <section class="vbox">
       <header class="bg-light lter wrapper header header-min-height b-b">
         <div class="m-t">
+
           <select class="js-states form-control nodeSelect">
-            <optgroup label="Alaskan/Hawaiian Time Zone">
-              <option value="AK">Alaska</option>
-              <option value="HI">Hawaii</option>
+            {{#each nodes}}
+            <optgroup label="{{name}}">
+              {{#each sub}}
+              <option value="{{../tag}}|{{tag}}">{{name}}</option>
+              {{/each}}
             </optgroup>
+            {{/each}}
           </select>
         </div>
       </header>
