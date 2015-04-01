@@ -16,13 +16,20 @@ NodesListController = RouteController.extend({
     var category = params.category;
     Session.set('categorySelected',category);
 
-    var nodes = Session.get('Nodes');
+    var nodes = Nodes.find({}).fetch();
     if (nodes) {
+      subNodes = [];
+      _.each(nodes,function(node) {
+        if (node.tag == category) {
+          subNodes = node.sub
+        }
+      })
       return {
         nodes: nodes,
-        category:category
+        category: category,
+        subNodes: subNodes
       }
-    }   
+    }
   }
 })
 
@@ -31,19 +38,6 @@ Template.nodesList.helpers({
     var selected = Session.get('categorySelected');
     if (selected == category) {
       return 'active dark';
-    }
-    else {
-      return null;
-    }
-  },
-  
-  'subNodes': function(){
-    var selected = Session.get('categorySelected');
-    if (selected) {
-      var nodes = Session.get('Nodes');
-      if (nodes) {
-        return nodes[selected].sub;
-      }
     }
     else {
       return null;

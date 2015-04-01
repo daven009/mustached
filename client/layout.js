@@ -19,10 +19,3 @@ Template.layout.helpers({
     }
   }
 });
-
-//fetching global config from server side
-Template.layout.rendered = function(){
-  Meteor.call('fetchNodes',function(err, nodes){   
-    Session.set('Nodes',nodes);
-  });
-}

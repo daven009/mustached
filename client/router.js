@@ -1,11 +1,6 @@
 Router.configure({
-  // we use the  layout template to define the layout for the entire app
   layoutTemplate: 'layout'
-
-  // the appNotFound template is used for unknown routes and missing lists
   // notFoundTemplate: 'notFound',
-
-  // show the appLoading template whilst the subscriptions below load their data
   // loadingTemplate: 'loading',
 });
 
@@ -21,13 +16,15 @@ Router.map(function() {
   this.route('home', {
     path: '/',
     action: function() {
-      Meteor.call('fetchNodes',function(err, nodes){
-        _.each(nodes, function(node, key) {
+      //取出nodes集合
+      var nodes = Nodes.find({}).fetch();
+      if (nodes) {
+        _.each(nodes, function(node) {
           if (node.peak) {
-            Router.go('nodesList', {category:key});
+            Router.go('nodesList', {category:node.tag});
           }
         })
-      })
+      }
     }
   });
 

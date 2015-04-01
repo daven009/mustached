@@ -16,6 +16,14 @@ Schemas.Topic = new SimpleSchema({
     label: "内容",
     optional: true
   },
+  category: {
+    type: String,
+    label: "类别"
+  },
+  node: {
+    type: String,
+    label: "节点"
+  },
   createdAt: {
     type: Date,
     autoValue: function() {
