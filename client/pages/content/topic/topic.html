@@ -9,32 +9,34 @@
   </style>
   <aside class="bg-light lter">
     {{#with topic}}
-    <section class="vbox">
-      <header class="bg-white wrapper header header-min-height b-b">
-        <div class="clearfix">
-          <div class="col-xs-10 no-padder">
-            <a href="#" class="pull-left thumb m-r">
-              <img src="{{getUserAvatarByUserId creator 64}}" class="img-rounded">
-            </a>
-            <div class="clear">
-              <div class="h3 m-t-xs m-b-xs">{{title}}</div>
-              <small class="text-muted">{{getUsernameByUserId creator}} · {{momentDatetime createdAt}} · {{getFullNodeName category node}} · 3639 次点击</small>
+    <section class="vbox">       
+      <section class="bg-white-only">
+        <div class="wrapper b-b">
+          <div class="clearfix">
+            <div class="col-xs-10 no-padder">
+              <a href="#" class="pull-left thumb m-r">
+                <img src="{{getUserAvatarByUserId creator 64}}" class="img-rounded">
+              </a>
+              <div class="clear">
+                <div class="h3 m-t-xs m-b-xs">{{title}}</div>
+                <small class="text-muted">{{getUsernameByUserId creator}} · {{momentDatetime createdAt}} · <a href="{{pathFor 'nodesList' category=category node=node}}">{{{getFullNodeName category node}}}</a> · 3639 次点击</small>
+              </div>
             </div>
-          </div>
-          <div class="col-xs-2 no-padder" style="height: 64px;display: table;">
-            {{#if markdown content}}
-            <div style="vertical-align: middle;display: table-cell;">
-              <i class="fa fa-file-text-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看原文" id="showContent"></i>
-              <i class="fa fa-comment-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看留言" id="showMessage" style="display:none"></i>
+            <div class="col-xs-2 no-padder" style="height: 64px;display: table;">
+              {{#if markdown content}}
+              <div style="vertical-align: middle;display: table-cell;">
+                <i class="fa fa-file-text-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看原文" id="showContent"></i>
+                <i class="fa fa-comment-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看留言" id="showMessage" style="display:none"></i>
+              </div>
+              {{/if}}
             </div>
-            {{/if}}
           </div>
         </div>
-      </header>         
-      <section class="bg-white-only">
+        {{#if markdown content}}
         <div class="markdown-body markdown-content wrapper" id="contentArea" style="display:none">
           {{{markdown content}}}
         </div>
+        {{/if}}
         <div id="messageArea" class="markdown-body">
           <ul class="list-group alt no-padder">
             <li class="list-group-item no-borders no-radius">
@@ -95,6 +97,18 @@
     {{/with}}
   </aside>
   <aside class="aside-xl">
-    {{> toolbar}}
+    <section class="vbox">
+      <header class="bg-light lter wrapper header header-min-height">
+
+      </header>
+      <section class="bg-light lter">
+        <div class="list-group list-group-alt no-radius no-borders">
+
+        </div>
+      </section>
+      <footer class="footer text-center b-t" style="height:65px;">
+
+      </footer>
+    </section>
   </aside>
 </template>

@@ -13,6 +13,42 @@
         <div class="pull-left m-r"><a href="{{pathFor 'nodesList' category=../category node=tag}}">{{name}}</a></div>
         {{/each}}
       </div>
+      <div>
+        <ul class="list-group alt no-padder no-radius">
+          {{#each topics}}
+          <li class="list-group-item no-radius" style="border-left:none; border-right:none">
+            <div class="media padder-xl">
+              <span class="pull-left pointer"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></span>
+              <div class="pull-right text-success m-t-sm">
+              <span class="badge read">15</span>
+              </div>
+              <div class="media-body">
+                <div class="font-16 pointer"><a href="{{pathFor 'topic' _id=_id}}">{{title}}</a></div>
+                <div>
+                  <small class="text-muted">{{{getFullNodeName category node}}}
+                    <span class="chat-time">
+                      <span>
+                        <span class="pointer">{{getUsernameByUserId creator}}</span>
+                      </span>
+                    </span>
+                    <span class="chat-time">
+                      <span>
+                        <span>March 14 2015</span>
+                      </span>
+                    </span>
+                    <span class="chat-time">
+                      <span>
+                        <span>March 14 2015</span>
+                      </span>
+                    </span>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
     </section>
   </aside>
   <aside class="aside-xl">

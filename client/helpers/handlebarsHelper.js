@@ -41,7 +41,7 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
 Handlebars.registerHelper('momentDatetime',function(date, format){
   var diff = 86400000; //one day, 24 hrs
   if (moment().diff(moment(date)) >= diff) {
-    if (typeof format == 'undefined') {
+    if (typeof format != 'string') {
       return moment(date).fromNow();
     }
     return moment(date).format(format);
@@ -98,7 +98,7 @@ Handlebars.registerHelper('getFullNodeName', function(category, node){
         nodeName = sub.name;
       }
     })
-    return '['+tagName+'/'+nodeName+']';
+    return '<code>'+nodeName+'</code>';
   }
   return null;
 })

@@ -3,6 +3,19 @@ Template.nodesList.rendered = function(){
 }
 
 NodesListController = RouteController.extend({
+  waitOn: function () {
+    delete Session.keys['nodeSelected'];
+    var params = this.params;
+    
+    if (typeof params.node != 'undefined') {
+      //设置小节点
+      Session.set('nodeSelected', this.params.node);
+      return Meteor.subscribe('topicsByNodes', params.category, params.node);
+    }
+    //设置大节点
+    Session.set('categorySelected',this.params.category);
+    return Meteor.subscribe('topicsByNodes', this.params.category);
+  },
   action: function () {
     if (this.ready()){
       this.render();
@@ -14,7 +27,6 @@ NodesListController = RouteController.extend({
   data: function () {
     var params = this.params;
     var category = params.category;
-    Session.set('categorySelected',category);
 
     var nodes = Nodes.find({}).fetch();
     if (nodes) {
@@ -41,6 +53,16 @@ Template.nodesList.helpers({
     }
     else {
       return null;
+    }
+  },
+  'topics': function() {
+    var category = Session.get('categorySelected');
+    if (typeof Session.get('nodeSelected') != 'undefined') {
+      var node = Session.get('nodeSelected');
+      return Topics.find({category:category,node:node}).fetch();
+    }
+    else {
+      return Topics.find({category:category}).fetch(); 
     }
   }
 })

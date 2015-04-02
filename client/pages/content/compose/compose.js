@@ -38,12 +38,15 @@ Template.compose.rendered = function () {
     }, function(){
       var title = $('input[name=title]').val();
       var content = editor.getValue();
+      var nodes = $('.nodeSelect').val().split('|');
+      var category = nodes[0];
+      var node = nodes[1];
       var formObj = {
         creator: Meteor.userId(),
         title: title,
         content: content,
-        category:'skill',
-        node:'meteor'
+        category: category,
+        node: node
       };
       Meteor.call('addTopic', formObj, function(err, topicId){
         if(err){
