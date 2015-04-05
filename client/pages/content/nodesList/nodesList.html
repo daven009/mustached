@@ -4,13 +4,17 @@
       <div class="wrapper-sm">
         <ul class="nav nav-pills">
           {{#each nodes}}
+          {{#if display}}
           <li role="presentation" class="{{activeClass tag}}"><a href="{{pathFor 'nodesList' category=tag}}">{{name}}</a></li>
+          {{/if}}
           {{/each}}
         </ul>
       </div>
       <div class="full-width bg-light lter wrapper-sm clearfix">
         {{#each subNodes}}
+        {{#if display}}
         <div class="pull-left m-r"><a href="{{pathFor 'nodesList' category=../category node=tag}}">{{name}}</a></div>
+        {{/if}}
         {{/each}}
       </div>
       <div>
@@ -20,12 +24,13 @@
             <div class="media padder-xl">
               <span class="pull-left pointer"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></span>
               <div class="pull-right text-success m-t-sm">
-              <span class="badge read">15</span>
+                <span class="badge read">15</span>
               </div>
               <div class="media-body">
                 <div class="font-16 pointer"><a href="{{pathFor 'topic' _id=_id}}">{{title}}</a></div>
                 <div>
-                  <small class="text-muted">{{{getFullNodeName category node}}}
+                  <small class="text-muted">
+                    <a href="{{pathFor 'nodesList' category=category node=tag}}">{{{getFullNodeName category node}}}</a>
                     <span class="chat-time">
                       <span>
                         <span class="pointer">{{getUsernameByUserId creator}}</span>
@@ -33,12 +38,7 @@
                     </span>
                     <span class="chat-time">
                       <span>
-                        <span>March 14 2015</span>
-                      </span>
-                    </span>
-                    <span class="chat-time">
-                      <span>
-                        <span>March 14 2015</span>
+                        <span>{{momentDatetime createdAt}}</span>
                       </span>
                     </span>
                   </small>

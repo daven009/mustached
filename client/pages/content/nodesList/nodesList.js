@@ -6,14 +6,9 @@ NodesListController = RouteController.extend({
   waitOn: function () {
     delete Session.keys['nodeSelected'];
     var params = this.params;
-    
     if (typeof params.node != 'undefined') {
-      //设置小节点
-      Session.set('nodeSelected', this.params.node);
       return Meteor.subscribe('topicsByNodes', params.category, params.node);
     }
-    //设置大节点
-    Session.set('categorySelected',this.params.category);
     return Meteor.subscribe('topicsByNodes', this.params.category);
   },
   action: function () {
@@ -27,7 +22,12 @@ NodesListController = RouteController.extend({
   data: function () {
     var params = this.params;
     var category = params.category;
-
+    //设置大节点
+    Session.set('categorySelected',this.params.category);
+    if (typeof params.node != 'undefined') {
+      //设置小节点
+      Session.set('nodeSelected', this.params.node);
+    }
     var nodes = Nodes.find({}).fetch();
     if (nodes) {
       subNodes = [];

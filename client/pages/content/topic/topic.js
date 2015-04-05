@@ -1,21 +1,22 @@
 Template.topic.rendered = function() {
   render();
+  delete Session.keys['topicHeader'];
+  Session.set('topicHeader',$('#chat-header').outerHeight());
 }
 
 Template.topic.events({
   'click #showContent':function(e, t){
     $('#contentArea').fadeIn();
-    $('#messageArea').hide();
-    $('#inputArea').hide();
-    $('#showContent').hide();
+    $('#messageArea,#inputArea,#showContent').hide();
     $('#showMessage').show();
   },
   'click #showMessage':function(e, t){
-    $('#contentArea').hide();
-    $('#messageArea').fadeIn();
-    $('#inputArea').fadeIn();
+    $('#contentArea,#showMessage').hide();
+    $('#messageArea,#inputArea').fadeIn();
     $('#showContent').show();
-    $('#showMessage').hide();
+  },
+  'keypress #chat-input-textarea': function(e, t) {
+    console.log(e);
   }
 })
 
@@ -44,3 +45,10 @@ TopicController = RouteController.extend({
     }
   }
 });
+
+Template.topic.helpers({
+  'paddingTop': function(){
+    return Session.get('topicHeader');
+  }
+
+})

@@ -2,45 +2,47 @@
   <style>
     .markdown-content {
       width:100%;
-      height: 100%;
       overflow-x: hidden;
-      overflow-y: auto;
     }
+    .nano .nano-pane   { background: transparent; }
+    .nano .nano-slider { background: #1E3E46; }
   </style>
   <aside class="bg-light lter">
     {{#with topic}}
-    <section class="vbox">       
-      <section class="bg-white-only">
-        <div class="wrapper b-b">
-          <div class="clearfix">
-            <div class="col-xs-10 no-padder">
-              <a href="#" class="pull-left thumb m-r">
-                <img src="{{getUserAvatarByUserId creator 64}}" class="img-rounded">
-              </a>
-              <div class="clear">
-                <div class="h3 m-t-xs m-b-xs">{{title}}</div>
-                <small class="text-muted">{{getUsernameByUserId creator}} · {{momentDatetime createdAt}} · <a href="{{pathFor 'nodesList' category=category node=node}}">{{{getFullNodeName category node}}}</a> · 3639 次点击</small>
-              </div>
-            </div>
-            <div class="col-xs-2 no-padder" style="height: 64px;display: table;">
-              {{#if markdown content}}
-              <div style="vertical-align: middle;display: table-cell;">
-                <i class="fa fa-file-text-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看原文" id="showContent"></i>
-                <i class="fa fa-comment-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看留言" id="showMessage" style="display:none"></i>
-              </div>
-              {{/if}}
+    <section id="chat-app">
+      <div class="wrapper b-b topic-header" id="chat-header">
+        <div class="clearfix">
+          <div class="col-xs-10 no-padder">
+            <a href="#" class="pull-left thumb m-r">
+              <img src="{{getUserAvatarByUserId creator 64}}" class="img-rounded">
+            </a>
+            <div class="clear">
+              <div class="h3 m-t-xs m-b-xs">{{title}}</div>
+              <small class="text-muted">{{getUsernameByUserId creator}} · {{momentDatetime createdAt}} · <a href="{{pathFor 'nodesList' category=category node=node}}">{{{getFullNodeName category node}}}</a> · 3639 次点击</small>
             </div>
           </div>
+          <div class="col-xs-2 no-padder" style="height: 64px;display: table;">
+            {{#if markdown content}}
+            <div style="vertical-align: middle;display: table-cell;">
+              <i class="fa fa-file-text-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看原文" id="showContent"></i>
+              <i class="fa fa-comment-o fa-2x pointer text-muted hover-darken tool-tip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="查看留言" id="showMessage" style="display:none"></i>
+            </div>
+            {{/if}}
+          </div>
         </div>
+      </div>     
+      <section class="bg-white-only trpContentPanel">
         {{#if markdown content}}
-        <div class="markdown-body markdown-content wrapper" id="contentArea" style="display:none">
-          {{{markdown content}}}
+        <div class="markdown-body markdown-content nano" id="contentArea" style="display:none">
+          <div class="nano-content wrapper" style="padding-top:{{paddingTop}}px !important">
+            {{{markdown content}}}
+          </div>
         </div>
         {{/if}}
         <div id="messageArea" class="markdown-body">
-          <ul class="list-group alt no-padder">
-            <li class="list-group-item no-borders no-radius">
-              <div class="media padder-xl">
+          <ul class="list-group alt no-padder" style="padding-top:{{paddingTop}}px !important">
+            <li class="list-group-item no-borders no-radius padder-lg">
+              <div class="media padder">
                 <span class="pull-left thumb-sm"><img src="/images/avatar_default.jpg" alt="John said" class="img-rounded pointer"></span>
                 <div class="media-body">
                   <div>
@@ -52,16 +54,13 @@
                       </span>
                     </small>
                   </div>
-                  <div class="font-14">我发现Andriod上浏览格式出现偏差</div>
+                  <div class="font-14">我发现<code>Andriod</code>上浏览格式出现偏差</div>
                 </div>
               </div>
             </li>
-            <li class="list-group-item no-borders no-radius">
-              <div class="media padder-xl">
+            <li class="list-group-item no-borders no-radius padder-lg">
+              <div class="media padder">
                 <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
-                <div class="pull-right text-success m-t-sm">
-                  <i class="fa fa-circle"></i>
-                </div>
                 <div class="media-body">
                   <div>
                     <small class="text-muted pointer">Chris Fox
@@ -72,7 +71,7 @@
                       </span>
                     </small>
                   </div>
-                  <div class="font-14">Desktop上的Chrome，和Firefox，iOS上的Safari没有发现这个问题，回头我试试用Android访问。谢谢你的反馈。</div>
+                  <div class="font-14">Desktop上的<strong>Chrome</strong>，和Firefox，iOS上的<code>Safari</code>没有发现这个问题，回头我试试用Android访问。谢谢你的反馈。</div>
                 </div>
               </div>
             </li>
@@ -81,9 +80,12 @@
       </section>
       {{#if currentUser}}
       <footer class="footer b-t bg-white-only no-padder" id="inputArea">
-        <li class="list-group-item no-borders">
-          <div class="media padder-xl">
+        <li class="list-group-item no-borders padder-lg">
+          <div class="media padder">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
+            <div class="pull-right text-mute m-t-sm hover-darken pointer tool-tip" data-toggle="tooltip" data-placement="top" title="" data-original-title="写作模式" id="composeSwitch">
+              <i class="fa fa-pencil-square-o fa-2x"></i>
+            </div>
             <div class="media-body">
               <div>
                 <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="点击此处并输入留言. 支持GitHub flavoured markdown语言." autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>

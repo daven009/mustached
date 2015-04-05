@@ -34,11 +34,22 @@
   background-color: #E5E5E5;
 }
 
+.full-height {
+  height:100%;
+}
+
 .only-b-b {
   border-top: none;
   border-left:none;
   border-right: none;
   border-bottom: 1px solid #e0e4e8;
+}
+
+.topic-header{
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(255,255,255,.97);
 }
 
 /* Remove Glowing */
@@ -83,44 +94,103 @@ textarea, input, button, select {
 }
 
 .ui-Field {
-    cursor: text;
-    font-size: 13px;
-    position: relative;
+  cursor: text;
+  font-size: 13px;
+  position: relative;
 }
 
 .ui-Field .content {
-    background: #f0f0f0;
-    border: 1px solid #d1d1d1;
-    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    color: #333;
-    display: block;
-    margin: 0;
+  background: #f0f0f0;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #333;
+  display: block;
+  margin: 0;
 }
 
 .ui-TextField .content {
-    border-radius: 3px;
-    min-height: 1em;
-    padding: 8px;
-    width: 100%;
-    word-wrap: break-word;
+  border-radius: 3px;
+  min-height: 1em;
+  padding: 8px;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .ui-Field .content {
-    background: #fff;
-    border: none;
-    border-radius: 0 0 6px 6px;
-    border-top: 1px solid #d4d4d4;
-    box-shadow: none;
-    color: #333;
-    font-size: 13px;
-    line-height: 16px;
-    height: 37px;
-    padding: 10px;
-    resize: none;
+  background: #fff;
+  border: none;
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid #d4d4d4;
+  box-shadow: none;
+  color: #333;
+  font-size: 13px;
+  line-height: 16px;
+  height: 37px;
+  padding: 10px;
+  resize: none;
 }
 
 .ui-TextField .content.autogrow {
-    overflow: hidden;
+  overflow: hidden;
+}
+
+
+#chat-app {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+#chat-header {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  padding: 10px 26px;
+  background-color: rgba(255,255,255,.97);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.trpContentPanel {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+#inputArea {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 100;
+  background-color: white;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
