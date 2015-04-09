@@ -194,3 +194,22 @@ textarea, input, button, select {
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
+
+.mention {
+  border: 1px solid rgba(192,201,200,.4);
+  background-color: rgba(192,201,200,.2);
+  border-radius: 2px;
+  padding: 0 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+code {
+  border: 1px solid rgba(192,201,200,.4);
+  background-color: rgba(192,201,200,.2);
+  border-radius: 2px;
+  padding: 0 4px;
+  font-size: 14px;
+  overflow-x: auto;
+  word-wrap: normal;
+}

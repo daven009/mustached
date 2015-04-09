@@ -1060,11 +1060,11 @@ Renderer.prototype.image = function(href, title, text) {
 };
 
 Renderer.prototype.mention = function(href, title, text) {
-  var out = '<a href="#" data-link-type="mention" data-username="' + href + '"';
+  var out = '<span class="mention" data-link-type="mention" data-username="' + href + '"';
   if (title) {
     out += ' title="' + title + '"';
   }
-  out += '>' + text + '</a>';
+  out += '>' + text + '</span>';
   return out;
 };
 
