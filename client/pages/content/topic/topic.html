@@ -39,42 +39,44 @@
           </div>
         </div>
         {{/if}}
-        <div id="messageArea" class="markdown-body">
+        <div id="messageArea">
           <ul class="list-group alt no-padder" style="padding-top:{{paddingTop}}px !important">
-            <li class="list-group-item no-borders no-radius padder-lg">
+            {{#each conversations}}
+            {{#if hasParent}}
+            <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:0px;padding-bottom:0px;">
               <div class="media padder">
-                <span class="pull-left thumb-sm"><img src="/images/avatar_default.jpg" alt="John said" class="img-rounded pointer"></span>
+                <div class="media-body" style="margin-left: 46px;">
+                  <div class="m-b-xxs markdown-inline">{{{markdown content}}}</div>
+                </div>
+              </div>
+            </li>
+            {{else}}
+            <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:15px;padding-bottom:0px;">
+              <div class="media padder">
+                <span class="pull-left thumb-sm"><img src="{{getUserAvatarByUserId creator 36}}" class="img-rounded pointer"></span>
                 <div class="media-body">
                   <div>
-                    <small class="text-muted pointer">Daven
+                    <small class="text-muted pointer">{{getUsernameByUserId creator}}
+                      {{#if isAuthor creator}}
                       <span class="chat-time">
                         <span>
-                          <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
+                          <span class="text-danger"><strong>楼主</strong></span>
+                        </span>
+                      </span>
+                      {{/if}}
+                      <span class="chat-time">
+                        <span>
+                          <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">{{momentDatetime createdAt}}</span>
                         </span>
                       </span>
                     </small>
                   </div>
-                  <div class="font-14">我发现<code>Andriod</code>上浏览格式出现偏差</div>
+                  <div class="m-b-xxs markdown-inline">{{{markdown content}}}</div>
                 </div>
               </div>
             </li>
-            <li class="list-group-item no-borders no-radius padder-lg">
-              <div class="media padder">
-                <span class="pull-left thumb-sm"><img src="/images/avatar.jpg" alt="John said" class="img-rounded pointer"></span>
-                <div class="media-body">
-                  <div>
-                    <small class="text-muted pointer">Chris Fox
-                      <span class="chat-time">
-                        <span>
-                          <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">March 14 2015</span>
-                        </span>
-                      </span>
-                    </small>
-                  </div>
-                  <div class="font-14">Desktop上的<strong>Chrome</strong>，和Firefox，iOS上的<code>Safari</code>没有发现这个问题，回头我试试用Android访问。谢谢你的反馈。</div>
-                </div>
-              </div>
-            </li>
+            {{/if}}
+            {{/each}}
           </ul>
         </div>
       </section>

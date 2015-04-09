@@ -21,3 +21,9 @@ Meteor.publish('topicsByNodes', function(category,node) {
     return Topics.find({category: category});
   }
 });
+
+//返回关于topic的所有conversation
+Meteor.publish('conversations', function(topicId) {
+  check(topicId, String);
+  return Conversations.find({topic: topicId});
+});

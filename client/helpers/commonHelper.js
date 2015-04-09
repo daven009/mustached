@@ -20,7 +20,7 @@ CommonHelper = {
   },
 
   'isNotEmpty' : function(val) {
-    if (!val || val === ''){
+    if (!val || val.trim() === ''){
       return false;
     }
     return true;

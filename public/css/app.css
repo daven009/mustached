@@ -2690,6 +2690,9 @@ fieldset[disabled] .btn-gplus.active {
 .m-b-xs {
   margin-bottom: 5px;
 }
+.m-b-xxs {
+  margin-bottom: 2px !important;
+}
 .m-b-sm {
   margin-bottom: 10px;
 }

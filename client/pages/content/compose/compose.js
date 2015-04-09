@@ -53,10 +53,8 @@ Template.compose.rendered = function () {
           //此处应该有alert
           return false;
         }
-        else {
-          Router.go('topic',{_id:topicId});
-          swal.close();
-        }
+        Router.go('topic',{_id:topicId});
+        swal.close();
       });
     });
   });
