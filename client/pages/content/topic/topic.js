@@ -2,6 +2,11 @@ Template.topic.rendered = function() {
   render();
   delete Session.keys['topicHeader'];
   Session.set('topicHeader',$('#chat-header').outerHeight());
+  //点击quote class
+  $('body').off('click','.quote').on('click','.quote',function(){
+    var originalTitle = $(this).data('originalTitle');
+    $('#chat-input-textarea').val($('#chat-input-textarea').val() + originalTitle + ' ');
+  })
 }
 
 Template.topic.events({
@@ -78,7 +83,6 @@ Template.topic.helpers({
         }
       });
     }
-    console.log(conversations);
     return conversations;
   },
   'isAuthor': function(creator) {

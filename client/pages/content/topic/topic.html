@@ -53,7 +53,7 @@
             {{else}}
             <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:15px;padding-bottom:0px;">
               <div class="media padder">
-                <span class="pull-left thumb-sm"><img src="{{getUserAvatarByUserId creator 36}}" class="img-rounded pointer"></span>
+                <span class="pull-left thumb-sm"><img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote"></span>
                 <div class="media-body">
                   <div>
                     <small class="text-muted pointer">{{getUsernameByUserId creator}}
@@ -66,7 +66,7 @@
                       {{/if}}
                       <span class="chat-time">
                         <span>
-                          <span title="" data-original-title="March 14 2015 12:24 AM <br>(Alt-click to quote)" class="pointer">{{momentDatetime createdAt}}</span>
+                          <span title="" data-original-title="March 14 2015 12:24 AM" class="pointer quote">{{momentDatetime createdAt}}</span>
                         </span>
                       </span>
                     </small>
