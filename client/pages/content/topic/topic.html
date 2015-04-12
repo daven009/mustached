@@ -30,17 +30,19 @@
             {{/if}}
           </div>
         </div>
-      </div>     
-      <section class="bg-white-only trpContentPanel">
+      </div>
+      <section class="bg-white-only trpContentPanel" id="contentArea" style="display:none">
         {{#if markdown content}}
-        <div class="markdown-body markdown-content nano" id="contentArea" style="display:none">
-          <div class="nano-content wrapper" style="padding-top:{{paddingTop}}px !important">
+        <div class="markdown-body markdown-content content-scrollable" >
+          <div class="wrapper" style="padding-top:{{paddingTop}}px !important">
             {{{markdown content}}}
           </div>
         </div>
         {{/if}}
-        <div id="messageArea">
-          <ul class="list-group alt no-padder" style="padding-top:{{paddingTop}}px !important">
+      </section>
+      <section class="bg-white-only trpContentPanel nano" id="messageArea">
+        <div class="nano-content">
+          <ul class="list-group alt no-padder m-b-xs" style="padding-top:{{paddingTop}}px !important">
             {{#each conversations}}
             {{#if hasParent}}
             <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:0px;padding-bottom:0px;">
@@ -66,7 +68,7 @@
                       {{/if}}
                       <span class="chat-time">
                         <span>
-                          <span title="" data-original-title="March 14 2015 12:24 AM" class="pointer quote">{{momentDatetime createdAt}}</span>
+                          <span title="" data-original-title="March 14 2015 12:24 AM" class="pointer quote">{{momentDatetime createdAt 'dddd, MMMM Do YYYY, h:mm:ss a'}}</span>
                         </span>
                       </span>
                     </small>

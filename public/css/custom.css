@@ -212,3 +212,13 @@ code {
   overflow-x: auto;
   word-wrap: normal;
 }
+
+.content-scrollable {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
