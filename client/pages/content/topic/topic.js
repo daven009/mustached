@@ -71,14 +71,12 @@ Template.topic.rendered = function() {
 
 Template.topic.events({
   'click #showContent':function(e, t){
-    $('#contentArea').fadeIn();
+    $('#contentArea,#showMessage').show();
     $('#messageArea,#inputArea,#showContent').hide();
-    $('#showMessage').show();
   },
   'click #showMessage':function(e, t){
     $('#contentArea,#showMessage').hide();
-    $('#messageArea,#inputArea').fadeIn();
-    $('#showContent').show();
+    $('#messageArea,#inputArea,#showContent').show();
   }
 })
 
@@ -129,5 +127,15 @@ Template.topic.helpers({
   },
   'isAuthor': function(creator) {
     return Topics.findOne({_id: params._id, creator:creator});
+  },
+  'participants': function() {
+    var creators = Conversations.find({topic: params._id},{creator:1,_id:0}).fetch();
+    var groupedCreators = _.groupBy(_.pluck(creators, 'creator'));
+
+    var arr = [];
+    _.each(_.values(groupedCreators), function(creators) {
+      arr.push(creators[0]);
+    });
+    return arr;
   }
 })

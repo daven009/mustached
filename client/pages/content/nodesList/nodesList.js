@@ -64,5 +64,15 @@ Template.nodesList.helpers({
     else {
       return Topics.find({category:category}).fetch(); 
     }
+  },
+  'commentCount': function(topicId) {
+    Meteor.subscribe('conversations', topicId);
+    var count = Conversations.find({topic:topicId}).fetch();
+    if (count) {
+      return count.length;
+    }
+    else {
+      return null;
+    }
   }
 })

@@ -48,7 +48,7 @@
             <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:0px;padding-bottom:0px;">
               <div class="media padder">
                 <div class="media-body" style="margin-left: 46px;">
-                  <div class="m-b-xxs markdown-inline">{{{markdown content}}}</div>
+                  <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
                 </div>
               </div>
             </li>
@@ -68,12 +68,12 @@
                       {{/if}}
                       <span class="chat-time">
                         <span>
-                          <span title="" data-original-title="March 14 2015 12:24 AM" class="pointer quote">{{momentDatetime createdAt 'dddd, MMMM Do YYYY, h:mm:ss a'}}</span>
+                          <span title="" data-original-title="{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss a'}}" class="pointer quote">{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span>
                         </span>
                       </span>
                     </small>
                   </div>
-                  <div class="m-b-xxs markdown-inline">{{{markdown content}}}</div>
+                  <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
                 </div>
               </div>
             </li>
@@ -103,15 +103,26 @@
     {{/with}}
   </aside>
   <aside class="aside-xl">
-    <section class="vbox">
-      <header class="bg-light lter wrapper header header-min-height">
-
-      </header>
-      <section class="bg-light lter">
-        <div class="list-group list-group-alt no-radius no-borders">
-
+    <section class="vbox bg-light lter">
+      <div class="wrapper b-b">
+        <center>
+          <div class="form-group m-b-none">
+            <div class="input-group">
+              <input type="text" class="form-control input-sm no-border bg-dark" placeholder="搜索对话">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm btn-success btn-icon"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </center>
+      </div>
+      <div class="no-radius no-borders wrapper">
+        {{#each participants}}
+        <div class="pull-left m-r-xs pointer">
+          <img src="{{getUserAvatarByUserId this 30}}" class="img-rounded">
         </div>
-      </section>
+        {{/each}}
+      </div>
       <footer class="footer text-center b-t" style="height:65px;">
 
       </footer>

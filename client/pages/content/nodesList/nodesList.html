@@ -22,10 +22,12 @@
           {{#each topics}}
           <li class="list-group-item no-radius" style="border-left:none; border-right:none">
             <div class="media padder-xl">
-              <span class="pull-left pointer"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></span>
+              <span class="pull-left pointer"><a href="{{pathFor 'topic' _id=_id}}"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></a></span>
+              {{#if commentCount _id}}
               <div class="pull-right text-success m-t-sm">
-                <span class="badge read">15</span>
+                <span class="badge read">{{commentCount _id}}</span>
               </div>
+              {{/if}}
               <div class="media-body">
                 <div class="font-16 pointer"><a href="{{pathFor 'topic' _id=_id}}">{{title}}</a></div>
                 <div>
