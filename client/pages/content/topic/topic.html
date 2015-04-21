@@ -88,7 +88,7 @@
           <div class="media padder">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
             <div class="pull-right text-mute m-t-sm hover-darken pointer">
-              <i class="fa fa-pencil-square-o fa-2x tool-tip" id="composeSwitch" data-toggle="tooltip" data-placement="top" title="" data-original-title="写作模式"></i>
+              <i class="fa {{composeModeIcon}} fa-2x tool-tip" id="composeSwitch" data-toggle="tooltip" data-placement="top" title="" data-original-title="写作模式"></i>
             </div>
             <div class="media-body">
               <div>
@@ -118,7 +118,7 @@
       </div>
       <div class="no-radius no-borders wrapper">
         {{#each participants}}
-        <div class="pull-left m-r-xs pointer">
+        <div class="pull-left m-r-xs pointer quote" data-original-title="@{{getUsernameByUserId this}}">
           <img src="{{getUserAvatarByUserId this 30}}" class="img-rounded">
         </div>
         {{/each}}

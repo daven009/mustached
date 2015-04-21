@@ -16,7 +16,7 @@ var block = {
   fences: noop,
   hr: /^( *[-*_]){3,} *(?:\n+|$)/,
   heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
-  issue: /^ *#(\d{1,6})\b/,
+  issue: /^ *#(\w{1,255})+#/,
   nptable: noop,
   lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
   blockquote: /^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,
@@ -485,7 +485,7 @@ var inline = {
   email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*/,
   mention: /^(@([a-zA-Z0-9_\-]+))/,
   groupmention: /^(@\/([a-zA-Z0-9_\-]+))/,
-  issue: /^([a-zA-Z0-9_\-\.]+\/[a-zA-Z0-9_\-\.]+)?#(\d+)/,
+  issue: /^([a-zA-Z0-9_\-\.]+\/[a-zA-Z0-9_\-\.]+)?#(\w+)+#/,
   commit: /^([a-zA-Z0-9_\-\.]+\/[a-zA-Z0-9_\-\.]+)?@([a-f0-9]{7,40})/,
   linkify: /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig
 };
@@ -1083,11 +1083,11 @@ Renderer.prototype.email = function(href, title, text) {
 };
 
 Renderer.prototype.issue = function(repo, issue, text) {
-  var out = '<a href="#" data-link-type="issue" data-issue="' + text + '"';
+  var out = '<span class="issue"><a href="#" data-link-type="issue" data-issue="' + text + '"';
   if(repo) {
     out += ' data-issue-repo="' + repo + '"';
   }
-  out += '>' + text + '</a>';
+  out += '>' + text + '</a></span>';
   return out;
 };
 

@@ -2,7 +2,7 @@ Template.topic.rendered = function() {
   render();
   $(document).ready(function(){
     $(".nano").nanoScroller();
-    $('.nano-content').scrollTop('9999');
+    $('.content-scrollable').scrollTop('9999');
   })
 
   delete Session.keys['topicHeader'];
@@ -11,16 +11,18 @@ Template.topic.rendered = function() {
   //点击quote class
   $('body').off('click','.quote').on('click','.quote',function(){
     var originalTitle = $(this).data('originalTitle');
-    $('#chat-input-textarea').val($('#chat-input-textarea').val() + originalTitle + ' ');
+    $('#chat-input-textarea').val($('#chat-input-textarea').val() + originalTitle + ' ').focus();
   })
 
   //preset compose mode
   composeMode = 'chat';
+  Session.set('composeMode',composeMode);
   //command=91 /=191 ctrl = 17
   var map = {91: false, 191: false, 13: false};
   $('#chat-input-textarea').keydown(function(e) {
     if (e.keyCode in map) {
       map[e.keyCode] = true;
+      console.log(map);
       if (map[91] && map[191]) {
         if (composeMode == 'chat') {
           composeMode = 'compose';
@@ -28,6 +30,7 @@ Template.topic.rendered = function() {
         else {
           composeMode = 'chat';
         }
+        Session.set('composeMode',composeMode);
       }
     }
   }).keyup(function(e) {
@@ -64,6 +67,7 @@ Template.topic.rendered = function() {
     }
     if (e.keyCode in map) {
       map[e.keyCode] = false;
+      console.log(map);
     }
 
   });
@@ -137,5 +141,14 @@ Template.topic.helpers({
       arr.push(creators[0]);
     });
     return arr;
+  },
+  'composeModeIcon': function() {
+    var composeMode = Session.get('composeMode');
+    if (composeMode == 'chat') {
+      return 'fa-pencil-square-o';
+    }
+    else {
+      return 'fa-pencil';
+    }
   }
 })

@@ -204,6 +204,15 @@ textarea, input, button, select {
   cursor: pointer;
 }
 
+.issue {
+  border: 1px solid rgba(192,201,200,.4);
+  background-color: rgba(192,201,200,.2);
+  border-radius: 2px;
+  padding: 0 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 code {
   border: 1px solid rgba(192,201,200,.4);
   background-color: rgba(192,201,200,.2);
@@ -215,8 +224,8 @@ code {
 
 .content-scrollable {
   position: absolute;
-  overflow: scroll;
   overflow-x: hidden;
+  overflow-y: auto;
   top: 0;
   right: 0;
   bottom: 0;
