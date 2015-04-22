@@ -34,7 +34,7 @@
             <li class="m-l-xs {{isActive topic}}">
               <a href="{{pathFor 'topic' _id=topic}}" class="r-l-2x clear">
                 <i class="fa fa-bookmark-o pull-left m-r-xs m-t-2"></i>
-                <span class="pull-left m-r-xs max-150">{{getTopicNameById topic}}</span>
+                <span class="pull-left m-r-xs max-150 text-ellipsis">{{getTopicNameById topic}}</span>
                 <div class="pull-right"><span class="btn btn-success btn-xs">15</span></div>
               </a>
             </li>

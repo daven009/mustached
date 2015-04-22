@@ -17,13 +17,12 @@ Template.topic.rendered = function() {
   //preset compose mode
   composeMode = 'chat';
   Session.set('composeMode',composeMode);
-  //enter=13 /=191 ctrl = 17
+  //enter=13 /=191 ctrl=17 command=91
   //处理按键切换
   var map = {17: false, 191: false, 13: false};
   $('#chat-input-textarea').keydown(function(e) {
     if (e.keyCode in map) {
       map[e.keyCode] = true;
-      console.log(map);
       //ctrl+/
       if (map[17] && map[191]) {
         if (composeMode == 'chat') {
@@ -68,7 +67,6 @@ Template.topic.rendered = function() {
     }
     if (e.keyCode in map) {
       map[e.keyCode] = false;
-      console.log(map);
     }
   });
   //处理点击切换
