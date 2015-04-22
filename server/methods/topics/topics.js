@@ -15,7 +15,6 @@ Meteor.methods({
           return false;
         }
       });
-      console.log(topicId);
       return topicId;
     }
     else {

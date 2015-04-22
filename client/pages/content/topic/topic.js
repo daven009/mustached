@@ -17,13 +17,15 @@ Template.topic.rendered = function() {
   //preset compose mode
   composeMode = 'chat';
   Session.set('composeMode',composeMode);
-  //command=91 /=191 ctrl = 17
-  var map = {91: false, 191: false, 13: false};
+  //enter=13 /=191 ctrl = 17
+  //处理按键切换
+  var map = {17: false, 191: false, 13: false};
   $('#chat-input-textarea').keydown(function(e) {
     if (e.keyCode in map) {
       map[e.keyCode] = true;
       console.log(map);
-      if (map[91] && map[191]) {
+      //ctrl+/
+      if (map[17] && map[191]) {
         if (composeMode == 'chat') {
           composeMode = 'compose';
         }
@@ -35,7 +37,6 @@ Template.topic.rendered = function() {
     }
   }).keyup(function(e) {
     var enterMessage = false;
-    map[e.keyCode] = true;
     switch (composeMode) {
       case 'chat':
       if (map[13]) {
@@ -43,7 +44,7 @@ Template.topic.rendered = function() {
       }
       break;
       case 'compose':
-      if (map[13] && map[91]) {
+      if (map[13] && map[17]) {
         enterMessage = true;
       }
       break;
@@ -69,8 +70,17 @@ Template.topic.rendered = function() {
       map[e.keyCode] = false;
       console.log(map);
     }
-
   });
+  //处理点击切换
+  $('body').off('click','#composeSwitch').on('click','#composeSwitch',function(){
+    if (composeMode == 'chat') {
+      composeMode = 'compose';
+    }
+    else {
+      composeMode = 'chat';
+    }
+    Session.set('composeMode',composeMode);
+  })
 }
 
 Template.topic.events({
@@ -103,6 +113,15 @@ TopicController = RouteController.extend({
       this.render('notFound');
       return;
     }
+    //加入常用tab
+    Meteor.call('addCurrent', topic._id, function(err){
+      if(err){
+        return false;
+      }
+    });
+    //设置当前位置session
+    Session.set('currentTopicId',topic._id);
+
     return {
       topic: topic
     }
@@ -142,13 +161,22 @@ Template.topic.helpers({
     });
     return arr;
   },
-  'composeModeIcon': function() {
+  'composeMode': function() {
     var composeMode = Session.get('composeMode');
+    var composeObj = {};
     if (composeMode == 'chat') {
-      return 'fa-pencil-square-o';
+      var composeObj = {
+        icon: 'fa-keyboard-o',
+        placeholder: '点击此处并输入留言. 支持GitHub flavoured markdown语言. Ctrl+/ 切换输入模式.'
+      }
     }
     else {
-      return 'fa-pencil';
+      var composeObj = {
+        icon: 'fa-pencil-square-o',
+        placeholder: '点击此处并输入留言. 支持GitHub flavoured markdown语言. Ctrl+/ 切换输入模式, Ctrl+回车发送消息.'
+      }
     }
+
+    return composeObj;
   }
 })

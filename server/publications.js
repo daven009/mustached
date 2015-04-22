@@ -27,3 +27,9 @@ Meteor.publish('conversations', function(topicId) {
   check(topicId, String);
   return Conversations.find({topic: topicId});
 });
+
+//返回关于用户的所有当前参与话题
+Meteor.publish('currents', function(userId) {
+  check(userId, String);
+  return Currents.find({user: userId});
+});

@@ -5,7 +5,12 @@ Router.configure({
 });
 
 if (Meteor.isClient) {
+  Iron.Router.hooks.delCurrentTopic = function () {
+    delete Session.keys['currentTopicId'];
+    this.next();
+  };
   // Show the loading screen on desktop
+  Router.onBeforeAction('delCurrentTopic');
   Router.onBeforeAction('loading', {except: ['join', 'signin']});
   Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
 }

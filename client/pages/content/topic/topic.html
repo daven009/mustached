@@ -31,15 +31,6 @@
           </div>
         </div>
       </div>
-      <section class="bg-white-only trpContentPanel" id="contentArea" style="display:none">
-        {{#if markdown content}}
-        <div class="markdown-body markdown-content content-scrollable" >
-          <div class="wrapper" style="padding-top:{{paddingTop}}px !important">
-            {{{markdown content}}}
-          </div>
-        </div>
-        {{/if}}
-      </section>
       <section class="bg-white-only trpContentPanel nano" id="messageArea">
         <div class="nano-content">
           <ul class="list-group alt no-padder m-b-xs" style="padding-top:{{paddingTop}}px !important">
@@ -58,7 +49,7 @@
                 <span class="pull-left thumb-sm"><img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote"></span>
                 <div class="media-body">
                   <div>
-                    <small class="text-muted pointer">{{getUsernameByUserId creator}}
+                    <small class="text-muted pointer quote" data-original-title="@{{getUsernameByUserId creator}}">{{getUsernameByUserId creator}}
                       {{#if isAuthor creator}}
                       <span class="chat-time">
                         <span>
@@ -87,14 +78,21 @@
         <li class="list-group-item no-borders padder-lg">
           <div class="media padder">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
-            <div class="pull-right text-mute m-t-sm hover-darken pointer">
-              <i class="fa {{composeModeIcon}} fa-2x tool-tip" id="composeSwitch" data-toggle="tooltip" data-placement="top" title="" data-original-title="写作模式"></i>
+            {{#with composeMode}}
+            <div class="composeIcons">
+              <i class="fa text-xl {{icon}} pointer" id="composeSwitch"></i>
+              <i class="fa text-xl fa-book pointer" id="githubHelp"></i>
             </div>
+
+            <!-- <div class="pull-right text-mute m-t-sm hover-darken pointer">
+              <i class="fa fa-2x tool-tip {{icon}}" id="composeSwitch" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{title}}"></i>
+            </div> -->
             <div class="media-body">
               <div>
-                <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="点击此处并输入留言. 支持GitHub flavoured markdown语言." autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>
+                <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="{{placeholder}}" autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>
               </div>
             </div>
+            {{/with}}
           </div>
         </li>
       </footer>

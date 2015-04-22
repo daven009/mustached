@@ -1,5 +1,5 @@
 Template.compose.rendered = function () {
-  // $(".nodeSelect").select2();
+  render();
 
   Session.set('previewMarkdown','');
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
@@ -57,10 +57,6 @@ Template.compose.rendered = function () {
         swal.close();
       });
     });
-  });
-
-  $('#githubHelp').off('click').on('click',function(){
-    $('#githubHelpModal').modal('show');
   });
 };
 
