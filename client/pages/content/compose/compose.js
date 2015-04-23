@@ -53,6 +53,10 @@ Template.compose.rendered = function () {
           //此处应该有alert
           return false;
         }
+        //*daven009添加并加入了* #话题#
+        var content = '*daven009添加并加入了* #'+title+'#';
+        CommonHelper.sendMessage(topicId,content);
+
         Router.go('topic',{_id:topicId});
         swal.close();
       });

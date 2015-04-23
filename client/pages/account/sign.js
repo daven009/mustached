@@ -27,7 +27,7 @@ Template.sign.events({
       , password = t.find('input[name=password]').value
       , email = t.find('input[name=email]').value;
 
-      if (CommonHelper.isValidName(username) && CommonHelper.isValidPassword(password)){
+      if (CommonHelper.isValidName(username) && CommonHelper.isValidPassword(password) && CommonHelper.isValidEmail(email)){
         var count = Meteor.users.find({username:username}).count();
         if (0 == count) {
           Accounts.createUser({

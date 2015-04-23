@@ -35,5 +35,31 @@ CommonHelper = {
       return false;
     }
     return true;
+  },
+
+  'isValidEmail' : function(val){
+    userRegex = /^[a-z]([a-z0-9]*[-_]?[\.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/;
+    if(!val.match(userRegex)){
+      return false;
+    }
+    if (val.length < 5) {
+      return false;
+    }
+    return true;
+  },
+
+  'sendMessage' : function(topicId, content) {
+    if (CommonHelper.isNotEmpty(content)) {
+      var formObj = {
+        creator: Meteor.userId(),
+        topic: topicId,
+        content: content
+      };
+      Meteor.call('sendMessage', formObj, function(err, res){
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
   }
 }

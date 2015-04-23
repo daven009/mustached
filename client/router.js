@@ -1,7 +1,7 @@
 Router.configure({
-  layoutTemplate: 'layout'
-  // notFoundTemplate: 'notFound',
-  // loadingTemplate: 'loading',
+  layoutTemplate: 'layout',
+  notFoundTemplate: 'notFound',
+  loadingTemplate: 'loading'
 });
 
 if (Meteor.isClient) {

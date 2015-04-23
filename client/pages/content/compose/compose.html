@@ -1,16 +1,4 @@
 <template name="compose">
-  <style>
-    .CodeMirror 
-    {
-      height: 100%;
-    }
-    .markdown-body {
-      width:100%;
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-  </style>
   <aside class="bg-light lter">
     <section class="vbox">
       <header class="bg-white wrapper header header-min-height b-b">
@@ -40,7 +28,6 @@
     <section class="vbox">
       <header class="bg-light lter wrapper header header-min-height b-b">
         <div class="m-t">
-
           <select class="js-states form-control nodeSelect">
             {{#each nodes}}
             <optgroup label="{{name}}">

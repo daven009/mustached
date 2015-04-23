@@ -2,7 +2,7 @@ body {
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
   font-size: 13px;
   color: #717171;
-  background-color: #f3f5f9;
+  background-color: white;
 }
 .h1,
 .h2,
@@ -56,6 +56,12 @@ label {
 }
 .text-muted {
   color: #979797;
+}
+.text-dark {
+  color: #555459;
+}
+.text-dark.lter {
+  color: #9e9ea6;
 }
 small {
   font-size: 90%;
@@ -519,109 +525,109 @@ a:hover .caret-white {
 .navbar-inverse .navbar-form {
   border-color: transparent;
 }
-@media (min-width: 768px) {
-  html,
-  body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
-  .hbox {
-    display: table;
-    table-layout: fixed;
-    border-spacing: 0;
-    width: 100%;
-  }
-  .hbox > aside,
-  .hbox > section {
-    display: table-cell;
-    vertical-align: top;
-    height: 100%;
-    padding: 0;
-    float: none;
-  }
-  .hbox > aside.show,
-  .hbox > aside.hidden-sm,
-  .hbox > section.show,
-  .hbox > section.hidden-sm {
-    display: table-cell !important;
-  }
-  .hbox.stretch {
-    height: 100%;
-  }
-  .vbox {
-    display: table;
-    border-spacing: 0;
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
-  .vbox > section,
-  .vbox > footer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-  .vbox > header ~ section {
-    top: 95px;
-  }
-  .vbox > section.w-f {
-    /*bottom: 50px;*/
-  }
-  .vbox > footer {
-    top: auto;
-    z-index: 1000;
-  }
-  .vbox > footer ~ section {
-    bottom: 50px;
-  }
-  .vbox.flex > header,
-  .vbox.flex > section,
-  .vbox.flex > footer {
-    position: inherit;
-  }
-  .vbox.flex > section {
-    display: table-row;
-    height: 100%;
-  }
-  .vbox.flex > section > section {
-    position: relative;
-    height: 100%;
-    overflow: auto;
-  }
-  .ie .vbox.flex > section > section {
-    display: table-cell;
-  }
-  .vbox.flex > section > section > section {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  .aside-xs {
-    width: 48px;
-  }
-  .aside {
-    width: 180px;
-  }
-  .aside-sm {
-    width: 150px;
-  }
-  .aside-md {
-    width: 200px;
-  }
-  .aside-lg {
-    width: 250px;
-  }
-  .aside-xl {
-    width: 300px;
-  }
-  .scrollable {
-    -webkit-overflow-scrolling: touch;
-  }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
+.hbox {
+  display: table;
+  table-layout: fixed;
+  border-spacing: 0;
+  width: 100%;
+}
+.hbox > aside,
+.hbox > section {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+  padding: 0;
+  float: none;
+}
+.hbox > aside.show,
+.hbox > aside.hidden-sm,
+.hbox > section.show,
+.hbox > section.hidden-sm {
+  display: table-cell !important;
+}
+.hbox.stretch {
+  height: 100%;
+}
+.vbox {
+  display: table;
+  border-spacing: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.vbox > section,
+.vbox > footer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.vbox > header ~ section {
+  top: 95px;
+}
+.vbox > section.w-f {
+  /*bottom: 50px;*/
+}
+.vbox > footer {
+  top: auto;
+  z-index: 1000;
+}
+.vbox > footer ~ section {
+  bottom: 50px;
+}
+.vbox.flex > header,
+.vbox.flex > section,
+.vbox.flex > footer {
+  position: inherit;
+}
+.vbox.flex > section {
+  display: table-row;
+  height: 100%;
+}
+.vbox.flex > section > section {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+.ie .vbox.flex > section > section {
+  display: table-cell;
+}
+.vbox.flex > section > section > section {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.aside-xs {
+  width: 48px;
+}
+.aside {
+  width: 180px;
+}
+.aside-sm {
+  width: 150px;
+}
+.aside-md {
+  width: 200px;
+}
+.aside-lg {
+  width: 250px;
+}
+.aside-xl {
+  width: 300px;
+}
+.scrollable {
+  -webkit-overflow-scrolling: touch;
+}
+
 .hbox > aside,
 .hbox > section {
   padding: 0 !important;
@@ -2810,11 +2816,8 @@ fieldset[disabled] .btn-gplus.active {
   display: inherit;
 }
 .h {
-  font-size: 170px;
+  font-size: 70px;
   font-weight: 300;
-  background-image: -webkit-linear-gradient(92deg,#fb83fa,#00aced);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 @media screen and (min-width: 992px) {
   .col-lg-2-4 {

@@ -5,9 +5,6 @@ Template.topic.rendered = function() {
     $('.content-scrollable').scrollTop('9999');
   })
 
-  delete Session.keys['topicHeader'];
-  Session.set('topicHeader',$('#chat-header').outerHeight());
-
   //点击quote class
   $('body').off('click','.quote').on('click','.quote',function(){
     var originalTitle = $(this).data('originalTitle');
@@ -81,17 +78,6 @@ Template.topic.rendered = function() {
   })
 }
 
-Template.topic.events({
-  'click #showContent':function(e, t){
-    $('#contentArea,#showMessage').show();
-    $('#messageArea,#inputArea,#showContent').hide();
-  },
-  'click #showMessage':function(e, t){
-    $('#contentArea,#showMessage').hide();
-    $('#messageArea,#inputArea,#showContent').show();
-  }
-})
-
 TopicController = RouteController.extend({
   waitOn: function () {
     return Meteor.subscribe('topic', this.params._id) && Meteor.subscribe('conversations', this.params._id);
@@ -128,9 +114,6 @@ TopicController = RouteController.extend({
 });
 
 Template.topic.helpers({
-  'paddingTop': function(){
-    return Session.get('topicHeader');
-  },
   'conversations': function() {
     var conversations = Conversations.find({topic:params._id}).fetch();
     if (conversations) {
