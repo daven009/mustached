@@ -24,12 +24,13 @@ Template.sign.events({
   'submit #signForm' : function(e, t) {
     e.preventDefault();
     var username = CommonHelper.trimInput(t.find('input[name=username]').value.toLowerCase())
-      , password = t.find('input[name=password]').value
-      , email = t.find('input[name=email]').value;
+    , password = t.find('input[name=password]').value
+    , email = t.find('input[name=email]').value;
 
-      if (CommonHelper.isValidName(username) && CommonHelper.isValidPassword(password) && CommonHelper.isValidEmail(email)){
-        var count = Meteor.users.find({username:username}).count();
-        if (0 == count) {
+    if (CommonHelper.isValidName(username) && CommonHelper.isValidPassword(password)){
+      var count = Meteor.users.find({username:username}).count();
+      if (0 == count) {
+        if (CommonHelper.isValidEmail(email)) {
           Accounts.createUser({
             username: username,
             email: email,
@@ -43,16 +44,17 @@ Template.sign.events({
             }
           });
         }
-        else {
-          Meteor.loginWithPassword(username, password, function(err){
-            if (err && err.error === 403) {
+      }
+      else {
+        Meteor.loginWithPassword(username, password, function(err){
+          if (err && err.error === 403) {
             //console.log(err);
           }
           else {
             $('#signModal').modal('hide');
           }
         });
-        }
       }
     }
-  });
+  }
+});

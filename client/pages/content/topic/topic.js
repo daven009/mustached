@@ -2,7 +2,6 @@ Template.topic.rendered = function() {
   render();
   $(document).ready(function(){
     $(".nano").nanoScroller();
-    $('.content-scrollable').scrollTop('9999');
   })
 
   //点击quote class
@@ -17,7 +16,8 @@ Template.topic.rendered = function() {
   //enter=13 /=191 ctrl=17 command=91
   //处理按键切换
   var map = {17: false, 191: false, 13: false};
-  $('#chat-input-textarea').keydown(function(e) {
+  $('body').off('keydown','#chat-input-textarea').off('keyup','#chat-input-textarea')
+  .on('keydown','#chat-input-textarea', function(e) {
     if (e.keyCode in map) {
       map[e.keyCode] = true;
       //ctrl+/
@@ -31,7 +31,7 @@ Template.topic.rendered = function() {
         Session.set('composeMode',composeMode);
       }
     }
-  }).keyup(function(e) {
+  }).on('keyup','#chat-input-textarea', function(e) {
     var enterMessage = false;
     switch (composeMode) {
       case 'chat':
@@ -66,6 +66,7 @@ Template.topic.rendered = function() {
       map[e.keyCode] = false;
     }
   });
+
   //处理点击切换
   $('body').off('click','#composeSwitch').on('click','#composeSwitch',function(){
     if (composeMode == 'chat') {
@@ -129,9 +130,6 @@ Template.topic.helpers({
     }
     return conversations;
   },
-  'isAuthor': function(creator) {
-    return Topics.findOne({_id: params._id, creator:creator});
-  },
   'participants': function() {
     var creators = Conversations.find({topic: params._id},{creator:1,_id:0}).fetch();
     var groupedCreators = _.groupBy(_.pluck(creators, 'creator'));
@@ -159,5 +157,18 @@ Template.topic.helpers({
     }
 
     return composeObj;
+  }
+})
+
+//消息流
+Template.messageSteam.rendered = function() {
+  Tracker.afterFlush(function () {
+    $('.nano-content').scrollTop('9999');
+  });
+}
+
+Template.messageSteam.helpers({
+  'isAuthor': function(creator) {
+    return Topics.findOne({_id: params._id, creator:creator});
   }
 })

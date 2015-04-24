@@ -22,12 +22,26 @@
   padding: 5px !important;
 }
 
+.no-padder-v {
+  padding-top:0px;
+  padding-bottom: 0px;
+}
+
+.padder-t-n-b {
+  padding-top:15px;
+  padding-bottom:0px;
+}
+
 .m-t-2 {
   margin-top: 2px;
 }
 
 .m-t-5 {
   margin-top: 5px;
+}
+
+.m-l-no-img {
+  margin-left: 46px;
 }
 
 .icon-align {
@@ -41,6 +55,10 @@
 
 .max-200 {
   max-width: 200px;
+}
+
+.min-width-800 {
+  min-width: 800px;
 }
 
 .badge.read{
@@ -150,6 +168,8 @@ textarea, input, button, select {
 }
 
 
+
+/*topic area start*/
 #chat-app {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -186,11 +206,7 @@ textarea, input, button, select {
   border-bottom: none;
 }
 
-.min-width-800 {
-  min-width: 800px;
-}
-
-.trpContentPanel {
+#chat-content {
   position: relative;
   background-color: white;
   width: 100%;
@@ -291,3 +307,32 @@ code {
 }
 .nano .nano-pane   { background: transparent; }
 .nano .nano-slider { background: #1E3E46; }
+
+.day-divider {
+  margin: 1rem 0;
+  padding: .5rem 0;
+  line-height: 1.2rem;
+  color: #555459;
+  font-weight: 900;
+  text-align: center;
+  cursor: default;
+  clear: both;
+  position: relative;
+}
+
+.day-divider hr {
+  position: absolute;
+  border-top: 1px solid #DDD;
+  width: 100%;
+  top: 1.1rem;
+  margin: 0;
+}
+
+.day-divider-label {
+  background: white;
+  padding: 0 1rem;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+}
+/*topic area end*/

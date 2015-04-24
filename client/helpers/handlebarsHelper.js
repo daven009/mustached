@@ -39,12 +39,16 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
 });
 
 Handlebars.registerHelper('momentDatetime',function(date, format){
-  var diff = 86400000; //one day, 24 hrs
+  var diff = 3600000; //one hour, 24 hrs
+  var justnow = 60000; //one min, 24 hrs
   if (moment().diff(moment(date)) >= diff) {
     if (typeof format != 'string') {
       return moment(date).fromNow();
     }
     return moment(date).format(format);
+  }
+  else if (moment().diff(moment(date)) <= justnow) {
+    return '刚刚';
   }
   else {
     return moment(date).fromNow();

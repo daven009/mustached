@@ -1046,6 +1046,7 @@ Renderer.prototype.link = function(href, title, text) {
   if (title) {
     out += ' title="' + title + '"';
   }
+  out += ' target="_blank"';
   out += '>' + text + '</a>';
   return out;
 };

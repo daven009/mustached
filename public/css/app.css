@@ -63,6 +63,9 @@ label {
 .text-dark.lter {
   color: #9e9ea6;
 }
+.text-dark.lter:hover {
+  color: #555459;
+}
 small {
   font-size: 90%;
 }

@@ -5,11 +5,8 @@
       <div class="wrapper b-b topic-header" id="chat-header">
         <div class="clearfix">
           <div class="col-xs-12 no-padder">
-            <!-- <a href="#" class="pull-left thumb m-r">
-              <img src="{{getUserAvatarByUserId creator 64}}" class="img-rounded">
-            </a> -->
             <div class="clear">
-              <div class="h3 m-t-xs m-b-xs"><span class="pointer text-dark lter">#</span><span class="text-dark">{{title}}</span></div>
+              <div class="h3 m-t-xs m-b-xs pointer text-dark lter">#<span class="text-dark">{{title}}</span>#</div>
               <small class="text-muted">
                 <a href="{{pathFor 'nodesList' category=category node=node}}">{{{getFullNodeName category node}}}</a>
               </small>
@@ -17,45 +14,17 @@
           </div>
         </div>
       </div>
-      <section class="bg-white-only trpContentPanel nano">
+      <section class="bg-white-only nano" id="chat-content">
         <div class="nano-content" style="outline: 0">
+          <div class="padder-lg">
+            <div class="day-divider">
+              <hr role="separator" aria-hidden="true">
+              <div class="day-divider-label" aria-label="昨天">昨天 </div>
+            </div>
+          </div>
           <ul class="list-group alt no-padder m-b-xs">
             {{#each conversations}}
-            {{#if hasParent}}
-            <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:0px;padding-bottom:0px;">
-              <div class="media padder">
-                <div class="media-body" style="margin-left: 46px;">
-                  <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
-                </div>
-              </div>
-            </li>
-            {{else}}
-            <li class="list-group-item no-borders no-radius padder-lg" style="padding-top:15px;padding-bottom:0px;">
-              <div class="media padder">
-                <span class="pull-left thumb-sm"><img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote"></span>
-                <div class="media-body">
-                  <div>
-                    <small class="text-muted pointer quote" data-original-title="@{{getUsernameByUserId creator}}">
-                      <span class="font-bold">{{getUsernameByUserId creator}}</span>
-                      {{#if isAuthor creator}}
-                      <span class="chat-time">
-                        <span>
-                          <span class="text-danger"><strong>楼主</strong></span>
-                        </span>
-                      </span>
-                      {{/if}}
-                      <span class="chat-time">
-                        <span>
-                          <span title="" data-original-title="{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss a'}}" class="pointer quote">{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span>
-                        </span>
-                      </span>
-                    </small>
-                  </div>
-                  <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
-                </div>
-              </div>
-            </li>
-            {{/if}}
+            {{> messageSteam}}
             {{/each}}
           </ul>
         </div>
@@ -63,7 +32,7 @@
       {{#if currentUser}}
       <footer class="footer b-t bg-white-only no-padder" id="inputArea">
         <li class="list-group-item no-borders padder-lg">
-          <div class="media padder">
+          <div class="media">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
             {{#with composeMode}}
             <div class="composeIcons">
@@ -112,4 +81,46 @@
       </footer>
     </section>
   </section> -->
+</template>
+
+<template name="messageSteam">
+  {{#if hasParent}}
+  <li class="list-group-item no-borders no-radius padder-lg no-padder-v">
+    <div class="media">
+      <div class="media-body m-l-no-img">
+        <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
+      </div>
+    </div>
+  </li>
+  {{else}}
+  <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b">
+    <div class="media">
+      <span class="pull-left thumb-sm">
+        <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote">
+      </span>
+      <div class="media-body">
+        <div>
+          <small class="text-muted" >
+            <span class="font-bold pointer quote" data-original-title="@{{getUsernameByUserId creator}}">
+              {{getUsernameByUserId creator}}
+            </span>
+            {{#if isAuthor creator}}
+            <span class="chat-time">
+              <span>
+                <span class="text-danger"><strong>楼主</strong></span>
+              </span>
+            </span>
+            {{/if}}
+            <span class="m-l-xs">
+              <span title="" data-original-title="{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss A'}}" class="pointer quote">
+                {{momentDatetime createdAt 'h:mm A'}}
+              </span>
+            </span>
+          </small>
+        </div>
+        <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
+      </div>
+    </div>
+  </li>
+  {{/if}}
 </template>
