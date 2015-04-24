@@ -48,18 +48,7 @@ Template.topic.rendered = function() {
     //输入
     if (enterMessage) {
       var content = $(this).val();
-      if (CommonHelper.isNotEmpty(content)) {
-        var formObj = {
-          creator: Meteor.userId(),
-          topic: params._id,
-          content: content
-        };
-        Meteor.call('sendMessage', formObj, function(err, res){
-          if (err) {
-            console.log(err);
-          }
-        })
-      }
+      CommonHelper.sendMessage(params._id,content);
       $(this).val('');
     }
     if (e.keyCode in map) {
@@ -118,17 +107,25 @@ Template.topic.helpers({
   'conversations': function() {
     var conversations = Conversations.find({topic:params._id}).fetch();
     if (conversations) {
-      var prev = '';
-      _.each(conversations, function(conversation, key){
-        if (conversation.creator != prev) {
-          prev = conversation.creator;
-        }
-        else {
-          conversations[key].hasParent = true;
-        }
-      });
+      _.each(conversations, function(conversation, key) {
+        conversations[key].prettyDate = CommonHelper.prettyDateTime(conversation.createdAt);
+      })
+      var groupedConversations = _.groupBy(conversations, 'prettyDate');
+
+      _.each(groupedConversations, function(conversations, key) {
+        var prev = '';
+        _.each(conversations, function(conversation, k) {
+          if (conversation.creator != prev) {
+            prev = conversation.creator;
+          }
+          else {
+            groupedConversations[key][k].hasParent = true;
+          }
+        });  
+      })
     }
-    return conversations;
+
+    return groupedConversations;
   },
   'participants': function() {
     var creators = Conversations.find({topic: params._id},{creator:1,_id:0}).fetch();

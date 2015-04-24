@@ -39,6 +39,7 @@ Template.sign.events({
             if (err && err.error === 403) {
               console.log(err);
             } else {
+              storeCurrent();
               $('#signModal').modal('hide');
               swal('注册成功', '欢迎加入胡子客！', 'success');
             }
@@ -51,6 +52,7 @@ Template.sign.events({
             //console.log(err);
           }
           else {
+            storeCurrent();
             $('#signModal').modal('hide');
           }
         });
@@ -58,3 +60,16 @@ Template.sign.events({
     }
   }
 });
+
+function storeCurrent() {
+  //取得当前位置session
+  var topicId = Session.get('currentTopicId');
+  if (topicId) {
+    //加入常用tab
+    Meteor.call('addCurrent', topicId, function(err){
+      if(err){
+        return false;
+      }
+    });
+  }
+}

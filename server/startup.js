@@ -2,7 +2,7 @@ var nodes = [
 {
   'tag':'skill', 
   'name': '技术',
-  'peak': false,
+  'peak': true,
   'display': true,
   'sub': [
   {
@@ -25,7 +25,7 @@ var nodes = [
 {
   'tag' : 'creative',
   'name': '创意',
-  'peak': true,
+  'peak': false,
   'display': true,
   'sub': [
   {

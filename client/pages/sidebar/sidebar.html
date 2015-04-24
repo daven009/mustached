@@ -79,8 +79,9 @@
       </section>
     </section>
     <footer class="footer text-center">
+      <a href="{{pathFor 'home'}}" class="btn btn-primary btn-block">首页</a>
       {{#if currentUser}}
-      <a href="{{pathFor 'compose'}}" class="btn btn-white btn-block">创作新主题</a>
+      <a href="{{pathFor 'compose'}}" class="btn btn-white btn-block m-b">创作新主题</a>
       {{/if}}
     </footer>        
   </section>
