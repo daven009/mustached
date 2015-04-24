@@ -6,7 +6,7 @@
         <div class="clearfix">
           <div class="col-xs-12 no-padder">
             <div class="clear">
-              <div class="h3 m-t-xs m-b-xs pointer text-dark lter">#<span class="text-dark">{{title}}</span>#</div>
+              <div class="h3 m-t-xs m-b-xs pointer text-dark lter noselect">#<span class="text-dark">{{title}}</span>#</div>
               <small class="text-muted">
                 <a href="{{pathFor 'nodesList' category=category node=node}}">{{{getFullNodeName category node}}}</a>
               </small>
@@ -16,14 +16,8 @@
       </div>
       <section class="bg-white-only nano" id="chat-content">
         <div class="nano-content" style="outline: 0">
-          <div class="padder-lg">
-            <div class="day-divider">
-              <hr role="separator" aria-hidden="true">
-              <div class="day-divider-label" aria-label="昨天">昨天 </div>
-            </div>
-          </div>
           <ul class="list-group alt no-padder m-b-xs">
-            {{#each conversations}}
+            {{#each arrayify conversations}}
             {{> messageSteam}}
             {{/each}}
           </ul>
@@ -84,6 +78,13 @@
 </template>
 
 <template name="messageSteam">
+  <div class="padder-lg">
+    <div class="day-divider noselect">
+      <hr role="separator" aria-hidden="true">
+      <div class="day-divider-label" aria-label="{{name}}">{{name}} </div>
+    </div>
+  </div>
+  {{#each value}}
   {{#if hasParent}}
   <li class="list-group-item no-borders no-radius padder-lg no-padder-v">
     <div class="media">
@@ -123,4 +124,5 @@
     </div>
   </li>
   {{/if}}
+  {{/each}}
 </template>

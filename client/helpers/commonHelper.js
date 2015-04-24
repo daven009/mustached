@@ -61,5 +61,19 @@ CommonHelper = {
         }
       })
     }
+  },
+
+  'prettyDateTime' : function(date) {
+    var onedayago = 86400000; //one hour, 24 hrs
+    var twodaysago = 172800000; //one hour, 24 hrs
+    if (moment().diff(moment(date)) >= twodaysago) {
+      return moment(date).format('MMMMD日 YYYY');
+    }
+    else if (moment().diff(moment(date)) >= onedayago) {
+      return '昨天';
+    }
+    else {
+      return '今天';
+    }
   }
 }
