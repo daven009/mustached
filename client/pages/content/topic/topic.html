@@ -16,6 +16,10 @@
       </div>
       <section class="bg-white-only nano" id="chat-content">
         <div class="nano-content" style="outline: 0">
+          <div class="padder-lg noselect" style="padding-right:40%;padding-top: 100px;">
+            <h2>#{{title}}#</h2>
+            <div style="font-size:17px">这是 #{{title}}# 话题的最顶端, 创建于{{momentDatetime createdAt 'MMMMDD日 YYYY, h:mm:ss A'}}.</div>
+          </div>
           <ul class="list-group alt no-padder m-b-xs">
             {{#each arrayify conversations}}
             {{> messageSteam}}
@@ -86,18 +90,19 @@
   </div>
   {{#each value}}
   {{#if hasParent}}
-  <li class="list-group-item no-borders no-radius padder-lg no-padder-v">
+  <li class="list-group-item no-borders no-radius padder-lg no-padder-v message">
     <div class="media">
+      <a title="" class="timestamp" data-original-title="">{{momentDatetime createdAt 'h:mm'}}</a>
       <div class="media-body m-l-no-img">
         <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
       </div>
     </div>
   </li>
   {{else}}
-  <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b">
+  <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message">
     <div class="media">
       <span class="pull-left thumb-sm">
-        <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote">
+        <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar">
       </span>
       <div class="media-body">
         <div>

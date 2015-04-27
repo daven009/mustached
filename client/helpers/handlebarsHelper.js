@@ -17,7 +17,8 @@ Handlebars.registerHelper('getCurrentUserAvatar', function(size){
       s: size,
       d: 'retro'
     });
-    return url;
+    // return url;
+    return 'http://cdn.v2ex.com/gravatar/2bbea62f996883f5c78c80fa32ac332d?s=73&d=retro';
   }
   else {
     return null;
@@ -31,7 +32,8 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
       s: size,
       d: 'retro'
     });
-    return url;
+    // return url;
+    return 'http://cdn.v2ex.com/gravatar/2bbea62f996883f5c78c80fa32ac332d?s=73&d=retro';
   }
   else {
     return null;
@@ -39,20 +41,7 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
 });
 
 Handlebars.registerHelper('momentDatetime',function(date, format){
-  var diff = 3600000; //one hour, 24 hrs
-  var justnow = 60000; //one min, 24 hrs
-  if (moment().diff(moment(date)) >= diff) {
-    if (typeof format != 'string') {
-      return moment(date).fromNow();
-    }
-    return moment(date).format(format);
-  }
-  else if (moment().diff(moment(date)) <= justnow) {
-    return '刚刚';
-  }
-  else {
-    return moment(date).fromNow();
-  }
+  return moment(date).format(format);
 });
 
 Handlebars.registerHelper('markdown',function(content){

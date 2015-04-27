@@ -124,7 +124,10 @@ Template.topic.helpers({
         });  
       })
     }
-
+    //自动置低
+    Tracker.afterFlush(function () {
+      $('.nano-content').scrollTop('9999');
+    });
     return groupedConversations;
   },
   'participants': function() {
@@ -158,12 +161,6 @@ Template.topic.helpers({
 })
 
 //消息流
-Template.messageSteam.rendered = function() {
-  Tracker.afterFlush(function () {
-    $('.nano-content').scrollTop('9999');
-  });
-}
-
 Template.messageSteam.helpers({
   'isAuthor': function(creator) {
     return Topics.findOne({_id: params._id, creator:creator});

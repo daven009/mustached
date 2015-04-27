@@ -1,7 +1,7 @@
 body {
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
   font-size: 13px;
-  color: #717171;
+  color: #555459 !important;
   background-color: white;
 }
 .h1,
@@ -626,6 +626,9 @@ body {
 }
 .aside-xl {
   width: 300px;
+}
+.aside-xxl {
+  width: 400px;
 }
 .scrollable {
   -webkit-overflow-scrolling: touch;
