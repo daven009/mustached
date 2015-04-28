@@ -361,6 +361,11 @@ code {
   -moz-transitionDISABLED: opacity .1s ease-out;
   -o-transitionDISABLED: opacity .1s ease-out;
   transitionDISABLED: opacity .1s ease-out;
+  position: absolute;
+}
+
+.first-message {
+  margin-left: 46px;
 }
 
 .user-avatar.onhover {
@@ -370,10 +375,6 @@ code {
   opacity: 1;
   -ms-filter: alpha(opacity=100);
   filter: alpha(opacity=100);
-  -webkit-transitionDISABLED: opacity .1s ease-out;
-  -moz-transitionDISABLED: opacity .1s ease-out;
-  -o-transitionDISABLED: opacity .1s ease-out;
-  transitionDISABLED: opacity .1s ease-out;
 }
 /*topic area end*/
 

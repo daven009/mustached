@@ -1,11 +1,11 @@
 render = function(){
   $('.tool-tip').tooltip();
 
-  $('.hover-darken').mouseenter(function(){
+  $('body').off('mouseenter,mouseleave','.hover-darken').on('mouseenter','.hover-darken',function(){
     $(this).toggleClass('text-muted');
-  }).mouseleave(function(){
+  }).on('mouseleave','.hover-darken',function(){
     $(this).toggleClass('text-muted');
-  });
+  })
 
   $('body').off('click','#githubHelp').on('click','#githubHelp',function(){
     $('#githubHelpModal').modal('show');

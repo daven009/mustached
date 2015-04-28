@@ -101,10 +101,8 @@
   {{else}}
   <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message">
     <div class="media">
-      <span class="pull-left thumb-sm">
-        <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar">
-      </span>
-      <div class="media-body">
+      <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar thumb-sm">
+      <div class="media-body first-message">
         <div>
           <small class="text-muted" >
             <span class="font-bold pointer quote" data-original-title="@{{getUsernameByUserId creator}}">
