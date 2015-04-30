@@ -1,7 +1,7 @@
 render = function(){
   $('.tool-tip').tooltip();
 
-  $('body').off('mouseenter,mouseleave','.hover-darken').on('mouseenter','.hover-darken',function(){
+  $('body').off('mouseenter','.hover-darken').off('mouseleave','.hover-darken').on('mouseenter','.hover-darken',function(){
     $(this).toggleClass('text-muted');
   }).on('mouseleave','.hover-darken',function(){
     $(this).toggleClass('text-muted');
@@ -11,7 +11,7 @@ render = function(){
     $('#githubHelpModal').modal('show');
   });
 
-  $('body').off('mouseenter,mouseleave','.message').on('mouseenter','.message',function(){
+  $('body').off('mouseenter','.message').off('mouseleave','.message').on('mouseenter','.message',function(){
     $(this).find('.timestamp').show();
     $(this).find('.user-avatar').toggleClass('onhover');
   }).on('mouseleave','.message',function(){
