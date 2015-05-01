@@ -66,6 +66,12 @@ Template.topic.rendered = function() {
     }
     Session.set('composeMode',composeMode);
   })
+
+  //点击切换内容
+  $('body').off('click','#showContentBtn').on('click','#showContentBtn',function(){
+    $(this).toggleClass('onActive');
+    $('#topicContent').toggle('hidden');
+  })
 }
 
 TopicController = RouteController.extend({

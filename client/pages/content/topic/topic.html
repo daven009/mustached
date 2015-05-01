@@ -1,10 +1,15 @@
 <template name="topic">
+  {{#with topic}}
   <section>
-    {{#with topic}}
     <section id="chat-app">
       <div class="wrapper b-b topic-header" id="chat-header">
+        <div class="pull-right">
+          <button class="btn btn-sm btn-white" id="showContentBtn">
+            <i class="fa fa-eye text"></i>
+          </button>
+        </div>
         <div class="clearfix">
-          <div class="col-xs-12 no-padder">
+          <div class="col-xs-8 no-padder">
             <div class="clear">
               <div class="h3 m-t-xs m-b-xs pointer text-dark lter noselect">#<span class="text-dark">{{title}}</span>#</div>
               <small class="text-muted">
@@ -48,7 +53,6 @@
       </footer>
       {{/if}}
     </section>
-    {{/with}}
   </section>
   <!-- <section class="bg-white-only trpContentPanel hover">
     {{#if markdown content}}
@@ -58,27 +62,25 @@
       </div>
     </div>
     {{/if}}
-  </section>
-  <section class="aside-xl">
-    <section class="vbox">
-      <div class="wrapper">
-        <div class="input-group input-s m-t-sm">
-          <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
-          <input type="text" class="form-control input-sm" id="search-note" placeholder="search">
-        </div>
+    <div class="no-radius no-borders wrapper">
+      {{#each participants}}
+      <div class="pull-left m-r-xs pointer quote" data-original-title="@{{getUsernameByUserId this}}">
+        <img src="{{getUserAvatarByUserId this 30}}" class="img-rounded">
       </div>
-      <div class="no-radius no-borders wrapper">
-        {{#each participants}}
-        <div class="pull-left m-r-xs pointer quote" data-original-title="@{{getUsernameByUserId this}}">
-          <img src="{{getUserAvatarByUserId this 30}}" class="img-rounded">
-        </div>
-        {{/each}}
-      </div>
-      <footer class="footer text-center b-t" style="height:65px;">
-
-      </footer>
-    </section>
+      {{/each}}
+    </div>
   </section> -->
+  <section class="aside-xxl b-l" id="topicContent" style="display:none">
+    <section class="vbox">
+      <div class="wrapper-sm scrollable hover topic-content">
+        <div class="alert alert-info">
+          <strong>此处为原文</strong> 下滑滚动浏览，该帖帖主将可盖楼连载
+        </div>
+        {{{markdown content}}}
+      </div>
+    </section>
+  </section>
+  {{/with}}
 </template>
 
 <template name="messageSteam">
