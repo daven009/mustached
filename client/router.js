@@ -16,7 +16,10 @@ if (Meteor.isClient) {
 }
 
 Router.map(function() {
-  this.route('compose');
+  this.route('compose', {
+    path: '/compose/:_id?',
+    controller: 'ComposeController'
+  });
   
   this.route('home', {
     path: '/',
@@ -34,7 +37,7 @@ Router.map(function() {
   });
 
   this.route('topic', {
-    path: '/topic/:_id',
+    path: '/topic/:_id/',
     controller: 'TopicController'
   });
   

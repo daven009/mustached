@@ -1,7 +1,6 @@
 Template.compose.rendered = function () {
   render();
 
-  Session.set('previewMarkdown','');
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     mode: 'markdown',
     lineNumbers: true,
@@ -80,4 +79,32 @@ Template.compose.helpers({
     }
   }
 
+})
+
+ComposeController = RouteController.extend({
+  waitOn: function () {
+    if (typeof this.params._id != "undefined") {
+      return Meteor.subscribe('topic', this.params._id);  
+    }
+  },
+  action: function () {
+    if (this.ready()){
+      this.render();
+    }
+    else{
+      this.render('loading');
+    }
+  },
+  data: function () {
+    var topic = Topics.findOne({_id: this.params._id});
+    if (!topic) {
+      Session.set('previewMarkdown','');
+    }
+    else {
+      Session.set('previewMarkdown',topic.content);
+    }
+    return {
+      topic: topic
+    }
+  }
 })

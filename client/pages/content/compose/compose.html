@@ -9,7 +9,7 @@
           <div class="clear">
             <div class="h3 m-t-xs m-b-xs">
               <div class="ui-TextField">
-                <input type="text" name="title" class="content no-borders no-padder" placeholder="正文标题">
+                <input type="text" name="title" class="content no-borders no-padder" placeholder="正文标题" value="{{topic.title}}">
               </div>
             </div>
             <small class="text-muted">请输入主题标题，如果标题能够表达完整内容，则正文可以为空</small>
@@ -17,7 +17,7 @@
         </div>
       </header>
       <section class="bg-white-only">
-        <textarea id="code" style="display:none"></textarea>
+        <textarea id="code" style="display:none">{{topic.content}}</textarea>
         <div id="codePreview" style="display:none" class="markdown-body wrapper">
           {{{markdown previewMarkdown}}}
         </div>
