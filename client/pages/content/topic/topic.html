@@ -4,9 +4,11 @@
     <section id="chat-app">
       <div class="wrapper b-b topic-header" id="chat-header">
         <div class="pull-right">
+          {{#if markdown content}}
           <button class="btn btn-sm btn-white" id="showContentBtn">
             <i class="fa fa-eye text"></i>
           </button>
+          {{/if}}
         </div>
         <div class="clearfix">
           <div class="col-xs-8 no-padder">
