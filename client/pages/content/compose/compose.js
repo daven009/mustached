@@ -6,7 +6,7 @@ Template.compose.rendered = function () {
     mode: 'markdown',
     lineNumbers: true,
     theme: "default",
-    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
+    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
   });
 
   editor.on("change", function(cm) {
@@ -99,9 +99,10 @@ ComposeController = RouteController.extend({
   },
   data: function () {
     params = this.params;
-    var topic = Topics.findOne({_id: this.params._id});
+    var topic = Topics.findOne({_id: this.params._id, creator: Meteor.userId()});
     if (!topic) {
       Session.set('previewMarkdown','');
+      Router.go('compose');
     }
     else {
       Session.set('previewMarkdown',topic.content);
