@@ -79,6 +79,15 @@ Handlebars.registerHelper('equals', function(val1, val2){
   }
 })
 
+Handlebars.registerHelper('notEquals', function(val1, val2){
+  if (val1 == val2) {
+    return false;
+  }
+  else {
+    return true;
+  }
+})
+
 Handlebars.registerHelper('getFullNodeName', function(category, node){
   var result = Nodes.findOne({tag:category,"sub.tag":node});
   if (result) {

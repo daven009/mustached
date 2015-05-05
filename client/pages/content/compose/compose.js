@@ -14,7 +14,7 @@ Template.compose.rendered = function () {
   });
 
   //修复在修改模式下点击创作内容还存在的错误
-  Tracker.autorun(function (c) {
+  Tracker.autorun(function () {
     if (Session.equals("previewMarkdown", '')) {
       editor.setValue('');
     }
@@ -34,13 +34,22 @@ Template.compose.rendered = function () {
   });
 
   $('#publish').off('click').on('click',function(){
-    swal(CommonHelper.publishAlert(), function(){
+    var id = null;
+    if (typeof params._id == 'undefined') {
+      var alertConfig = CommonHelper.publishAlert();
+    }
+    else {
+      id = params._id;
+      var alertConfig = CommonHelper.editAlert();
+    }
+    swal(alertConfig, function(){
       var title = $('input[name=title]').val();
       var content = editor.getValue();
       var nodes = $('.nodeSelect').val().split('|');
       var category = nodes[0];
       var node = nodes[1];
       var formObj = {
+        id: id,
         creator: Meteor.userId(),
         title: title,
         content: content,
@@ -52,8 +61,14 @@ Template.compose.rendered = function () {
           //此处应该有alert
           return false;
         }
-        //*daven009添加并加入了* #话题#
-        var content = '*daven009添加并加入了* #'+title+'#';
+        if (id == null) {
+          //*daven009添加并加入了* #话题#
+          var content = '*'+Meteor.user().username+'添加并加入了* #'+title+'#';
+        }
+        else {
+          var content = '*'+Meteor.user().username+'对* #'+title+'#*进行了修改*';
+        }
+        
         CommonHelper.sendMessage(topicId,content);
 
         Router.go('topic',{_id:topicId});
@@ -99,7 +114,7 @@ ComposeController = RouteController.extend({
   },
   data: function () {
     params = this.params;
-    var topic = Topics.findOne({_id: this.params._id, creator: Meteor.userId()});
+    var topic = Topics.findOne({_id: params._id, creator: Meteor.userId()});
     if (!topic) {
       Session.set('previewMarkdown','');
       Router.go('compose');

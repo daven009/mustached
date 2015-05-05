@@ -101,7 +101,9 @@ TopicController = RouteController.extend({
     });
     //设置当前位置session
     Session.set('currentTopicId',topic._id);
-
+    //预设formatted dates
+    topic.formattedCreatedAt = moment(topic.createdAt).format('MMMMDD日 YYYY, h:mm:ss A');
+    topic.formattedUpdatedAt = moment(topic.updatedAt).format('MMMMDD日 YYYY, h:mm:ss A');
     return {
       topic: topic
     }

@@ -25,7 +25,10 @@
         <div class="nano-content" style="outline: 0">
           <div class="padder-lg noselect" style="padding-right:40%;padding-top: 100px;">
             <h2>#{{title}}#</h2>
-            <div style="font-size:17px">这是 #{{title}}# 话题的最顶端, 创建于{{momentDatetime createdAt 'MMMMDD日 YYYY, h:mm:ss A'}}.</div>
+            <div style="font-size:17px">这是 #{{title}}# 话题的最顶端, 创建于{{formattedCreatedAt}}.</div>
+            {{#if notEquals formattedCreatedAt formattedUpdatedAt}}
+            <div style="font-size:17px">最近更新于{{formattedUpdatedAt}}.</div>
+            {{/if}}
           </div>
           <ul class="list-group alt no-padder m-b-xs">
             {{#each arrayify conversations}}
