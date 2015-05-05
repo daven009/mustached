@@ -130,7 +130,7 @@ Template.topic.helpers({
         });  
       })
     }
-    //自动置低
+    //自动置底
     Tracker.afterFlush(function () {
       $('.nano-content').scrollTop('9999');
     });

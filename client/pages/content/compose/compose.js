@@ -1,15 +1,23 @@
 Template.compose.rendered = function () {
   render();
 
+  //Markdown编辑器
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     mode: 'markdown',
     lineNumbers: true,
     theme: "default",
-    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
   });
 
   editor.on("change", function(cm) {
     Session.set('previewMarkdown',cm.getValue());
+  });
+
+  //修复在修改模式下点击创作内容还存在的错误
+  Tracker.autorun(function (c) {
+    if (Session.equals("previewMarkdown", '')) {
+      editor.setValue('');
+    }
   });
 
   $('#preview').off('click').on('click',function(){
@@ -26,15 +34,7 @@ Template.compose.rendered = function () {
   });
 
   $('#publish').off('click').on('click',function(){
-    swal({
-      title: "确定发布",
-      text: "你可以在主题发布后 300 秒内，对标题或者正文进行编辑。同时，在 300 秒内，你可以重新为主题选择节点。",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes!",
-      closeOnConfirm: false
-    }, function(){
+    swal(CommonHelper.publishAlert(), function(){
       var title = $('input[name=title]').val();
       var content = editor.getValue();
       var nodes = $('.nodeSelect').val().split('|');
@@ -63,10 +63,12 @@ Template.compose.rendered = function () {
   });
 };
 
+
+
 Template.compose.helpers({
   'previewMarkdown': function(){
     if (Session.get('previewMarkdown')) {
-      return Session.get('previewMarkdown')
+      return Session.get('previewMarkdown');
     }
     else {
       return null;
@@ -96,6 +98,7 @@ ComposeController = RouteController.extend({
     }
   },
   data: function () {
+    params = this.params;
     var topic = Topics.findOne({_id: this.params._id});
     if (!topic) {
       Session.set('previewMarkdown','');

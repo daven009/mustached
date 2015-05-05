@@ -1,10 +1,10 @@
 render = function(){
   $('.tool-tip').tooltip();
 
-  $('body').off('mouseenter','.hover-darken').off('mouseleave','.hover-darken').on('mouseenter','.hover-darken',function(){
-    $(this).toggleClass('text-muted');
-  }).on('mouseleave','.hover-darken',function(){
-    $(this).toggleClass('text-muted');
+  $('body').off('mouseenter','.hover-display').off('mouseleave','.hover-display').on('mouseenter','.hover-display',function(){
+    $(this).find('.showOnHover').toggleClass('hidden');
+  }).on('mouseleave','.hover-display',function(){
+    $(this).find('.showOnHover').toggleClass('hidden');
   })
 
   $('body').off('click','#githubHelp').on('click','#githubHelp',function(){

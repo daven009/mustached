@@ -32,7 +32,15 @@
             {{#each nodes}}
             <optgroup label="{{name}}">
               {{#each sub}}
+              {{#if equals ../tag ../../topic.category}}
+                {{#if equals tag ../../topic.node}}
+                <option value="{{../tag}}|{{tag}}" selected>{{name}}</option>
+                {{else}}
+                <option value="{{../tag}}|{{tag}}">{{name}}</option>
+                {{/if}}
+              {{else}}
               <option value="{{../tag}}|{{tag}}">{{name}}</option>
+              {{/if}}
               {{/each}}
             </optgroup>
             {{/each}}

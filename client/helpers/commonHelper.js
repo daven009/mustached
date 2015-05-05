@@ -75,5 +75,29 @@ CommonHelper = {
     else {
       return '今天';
     }
+  },
+
+  'publishAlert' : function() {
+    return {
+      title: "确定发布",
+      text: "你可以在主题发布后300秒内，对标题或者正文进行编辑。同时，在300秒内，你可以重新为主题选择节点。",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes!",
+      closeOnConfirm: false
+    }
+  },
+
+  'editAlert' : function() {
+    return {
+      title: "确定修改",
+      text: "准备提交，如果修改时间超过主题发布后的300秒提交，提交将会失败。",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes!",
+      closeOnConfirm: false
+    }
   }
 }

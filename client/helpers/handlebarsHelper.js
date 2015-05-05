@@ -18,7 +18,6 @@ Handlebars.registerHelper('getCurrentUserAvatar', function(size){
       d: 'retro'
     });
     return url;
-    // return 'http://cdn.v2ex.com/gravatar/2bbea62f996883f5c78c80fa32ac332d?s=73&d=retro';
   }
   else {
     return null;
@@ -33,7 +32,6 @@ Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
       d: 'retro'
     });
     return url;
-    // return 'http://cdn.v2ex.com/gravatar/2bbea62f996883f5c78c80fa32ac332d?s=73&d=retro';
   }
   else {
     return null;
