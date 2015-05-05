@@ -120,6 +120,11 @@ ComposeController = RouteController.extend({
       Router.go('compose');
     }
     else {
+      var rest = 300000 - moment().diff(moment(topic.createdAt));
+      if (rest <= 0) {
+        swal("注意!", "主题已建立超过300秒，无法修改!", "warning");
+        Router.go('topic',{_id:topic._id});
+      }
       Session.set('previewMarkdown',topic.content);
     }
     return {

@@ -165,6 +165,14 @@ Template.topic.helpers({
     }
 
     return composeObj;
+  },
+  'withinPeriod': function(createdAt) {
+    var rest = 300000 - moment().diff(moment(createdAt));
+    if (rest > 0) {
+      return true
+    } else {
+      return false;
+    }
   }
 })
 

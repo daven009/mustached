@@ -13,7 +13,13 @@
         <div class="clearfix">
           <div class="col-xs-8 no-padder">
             <div class="clear">
-              <div class="h3 m-t-xs m-b-xs pointer text-dark lter noselect hover-display">#<span class="text-dark">{{title}}</span># <a href="{{pathFor 'compose' _id=_id}}"><i class="fa fa-pencil showOnHover hidden"></i></a></div>
+              <div class="h3 m-t-xs m-b-xs pointer text-dark lter noselect hover-display">#<span class="text-dark">{{title}}</span># 
+                {{#if withinPeriod createdAt}}
+                <a href="{{pathFor 'compose' _id=_id}}">
+                  <i class="fa fa-pencil showOnHover hidden"></i>
+                </a>
+                {{/if}}
+              </div>
               <small class="text-muted">
                 <a href="{{pathFor 'nodesList' category=category node=node}}">{{{getFullNodeName category node}}}</a>
               </small>
