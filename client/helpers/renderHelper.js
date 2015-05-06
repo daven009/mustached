@@ -13,9 +13,11 @@ render = function(){
 
   $('body').off('mouseenter','.message').off('mouseleave','.message').on('mouseenter','.message',function(){
     $(this).find('.timestamp').show();
+    $(this).find('.online-indicator').show();
     $(this).find('.user-avatar').toggleClass('onhover');
   }).on('mouseleave','.message',function(){
     $(this).find('.timestamp').hide();
+    $(this).find('.online-indicator').hide();
     $(this).find('.user-avatar').toggleClass('onhover');
   })
 

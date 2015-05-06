@@ -1,4 +1,5 @@
 Handlebars.registerHelper('getUsernameByUserId', function(userId){
+  Meteor.subscribe("userData",userId);
   var loggedInUser = Meteor.users.findOne({_id:userId});
   if (typeof loggedInUser != "undefined") {
     if(loggedInUser.username) return loggedInUser.username;
@@ -25,6 +26,7 @@ Handlebars.registerHelper('getCurrentUserAvatar', function(size){
 });
 
 Handlebars.registerHelper('getUserAvatarByUserId', function(userId, size){
+  Meteor.subscribe("userData",userId);
   if (Meteor.users.findOne({_id:userId})) {
     var email =  Meteor.users.findOne({_id:userId}).emails[0].address;
     var url = Gravatar.imageUrl(email, {
@@ -101,4 +103,26 @@ Handlebars.registerHelper('getFullNodeName', function(category, node){
     return '<code>'+nodeName+'</code>';
   }
   return null;
+})
+
+Handlebars.registerHelper('getUserOnlineStatus', function(userId){
+  Meteor.subscribe("userData",userId);
+  var userStatus = Meteor.users.findOne({"_id":userId,"status.online": true });
+  if (userStatus) {
+    return "<strong class='text-success'>在线中</strong>";
+  }
+  else {
+    return "<stong class='text-muted'>离线</span>";
+  }
+})
+
+Handlebars.registerHelper('isOnline', function(userId){
+  Meteor.subscribe("userData",userId);
+  var userStatus = Meteor.users.findOne({"_id":userId,"status.online": true });
+  if (userStatus) {
+    return true;
+  }
+  else {
+    return false;
+  }
 })

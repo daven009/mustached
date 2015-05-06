@@ -94,7 +94,7 @@
                       </span>
                     </small>
                   </div>
-                  <div class="pointer">在线</div>
+                  <div class="pointer">{{{getUserOnlineStatus this}}}</div>
                 </div>
               </div>
             </li>
@@ -147,6 +147,11 @@
               </span>
             </span>
           </small>
+          {{#if isOnline creator}}
+          <span class="text-success online-indicator">
+            <i class="fa fa-check"></i>
+          </span>
+          {{/if}}
         </div>
         <div class="markdown-body">{{{markdown content}}}</div>
       </div>
