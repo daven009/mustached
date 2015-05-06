@@ -1,13 +1,15 @@
+//global
+var autoScroll = true;
 Template.topic.rendered = function() {
   render();
   $(document).ready(function(){
     $(".nano").nanoScroller();
-  })
-
-  //点击quote class
-  $('body').off('click','.quote').on('click','.quote',function(){
-    var originalTitle = $(this).data('originalTitle');
-    $('#chat-input-textarea').val($('#chat-input-textarea').val() + originalTitle + ' ').focus();
+    $(".nano").bind("scrolled", function(e){
+      autoScroll = false;
+    });
+    $(".nano").bind("scrollend", function(e){
+      autoScroll = true;
+    });
   })
 
   //preset compose mode
@@ -48,6 +50,8 @@ Template.topic.rendered = function() {
     //输入
     if (enterMessage) {
       var content = $(this).val();
+      //发送消息
+      autoScroll = true;
       CommonHelper.sendMessage(params._id,content);
       $(this).val('');
     }
@@ -68,9 +72,20 @@ Template.topic.rendered = function() {
   })
 
   //点击切换内容
-  $('body').off('click','#showContentBtn').on('click','#showContentBtn',function(){
-    $(this).toggleClass('onActive');
-    $('#topicContent').toggle('hidden');
+  $('body').off('click','.toggleBtn').on('click','.toggleBtn',function(){
+    var targetId = $(this).data('targetId');
+    if ($(this).hasClass('onActive')) {
+      $(this).removeClass('onActive');
+      $('.toolbar').hide();
+      $('.toolbar-content').hide();
+    }
+    else {
+      $('.toggleBtn').removeClass('onActive');
+      $(this).addClass('onActive');
+      $('.toolbar').show();
+      $('.toolbar-content').hide();
+      $('#'+targetId).show();
+    }
   })
 }
 
@@ -134,7 +149,9 @@ Template.topic.helpers({
     }
     //自动置底
     Tracker.afterFlush(function () {
-      $('.nano-content').scrollTop('9999');
+      if (autoScroll) {
+        $('.nano-content').scrollTop('9999');
+      }
     });
     return groupedConversations;
   },

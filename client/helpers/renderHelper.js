@@ -18,4 +18,10 @@ render = function(){
     $(this).find('.timestamp').hide();
     $(this).find('.user-avatar').toggleClass('onhover');
   })
+
+  //点击quote class
+  $('body').off('click','.quote').on('click','.quote',function(){
+    var originalTitle = $(this).data('originalTitle');
+    $('#chat-input-textarea').val($('#chat-input-textarea').val() + originalTitle + ' ').focus();
+  })
 }

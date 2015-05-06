@@ -4,8 +4,11 @@
     <section id="chat-app">
       <div class="wrapper b-b topic-header" id="chat-header">
         <div class="pull-right">
+          <button class="btn btn-sm btn-white toggleBtn" data-target-id="topic-user">
+            <i class="fa fa-user text"></i>
+          </button>
           {{#if markdown content}}
-          <button class="btn btn-sm btn-white" id="showContentBtn">
+          <button class="btn btn-sm btn-white toggleBtn" data-target-id="topic-content">
             <i class="fa fa-eye text"></i>
           </button>
           {{/if}}
@@ -31,9 +34,9 @@
         <div class="nano-content" style="outline: 0">
           <div class="padder-lg noselect" style="padding-right:40%;padding-top: 100px;">
             <h2>#{{title}}#</h2>
-            <div style="font-size:17px">这是 #{{title}}# 话题的最顶端, 创建于{{formattedCreatedAt}}.</div>
+            <div class="font-17">这是 #{{title}}# 话题的最顶端, 创建于{{formattedCreatedAt}}.</div>
             {{#if notEquals formattedCreatedAt formattedUpdatedAt}}
-            <div style="font-size:17px">最近更新于{{formattedUpdatedAt}}.</div>
+            <div class="font-17">最近更新于{{formattedUpdatedAt}}.</div>
             {{/if}}
           </div>
           <ul class="list-group alt no-padder m-b-xs">
@@ -65,29 +68,39 @@
       {{/if}}
     </section>
   </section>
-  <!-- <section class="bg-white-only trpContentPanel hover">
-    {{#if markdown content}}
-    <div class="markdown-body markdown-content" >
-      <div class="wrapper" style="padding-top:{{paddingTop}}px !important">
-        {{{markdown content}}}
-      </div>
-    </div>
-    {{/if}}
-    <div class="no-radius no-borders wrapper">
-      {{#each participants}}
-      <div class="pull-left m-r-xs pointer quote" data-original-title="@{{getUsernameByUserId this}}">
-        <img src="{{getUserAvatarByUserId this 30}}" class="img-rounded">
-      </div>
-      {{/each}}
-    </div>
-  </section> -->
-  <section class="aside-xxl b-l" id="topicContent" style="display:none">
+  <section class="aside-xxl b-l toolbar" style="display:none">
     <section class="vbox">
       <div class="wrapper-sm scrollable hover topic-content">
-        <div class="alert alert-info">
-          <strong>此处为原文</strong> 下滑滚动浏览，该帖帖主将可盖楼连载
+        <div id="topic-content" class="toolbar-content" style="display:none">
+          <div class="alert alert-info">
+            <strong>此处为原文</strong> 下滑滚动浏览，该帖帖主将可盖楼连载
+          </div>
+          {{{markdown content}}}
         </div>
-        {{{markdown content}}}
+        <div id="topic-user" class="toolbar-content" style="display:none">
+          <div class="alert alert-info">
+            以下为当前参与对话的所有用户
+          </div>
+          <ul class="list-group alt no-padder">
+            {{#each participants}}
+            <li class="no-borders no-radius message m-b">
+              <div class="media">
+                <img src="{{getUserAvatarByUserId this 36}}" data-original-title="@{{getUsernameByUserId this}}" class="img-rounded pointer quote user-avatar thumb-sm">
+                <div class="media-body first-message">
+                  <div>
+                    <small class="text-muted" >
+                      <span class="font-bold pointer quote" data-original-title="@{{getUsernameByUserId this}}">
+                        {{getUsernameByUserId this}}
+                      </span>
+                    </small>
+                  </div>
+                  <div class="pointer">在线</div>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </section>
   </section>
@@ -107,7 +120,7 @@
     <div class="media">
       <a title="" class="timestamp" data-original-title="">{{momentDatetime createdAt 'h:mm'}}</a>
       <div class="media-body m-l-no-img">
-        <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
+        <div class="markdown-body">{{{markdown content}}}</div>
       </div>
     </div>
   </li>
@@ -135,7 +148,7 @@
             </span>
           </small>
         </div>
-        <div class="m-b-xxs markdown-body">{{{markdown content}}}</div>
+        <div class="markdown-body">{{{markdown content}}}</div>
       </div>
     </div>
   </li>
