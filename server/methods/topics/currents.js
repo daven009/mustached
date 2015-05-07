@@ -17,5 +17,13 @@ Meteor.methods({
     else {
       return false;
     }
+  },
+  removeCurrent: function(topicId){
+    var user = Meteor.user();
+    if(!user){
+      throw new Meteor.Error(401, "Not allow");
+    }
+
+    Currents.remove({user:user._id,topic:topicId});
   }
 })

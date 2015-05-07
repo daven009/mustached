@@ -100,7 +100,6 @@ textarea, input, button, select {
 
 .online-indicator {
   opacity: .8;
-  display: none
 }
 
 .chat-time:before {
@@ -236,6 +235,7 @@ textarea, input, button, select {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  padding: 10px 15px;
 }
 
 .mention {
@@ -345,7 +345,6 @@ code {
 }
 
 .timestamp {
-  display: none;
   text-align: right;
   font-family: 'Lato','appleLogo',sans-serif;
   color: #babbbf;
@@ -501,4 +500,18 @@ code {
 .crossBtn {
   width:15px;
   opacity: .50
+}
+
+.statusBar {
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.topicInput {
+  padding: 0px 30px 0px 15px;
+  position: relative;
+  display: block;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }

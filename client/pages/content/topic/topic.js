@@ -1,6 +1,7 @@
 //global
 var autoScroll = true;
 Template.topic.rendered = function() {
+  render();
   $(document).ready(function(){
     $(".nano").nanoScroller();
     $('.nano-content').scroll(function(e){
@@ -168,8 +169,10 @@ Template.topic.helpers({
 
     var arr = [];
     _.each(_.values(groupedCreators), function(creators) {
+      Meteor.subscribe("userData",creators[0]);
       arr.push(creators[0]);
     });
+
     return arr;
   },
   'composeMode': function() {
@@ -197,6 +200,31 @@ Template.topic.helpers({
     } else {
       return false;
     }
+  },
+  settings: function() {
+    return {
+      position: "top",
+      limit: 10,
+      rules: [
+      {
+        token: '@',
+        collection: Meteor.users,
+        field: "username",
+        template: Template.userPill,
+        noMatchTemplate: Template.noMatch
+      }
+      // ,
+      // {
+      //   token: '!',
+      //   collection: Dataset,
+      //   field: "_id",
+      //   options: '',
+      //   matchAll: true,
+      //   filter: { type: "autocomplete" },
+      //   template: Template.dataPiece
+      // }
+      ]
+    };
   }
 })
 

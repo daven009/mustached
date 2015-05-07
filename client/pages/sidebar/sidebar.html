@@ -45,13 +45,16 @@
             </li>
             {{#each currents}}
             <li class="m-l-xs {{isActive topic}} hover-display">
-              <a href="{{pathFor 'topic' _id=topic}}" class="r-l-2x clear padder-5">
-                <span class="pull-left m-r-xs max-150 text-ellipsis"><span class="m-r-xs icon-align">#</span>{{getTopicNameById topic}}</span>
+              <span class="r-l-2x clear padder-5">
+                <span class="pull-left m-r-xs max-150 text-ellipsis">
+                  <span class="m-r-xs icon-align">#</span>
+                  <a href="{{pathFor 'topic' _id=topic}}">{{getTopicNameById topic}}</a>
+                </span>
                 <div class="pull-right">
-                  <i class="fa fa-times-circle crossBtn showOnHover hidden"></i>
+                  <i class="fa fa-times-circle crossBtn showOnHover hidden pointer" data-refer-id="{{topic}}"></i>
                   <!-- <span class="btn btn-success btn-xs">15</span> -->
                 </div>
-              </a>
+              </span>
             </li>
             {{/each}}
           </ul>

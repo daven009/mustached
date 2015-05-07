@@ -24,7 +24,7 @@
           <ul class="list-group alt no-padder no-radius">
             {{#each topics}}
             <li class="list-group-item no-radius" style="border-left:none; border-right:none">
-              <div class="media padder-xl">
+              <div class="media padder">
                 <span class="pull-left pointer"><a href="{{pathFor 'topic' _id=_id}}"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></a></span>
                 {{#if commentCount _id}}
                 <div class="pull-right text-success m-t-sm">
@@ -57,7 +57,7 @@
       </div>
     </section>
   </aside>
-  <aside class="aside-xl">
+  <aside class="aside-xl statusBar">
     <section class="vbox">
       <section class="bg-light lter wrapper-sm">
         <div class="no-radius no-borders">
@@ -74,12 +74,12 @@
               <div class="list-group-item">
                 <span class="badge">{{totalTopics}}</span>
                 <i class="fa fa-book icon-muted"></i> 
-                主题
+                话题
               </div>
               <div class="list-group-item">
                 <span class="badge">{{totalConversations}}</span>
                 <i class="fa fa-comments icon-muted"></i> 
-                回复
+                交流
               </div>
             </div>
             {{#if onlineUsers}}

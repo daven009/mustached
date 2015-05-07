@@ -47,8 +47,8 @@
         </div>
       </section>
       {{#if currentUser}}
-      <footer class="footer b-t bg-white-only no-padder" id="inputArea">
-        <li class="list-group-item no-borders padder-lg">
+      <footer class="footer b-t bg-white-only" id="inputArea">
+        <li class="topicInput no-borders">
           <div class="media">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
             {{#with composeMode}}
@@ -58,7 +58,7 @@
             </div>
             <div class="media-body">
               <div>
-                <textarea class="chat-input-text-area" name="chat" id="chat-input-textarea" placeholder="{{placeholder}}" autofocus="" onfocus="this.value = this.value;" maxlength="4096"></textarea>
+                {{#textareaAutocomplete settings=settings id="chat-input-textarea" class="chat-input-text-area" placeholder=placeholder autofocus="" onfocus="this.value = this.value;" maxlength="4096"}}{{/textareaAutocomplete}}
               </div>
             </div>
             {{/with}}
@@ -116,16 +116,16 @@
   </div>
   {{#each value}}
   {{#if hasParent}}
-  <li class="list-group-item no-borders no-radius padder-lg no-padder-v message">
+  <li class="list-group-item no-borders no-radius padder-lg no-padder-v message hover-display">
     <div class="media">
-      <a title="" class="timestamp" data-original-title="">{{momentDatetime createdAt 'h:mm'}}</a>
+      <a title="" class="timestamp hidden showOnHover" data-original-title="">{{momentDatetime createdAt 'h:mm'}}</a>
       <div class="media-body m-l-no-img">
         <div class="markdown-body">{{{markdown content}}}</div>
       </div>
     </div>
   </li>
   {{else}}
-  <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message">
+  <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message hover-display">
     <div class="media">
       <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar thumb-sm">
       <div class="media-body first-message">
@@ -148,7 +148,7 @@
             </span>
           </small>
           {{#if isOnline creator}}
-          <span class="text-success online-indicator">
+          <span class="text-success online-indicator showOnHover hidden">
             <i class="fa fa-check-circle"></i>
           </span>
           {{/if}}

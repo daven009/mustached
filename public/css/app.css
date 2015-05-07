@@ -1991,6 +1991,15 @@ fieldset[disabled] .btn-gplus.active {
 .bg-dark a:hover {
   color: #fff;
 }
+
+.bg-dark .nav li span a {
+  color: white;
+}
+
+.bg-dark .nav li.active.white span a {
+  color: black;
+}
+
 .bg-dark a.list-group-item:hover,
 .bg-dark a.list-group-item:focus {
   background-color: inherit;
