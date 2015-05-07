@@ -26,16 +26,31 @@
             </div>
           </div>
           {{/if}}
+          <ul class="nav nav-pills nav-stacked no-radius">
+            <li class="dk text-sm">
+              <div class="form-group m-b-none">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-sm btn-success btn-icon no-radius"><i class="fa fa-search"></i></button>
+                  </span>
+                  <input type="text" class="form-control input-sm no-border bg-dark no-radius" placeholder="智能搜索">
+                </div>
+              </div>
+            </li>
+          </ul>
           {{#if currentUser}}
           <ul class="nav nav-pills nav-stacked no-radius">
             <li class="padder dk text-sm l-h-2x">
               <p>当前话题</p>
             </li>
             {{#each currents}}
-            <li class="m-l-xs {{isActive topic}}">
+            <li class="m-l-xs {{isActive topic}} hover-display">
               <a href="{{pathFor 'topic' _id=topic}}" class="r-l-2x clear padder-5">
                 <span class="pull-left m-r-xs max-150 text-ellipsis"><span class="m-r-xs icon-align">#</span>{{getTopicNameById topic}}</span>
-                <!-- <div class="pull-right"><span class="btn btn-success btn-xs">15</span></div> -->
+                <div class="pull-right">
+                  <i class="fa fa-times-circle crossBtn showOnHover hidden"></i>
+                  <!-- <span class="btn btn-success btn-xs">15</span> -->
+                </div>
               </a>
             </li>
             {{/each}}
@@ -51,8 +66,8 @@
               </a>
             </li>
           </ul>
-          {{/if}}
-          <ul class="nav nav-pills nav-stacked no-radius m-t-sm">
+          {{else}}
+          <ul class="nav nav-pills nav-stacked no-radius">
             <li class="padder dk text-sm l-h-2x">
               <p>推荐主题</p>
             </li>
@@ -75,6 +90,7 @@
               </a>
             </li>
           </ul>
+          {{/if}}
         </section>
       </section>
     </section>

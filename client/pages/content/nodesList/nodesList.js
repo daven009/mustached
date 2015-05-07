@@ -1,5 +1,8 @@
 Template.nodesList.rendered = function(){
   render();
+  $(document).ready(function(){
+    $(".nano").nanoScroller();
+  })
 }
 
 NodesListController = RouteController.extend({

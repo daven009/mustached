@@ -513,8 +513,6 @@
               _this.$el.trigger('scrollend');
             } else if (_this.contentScrollTop === 0 && _this.prevScrollTop !== 0) {
               _this.$el.trigger('scrolltop');
-            } else {
-              _this.$el.trigger('scrolled');
             }
             return false;
           };
@@ -568,8 +566,6 @@
               if (_this.prevScrollTop !== 0) {
                 _this.$el.trigger('scrolltop');
               }
-            } else {
-              _this.$el.trigger('scrolled');
             }
           };
         })(this),

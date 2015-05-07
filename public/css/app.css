@@ -232,6 +232,18 @@ a:hover .caret-white {
   color: white !important;
   background-color: #1E3E46 !important;
 }
+.nav-pills > li.active.white > span {
+  /*color: #fff !important;
+  background-color: #5dcff3 !important;*/
+  color: black !important;
+  background-color: white !important;
+}
+.nav-pills > li.active.dark > span {
+  /*color: #fff !important;
+  background-color: #5dcff3 !important;*/
+  color: white !important;
+  background-color: #1E3E46 !important;
+}
 .nav > li > a {
   position: relative;
   display: block;

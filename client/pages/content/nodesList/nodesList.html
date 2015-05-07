@@ -1,55 +1,59 @@
 <template name="nodesList">
   <aside class="bg-white-only">
-    <section class="vbox">
-      <div class="wrapper-sm">
-        <ul class="nav nav-pills">
-          {{#each nodes}}
+    <section class="vbox" id="node-app">
+      <div class="topic-header" id="node-header">
+        <div class="wrapper-sm">
+          <ul class="nav nav-pills">
+            {{#each nodes}}
+            {{#if display}}
+            <li role="presentation" class="{{activeClass tag}}"><a href="{{pathFor 'nodesList' category=tag}}">{{name}}</a></li>
+            {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+        <div class="full-width bg-light lter wrapper-sm clearfix">
+          {{#each subNodes}}
           {{#if display}}
-          <li role="presentation" class="{{activeClass tag}}"><a href="{{pathFor 'nodesList' category=tag}}">{{name}}</a></li>
+          <div class="pull-left m-r"><a href="{{pathFor 'nodesList' category=../category node=tag}}">{{name}}</a></div>
           {{/if}}
           {{/each}}
-        </ul>
+        </div>
       </div>
-      <div class="full-width bg-light lter wrapper-sm clearfix">
-        {{#each subNodes}}
-        {{#if display}}
-        <div class="pull-left m-r"><a href="{{pathFor 'nodesList' category=../category node=tag}}">{{name}}</a></div>
-        {{/if}}
-        {{/each}}
-      </div>
-      <div>
-        <ul class="list-group alt no-padder no-radius">
-          {{#each topics}}
-          <li class="list-group-item no-radius" style="border-left:none; border-right:none">
-            <div class="media padder-xl">
-              <span class="pull-left pointer"><a href="{{pathFor 'topic' _id=_id}}"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></a></span>
-              {{#if commentCount _id}}
-              <div class="pull-right text-success m-t-sm">
-                <span class="badge read">{{commentCount _id}}</span>
-              </div>
-              {{/if}}
-              <div class="media-body">
-                <div class="font-16 pointer"><a href="{{pathFor 'topic' _id=_id}}">{{title}}</a></div>
-                <div>
-                  <small class="text-muted">
-                    <a href="{{pathFor 'nodesList' category=category node=tag}}">{{{getFullNodeName category node}}}</a>
-                    <span class="chat-time">
-                      <span>
-                        <span class="pointer">{{getUsernameByUserId creator}}</span>
+      <div id="node-content" class="nano">
+        <div class="nano-content">
+          <ul class="list-group alt no-padder no-radius">
+            {{#each topics}}
+            <li class="list-group-item no-radius" style="border-left:none; border-right:none">
+              <div class="media padder-xl">
+                <span class="pull-left pointer"><a href="{{pathFor 'topic' _id=_id}}"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></a></span>
+                {{#if commentCount _id}}
+                <div class="pull-right text-success m-t-sm">
+                  <span class="badge read">{{commentCount _id}}</span>
+                </div>
+                {{/if}}
+                <div class="media-body">
+                <div class="font-16 pointer text-ellipsis"><a href="{{pathFor 'topic' _id=_id}}">{{title}}</a></div>
+                  <div>
+                    <small class="text-muted">
+                      <a href="{{pathFor 'nodesList' category=category node=tag}}">{{{getFullNodeName category node}}}</a>
+                      <span class="chat-time">
+                        <span>
+                          <span class="pointer">{{getUsernameByUserId creator}}</span>
+                        </span>
                       </span>
-                    </span>
-                    <span class="chat-time">
-                      <span>
-                        <span>{{momentDatetime createdAt 'MMMMDD日 YYYY'}}</span>
+                      <span class="chat-time">
+                        <span>
+                          <span>{{momentDatetime createdAt 'MMMMDD日 YYYY'}}</span>
+                        </span>
                       </span>
-                    </span>
-                  </small>
+                    </small>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-          {{/each}}
-        </ul>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </section>
   </aside>

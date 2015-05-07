@@ -1,15 +1,18 @@
 //global
 var autoScroll = true;
 Template.topic.rendered = function() {
-  render();
   $(document).ready(function(){
     $(".nano").nanoScroller();
-    $(".nano").bind("scrolled", function(e){
-      autoScroll = false;
-    });
-    $(".nano").bind("scrollend", function(e){
-      autoScroll = true;
-    });
+    $('.nano-content').scroll(function(e){
+      var elem = $(e.currentTarget);
+      if (elem[0].scrollHeight - elem[0].scrollTop - elem[0].clientHeight <= 5)
+      {
+        autoScroll = true;
+      }
+      else {
+        autoScroll = false;
+      }
+    })
   })
 
   //preset compose mode
@@ -118,6 +121,10 @@ TopicController = RouteController.extend({
     //预设formatted dates
     topic.formattedCreatedAt = moment(topic.createdAt).format('MMMMDD日 YYYY, h:mm:ss A');
     topic.formattedUpdatedAt = moment(topic.updatedAt).format('MMMMDD日 YYYY, h:mm:ss A');
+
+    //default autoscroll
+    autoScroll = true;
+
     return {
       topic: topic
     }
@@ -146,6 +153,7 @@ Template.topic.helpers({
         });  
       })
     }
+
     //自动置底
     Tracker.afterFlush(function () {
       if (autoScroll) {
