@@ -11,7 +11,7 @@
               </a>
               <div class="clear">
                 <a href="#" class="text-info">@{{getCurrentUsername}} </a>
-                <small class="block text-muted">2,415 粉丝 / 225 主题</small>
+                <small class="block text-muted">0 粉丝 / 0 主题</small>
                 <a href="javascript:void(0)" id="signout" class="btn btn-xs btn-danger m-t-xs">登出</a>
               </div>
             </div>
@@ -34,7 +34,7 @@
             {{#each currents}}
             <li class="m-l-xs {{isActive topic}}">
               <a href="{{pathFor 'topic' _id=topic}}" class="r-l-2x clear padder-5">
-                <span class="pull-left m-r-xs max-150 text-ellipsis m-t-2"><span class="m-r-xs icon-align">#</span>{{getTopicNameById topic}}</span>
+                <span class="pull-left m-r-xs max-150 text-ellipsis"><span class="m-r-xs icon-align">#</span>{{getTopicNameById topic}}</span>
                 <!-- <div class="pull-right"><span class="btn btn-success btn-xs">15</span></div> -->
               </a>
             </li>

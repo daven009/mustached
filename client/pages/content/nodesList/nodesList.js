@@ -7,9 +7,9 @@ NodesListController = RouteController.extend({
     delete Session.keys['nodeSelected'];
     var params = this.params;
     if (typeof params.node != 'undefined') {
-      return Meteor.subscribe('topicsByNodes', params.category, params.node);
+      return Meteor.subscribe("totalUsers") && Meteor.subscribe("totalTopics") && Meteor.subscribe("totalConversations") && Meteor.subscribe('topicsByNodes', params.category, params.node);
     }
-    return Meteor.subscribe('topicsByNodes', this.params.category);
+    return Meteor.subscribe("totalUsers") && Meteor.subscribe("totalTopics") && Meteor.subscribe("totalConversations") && Meteor.subscribe('topicsByNodes', this.params.category);
   },
   action: function () {
     if (this.ready()){
@@ -39,7 +39,10 @@ NodesListController = RouteController.extend({
       return {
         nodes: nodes,
         category: category,
-        subNodes: subNodes
+        subNodes: subNodes,
+        totalUsers: Meteor.users.find({}).count(),
+        totalTopics: Topics.find({}).count(),
+        totalConversations: Conversations.find({}).count()
       }
     }
   }
@@ -74,5 +77,9 @@ Template.nodesList.helpers({
     else {
       return null;
     }
+  },
+  'onlineUsers': function() {
+    Meteor.subscribe('onlineUsers');
+    return Meteor.users.find({"status.online": true }).fetch();
   }
 })

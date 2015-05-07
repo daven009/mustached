@@ -2,6 +2,10 @@ Meteor.publish('userData', function (userId) {
   return Meteor.users.find({_id:userId});
 });
 
+Meteor.publish('onlineUsers', function () {
+  return Meteor.users.find({"status.online": true });
+});
+
 Meteor.publish('nodes', function () {
   return Nodes.find();
 });
@@ -32,4 +36,19 @@ Meteor.publish('conversations', function(topicId) {
 Meteor.publish('currents', function(userId) {
   check(userId, String);
   return Currents.find({user: userId});
+});
+
+//计算用户数量
+Meteor.publish('totalUsers', function() {
+  return Meteor.users.find({});
+});
+
+//计算主题数量
+Meteor.publish('totalTopics', function() {
+  return Topics.find({});
+});
+
+//计算回复数量
+Meteor.publish('totalConversations', function() {
+  return Conversations.find({});
 });

@@ -54,6 +54,13 @@
     </section>
     <!-- /.vbox -->
   </section>
+  {{#unless connected}}
+  <div id="toast-container">
+    <div class="toast">
+      <i class="fa fa-refresh fa-spin m-r fa-2x"></i>努力载入中，请稍后
+    </div>
+  </div>
+  {{/unless}}
   {{#if currentUser}}{{else}}
   {{> sign}}
   {{/if}}

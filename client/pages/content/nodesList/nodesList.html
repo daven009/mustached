@@ -55,17 +55,41 @@
   </aside>
   <aside class="aside-xl">
     <section class="vbox">
-      <header class="bg-light lter wrapper header header-min-height">
-
-      </header>
-      <section class="bg-light lter">
-        <div class="list-group list-group-alt no-radius no-borders">
-
+      <section class="bg-light lter wrapper-sm">
+        <div class="no-radius no-borders">
+          <section class="panel">
+            <header class="panel-heading">
+              网站运行状况
+            </header>
+            <div class="list-group no-radius alt">
+              <div class="list-group-item">
+                <span class="badge">{{totalUsers}}</span>
+                <i class="fa fa-users icon-muted"></i> 
+                注册会员
+              </div>
+              <div class="list-group-item">
+                <span class="badge">{{totalTopics}}</span>
+                <i class="fa fa-book icon-muted"></i> 
+                主题
+              </div>
+              <div class="list-group-item">
+                <span class="badge">{{totalConversations}}</span>
+                <i class="fa fa-comments icon-muted"></i> 
+                回复
+              </div>
+            </div>
+            {{#if onlineUsers}}
+            <div class="panel-body">
+              {{#each onlineUsers}}
+              <div class="pull-left m-r-xs pointer quote" data-original-title="@{{getUsernameByUserId _id}}">
+                <img src="{{getUserAvatarByUserId _id 30}}" class="img-rounded">
+              </div>
+              {{/each}}
+            </div>
+            {{/if}}
+          </section>
         </div>
       </section>
-      <footer class="footer text-center b-t" style="height:65px;">
-
-      </footer>
     </section>
   </aside>
 </template>

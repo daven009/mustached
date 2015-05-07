@@ -16,7 +16,6 @@ Template.topic.rendered = function() {
   composeMode = 'chat';
   Session.set('composeMode',composeMode);
   //enter=13 /=191 ctrl=17 command=91
-  //处理按键切换
   var map = {17: false, 191: false, 13: false};
   $('body').off('keydown','#chat-input-textarea').off('keyup','#chat-input-textarea')
   .on('keydown','#chat-input-textarea', function(e) {
