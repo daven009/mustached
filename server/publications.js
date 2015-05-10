@@ -52,3 +52,8 @@ Meteor.publish('totalTopics', function() {
 Meteor.publish('totalConversations', function() {
   return Conversations.find({});
 });
+
+//抓取收到的信息
+Meteor.publish('messages', function(userId) {
+  return Messages.find({to:userId});
+});

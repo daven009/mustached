@@ -56,8 +56,7 @@ Router.map(function() {
 
   this.route('message', {
     path: '/message/:name/',
-    controller: 'MessageController',
-    escapeParameters: false
+    controller: 'MessageController'
   })
 
   this.route('topic', {

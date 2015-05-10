@@ -1,0 +1,58 @@
+<template name="message">
+  <section>
+    <section id="chat-app">
+      <div class="wrapper b-b topic-header" id="chat-header">
+        <div class="pull-right">
+          <button class="btn btn-sm btn-white toggleBtn" data-target-id="topic-user">
+            <i class="fa fa-user text"></i>
+          </button>
+        </div>
+        <div class="clearfix">
+          <div class="col-xs-8 no-padder">
+            <div class="clear">
+              <div class="h3 m-t-xs m-b-xs pointer text-dark lter noselect hover-display">
+                @<span class="text-dark">{{title}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="bg-white-only nano" id="chat-content">
+        <div class="nano-content" style="outline: 0">
+          <div class="padder-lg noselect" style="padding-right:40%;padding-top: 100px;">
+            <h2>#{{title}}#</h2>
+            <div class="font-17">这是 #{{title}}# 话题的最顶端, 创建于{{formattedCreatedAt}}.</div>
+            {{#if notEquals formattedCreatedAt formattedUpdatedAt}}
+            <div class="font-17">最近更新于{{formattedUpdatedAt}}.</div>
+            {{/if}}
+          </div>
+          <ul class="list-group alt no-padder m-b-xs">
+            {{#each arrayify conversations}}
+            {{> messageSteam}}
+            {{/each}}
+          </ul>
+        </div>
+      </section>
+      {{#if currentUser}}
+      <footer class="footer b-t bg-white-only" id="inputArea">
+        <li class="topicInput no-borders">
+          <div class="media">
+            <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
+            {{#with composeMode}}
+            <div class="composeIcons">
+              <i class="fa text-xl {{icon}} pointer" id="composeSwitch"></i>
+              <i class="fa text-xl fa-book pointer" id="githubHelp"></i>
+            </div>
+            <div class="media-body">
+              <div>
+                {{#textareaAutocomplete settings=settings id="chat-input-textarea" class="chat-input-text-area" placeholder=placeholder autofocus="" onfocus="this.value = this.value;" maxlength="4096"}}{{/textareaAutocomplete}}
+              </div>
+            </div>
+            {{/with}}
+          </div>
+        </li>
+      </footer>
+      {{/if}}
+    </section>
+  </section>
+</template>
