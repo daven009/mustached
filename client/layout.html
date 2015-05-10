@@ -55,9 +55,13 @@
     <!-- /.vbox -->
   </section>
   {{#unless connected}}
-  <div id="toast-container">
-    <div class="toast">
-      <i class="fa fa-refresh fa-spin m-r fa-2x"></i>努力载入中，请稍后
+  <div class="notifications">
+    <div class="notification">
+    <span class="icon-sync fa fa-circle-o-notch fa-spin"></span>
+      <div class="meta">
+        <div class="title-notification">尝试与服务器沟通</div>
+        <div class="description">连接出现问题，正在重试</div>
+      </div>
     </div>
   </div>
   {{/unless}}

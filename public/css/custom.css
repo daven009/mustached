@@ -317,7 +317,7 @@ code {
 .nano .nano-slider { background: #1E3E46; }
 
 .day-divider {
-  margin: 1rem 0;
+  margin-top: 1rem;
   padding: .5rem 0;
   line-height: 1.2rem;
   color: #555459;
@@ -404,50 +404,56 @@ code {
   user-select: none;
 }
 
-#toast-container {
-  min-width: 8%;
-  top: 2%;
-  right: 2%;
-  display: block;
-  position: fixed;
-  z-index: 1001;
+.notifications {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  bottom: auto;
+  right: 1rem;
+  top: 1rem;
+  left: auto;
+  position: absolute;
+  width: 280px;
+  height: auto;
 }
 
-.toast {
-  touch-action: pan-y; 
-  -webkit-user-drag: none; 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
-  opacity: 1;
-  border-radius: 2px;
-  top: 0;
-  width: auto;
-  clear: both;
-  margin-top: 10px;
+.notifications .notification {
+  font-size: 12px;
+  line-height: 16px;
+  background: rgba(51, 51, 51, 0.85);
+  color: #ffffff;
+  margin-bottom: .25rem;
+  padding: .5rem .75rem;
   position: relative;
-  max-width: 100%;
-  height: 48px;
-  line-height: 48px;
-  background-color: #323232;
-  padding: 0 25px;
-  font-size: 16.5px;
-  font-weight: 300;
-  color: #fff;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  width: 100%;
 }
 
+.notifications .notification .icon-sync {
+  position: absolute;
+  top: 30%;
+  right: auto;
+  bottom: auto;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.notifications .notification .meta {
+  overflow: hidden;
+  padding-left: 3em;
+}
+
+.notifications .notification .meta .title-notification {
+  display: block;
+}
+
+.notifications .notification .meta .description {
+  display: block;
+}
 
 /*topic area start*/
 #node-app {
