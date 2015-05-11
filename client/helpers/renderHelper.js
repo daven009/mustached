@@ -22,4 +22,15 @@ render = function(){
     var originalTitle = $(this).data('originalTitle');
     $('#chat-input-textarea').val($('#chat-input-textarea').val() + originalTitle + ' ').focus();
   })
+
+  //处理点击切换
+  $('body').off('click','#composeSwitch').on('click','#composeSwitch',function(){
+    if (composeMode == 'chat') {
+      composeMode = 'compose';
+    }
+    else {
+      composeMode = 'chat';
+    }
+    Session.set('composeMode',composeMode);
+  })
 }

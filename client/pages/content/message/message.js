@@ -62,25 +62,19 @@ Template.message.rendered = function() {
       map[e.keyCode] = false;
     }
   });
-
-  //处理点击切换
-  $('body').off('click','#composeSwitch').on('click','#composeSwitch',function(){
-    if (composeMode == 'chat') {
-      composeMode = 'compose';
-    }
-    else {
-      composeMode = 'chat';
-    }
-    Session.set('composeMode',composeMode);
-  })
 }
 
 
 MessageController = RouteController.extend({
+  // a place to put your subscriptions
+  subscriptions: function() {
+    var str = this.params.name;
+    username = str.substr(1);
+    this.subscribe('userByName', username).wait();
+  },
   waitOn: function () {
     var str = this.params.name;
-    var username = str.substr(1);
-    Meteor.subscribe('userByName', username);
+    username = str.substr(1);
     chatWith = Meteor.users.findOne({'username':username});
     if (chatWith) {
       chatWithId = chatWith._id;
@@ -88,6 +82,9 @@ MessageController = RouteController.extend({
     }
   },
   action: function () {
+    if (typeof chatWith == 'undefined') {
+      Router.go('home');
+    }
     if (this.ready()){
       this.render();
     }

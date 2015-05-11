@@ -63,17 +63,6 @@ Template.topic.rendered = function() {
     }
   });
 
-  //处理点击切换
-  $('body').off('click','#composeSwitch').on('click','#composeSwitch',function(){
-    if (composeMode == 'chat') {
-      composeMode = 'compose';
-    }
-    else {
-      composeMode = 'chat';
-    }
-    Session.set('composeMode',composeMode);
-  })
-
   //点击切换内容
   $('body').off('click','.toggleBtn').on('click','.toggleBtn',function(){
     var targetId = $(this).data('targetId');
