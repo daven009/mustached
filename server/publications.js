@@ -2,6 +2,10 @@ Meteor.publish('userData', function (userId) {
   return Meteor.users.find({_id:userId});
 });
 
+Meteor.publish('userByName', function (username) {
+  return Meteor.users.find({username:username});
+});
+
 Meteor.publish('onlineUsers', function () {
   return Meteor.users.find({"status.online": true });
 });
@@ -54,6 +58,6 @@ Meteor.publish('totalConversations', function() {
 });
 
 //抓取收到的信息
-Meteor.publish('messages', function(userId) {
-  return Messages.find({to:userId});
+Meteor.publish('messages', function(a, b) {
+  return Messages.find({$or:[{from:a,to:b},{from:b,to:a}]});
 });

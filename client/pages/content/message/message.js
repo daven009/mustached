@@ -2,8 +2,11 @@ MessageController = RouteController.extend({
   waitOn: function () {
     var str = this.params.name;
     var username = str.substr(1);
-    console.log(username);
-    return Meteor.subscribe('messages', this.params.name);
+    Meteor.subscribe('userByName', username);
+    chatWith = Meteor.users.findOne({'username':username});
+    if (chatWith) {
+      return Meteor.subscribe('messages', chatWith._id);
+    }
   },
   action: function () {
     if (this.ready()){
@@ -14,6 +17,8 @@ MessageController = RouteController.extend({
     }
   },
   data: function () {
-    return {};
+    return {
+      chatWith: chatWith
+    };
   }
 });

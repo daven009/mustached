@@ -54,6 +54,11 @@ Router.map(function() {
     }
   });
 
+  this.route('robot', {
+    path: '/message/@mustached/',
+    controller: 'RobotController'
+  })
+
   this.route('message', {
     path: '/message/:name/',
     controller: 'MessageController'
