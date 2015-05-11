@@ -59,5 +59,5 @@ Meteor.publish('totalConversations', function() {
 
 //抓取收到的信息
 Meteor.publish('messages', function(a, b) {
-  return Messages.find({$or:[{from:a,to:b},{from:b,to:a}]});
+  return Messages.find({$or:[{creator:a,to:b},{creator:b,to:a}]});
 });

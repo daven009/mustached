@@ -3,7 +3,7 @@ Messages = new Meteor.Collection("messages");
 var Schemas = {};
 
 Schemas.Message = new SimpleSchema({
-  from: {
+  creator: {
     type: String,
     label: "发送者ID"
   },
@@ -28,6 +28,13 @@ Schemas.Message = new SimpleSchema({
         }
       },
     denyUpdate: true,
+    optional: true
+  },
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+      return new Date();
+    },
     optional: true
   }
 });

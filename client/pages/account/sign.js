@@ -2,6 +2,7 @@ Template.sign.events({
   //如果用户没有存在将直接变成注册
   'blur input[name=username], keyup input[name=username]' : function(e, t) {
     var username = CommonHelper.trimInput(t.find('input[name=username]').value.toLowerCase());
+    Meteor.subscribe('userByName', username);
     if (CommonHelper.isValidName(username)) {
       var count = Meteor.users.find({username:username}).count();
       if (0 == count) {

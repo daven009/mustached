@@ -6,7 +6,7 @@
           <div class="col-xs-8 no-padder">
             <div class="clear">
               <div class="h3 m-t-xs m-b-xs pointer text-dark lter noselect hover-display">
-                @<span class="text-dark">mustached bot</span>
+                @<span class="text-dark">mustachedbot</span>
               </div>
             </div>
           </div>
@@ -17,22 +17,22 @@
           <div class="padder-lg noselect" style="padding-right:30%;padding-top: 200px;">
             <h2>HI, 胡子管家</h2>
             <div class="font-17">这是与胡子管家对话的最顶端, 这个机器人有点笨，但是还是希望对你有帮助</div>
-            <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message hover-display">
-              <div class="media">
-              <img src="/images/mustached.jpg" class="img-rounded pointer user-avatar thumb-sm">
-                <div class="media-body first-message">
-                  <div>
-                    <small class="text-muted" >
-                      <span class="font-bold pointer">
-                        胡子管家
-                      </span>
-                    </small>
-                  </div>
-                  <div class="markdown-body">一些话</div>
-                </div>
-              </div>
-            </li>
           </div>
+          <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message">
+            <div class="media">
+              <img src="/images/mustached.jpg" class="img-rounded pointer user-avatar thumb-sm">
+              <div class="media-body first-message">
+                <div>
+                  <small class="text-muted" >
+                    <span class="font-bold pointer">
+                      胡子管家
+                    </span>
+                  </small>
+                </div>
+                <div class="markdown-body">如果你是第一次使用胡子管家的话，不妨输入:帮助</div>
+              </div>
+            </div>
+          </li>
           <ul class="list-group alt no-padder m-b-xs">
             {{#each arrayify conversations}}
             {{> messageSteam}}

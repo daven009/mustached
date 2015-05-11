@@ -1,15 +1,15 @@
 Meteor.methods({
-  sendMessage: function(formObj){
+  sendPrivateMessage: function(formObj){
     var user = Meteor.user();
     if(!user){
       throw new Meteor.Error(401, "You need to login to send messages");
     }
 
     formObj.creator = Meteor.userId();
-    var topicId = formObj.topic;
-    var valid = Topics.findOne({_id:topicId});
+    var to = formObj.to;
+    var valid = Meteor.users.findOne({_id:to});
     if (valid) {
-      Conversations.insert(formObj, function(err) {
+      Messages.insert(formObj, function(err) {
         if(err){
           console.log(err);
           return false;

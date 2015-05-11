@@ -51,11 +51,24 @@ CommonHelper = {
   'sendMessage' : function(topicId, content) {
     if (CommonHelper.isNotEmpty(content)) {
       var formObj = {
-        creator: Meteor.userId(),
         topic: topicId,
         content: content
       };
       Meteor.call('sendMessage', formObj, function(err, res){
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
+  },
+
+  'sendPrivateMessage' : function(to, content) {
+    if (CommonHelper.isNotEmpty(content)) {
+      var formObj = {
+        to: to,
+        content: content
+      };
+      Meteor.call('sendPrivateMessage', formObj, function(err, res){
         if (err) {
           console.log(err);
         }

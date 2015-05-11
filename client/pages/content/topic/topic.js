@@ -231,6 +231,9 @@ Template.topic.helpers({
 //消息流
 Template.messageSteam.helpers({
   'isAuthor': function(creator) {
-    return Topics.findOne({_id: params._id, creator:creator});
+    if (typeof params != 'undefined') {
+      return Topics.findOne({_id: params._id, creator:creator});
+    }
+    return false;
   }
 })

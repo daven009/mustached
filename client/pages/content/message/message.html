@@ -16,9 +16,11 @@
         <div class="nano-content" style="outline: 0">
           <div class="padder-lg noselect" style="padding-right:40%;padding-top: 100px;">
             <h2>@{{chatWith.username}}</h2>
-            <div class="font-17">这是与@{{chatWith.username}}对话的最顶端, 创建于{{formattedCreatedAt}}.</div>
-            {{#if notEquals formattedCreatedAt formattedUpdatedAt}}
-            <div class="font-17">最近更新于{{formattedUpdatedAt}}.</div>
+            <div class="font-17">这是与@{{chatWith.username}}对话的最顶端</div>
+            {{#if currentUser}}
+            <div class="font-17">此对话为私人对话，只有对话双方可见</div>
+            {{else}}
+            <div class="font-17">此对话为私人对话，请登录查看</div>
             {{/if}}
           </div>
           <ul class="list-group alt no-padder m-b-xs">

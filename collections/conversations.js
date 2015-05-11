@@ -33,9 +33,7 @@ Schemas.Conversation = new SimpleSchema({
   updatedAt: {
     type: Date,
     autoValue: function() {
-        if (this.isInsert) {
-          return new Date;
-        }
+      return new Date();
     },
     optional: true
   }

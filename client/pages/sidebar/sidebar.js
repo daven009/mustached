@@ -6,7 +6,7 @@ Template.sidebar.rendered = function(){
 }
 
 Template.sidebar.events({
-  'click #loginBtn': function(e,t){
+  'click .loginBtn': function(e,t){
     $('#signModal').modal('show');
   },
   'click #signout': function(e, t){
