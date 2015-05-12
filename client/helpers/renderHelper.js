@@ -40,26 +40,15 @@ render = function(){
     $(this).find('.user-avatar').toggleClass('onhover');
   })
 
-  //popover
-  $(document).ready(function(){
-    $('[data-toggle="popover"]').each(function(){
-      $(this).popover({
-        html: true,
-        placement: 'right',
-        delay: {show: 50, hide: 200},
-        trigger: 'click',
-        template: $('#popoverTemplate').html(),
-        content: function() {
-          return 'aaa';
-        }
-      });
-    })
-  })
-  
+  //popover  
   $('body').off('mouseenter','[data-toggle="popover"]').off('mouseleave','[data-toggle="popover"]').on('mouseenter','[data-toggle="popover"]',function(){
-
-  }).on('mouseleave','[data-toggle="popover"]',function(){
-    console.log(2);
+    //加载资料
+    Session.set('currentOnHoverUser',$(this).data('originalId'));
+    $(this).popover({
+      html: true,
+      delay: {show: 50, hide: 200},
+      trigger: 'click'
+    });
   })
 
   //点击quote class

@@ -118,7 +118,7 @@
   {{#if hasParent}}
   <li class="list-group-item no-borders no-radius padder-lg no-padder-v message hover-display">
     <div class="media">
-      <a title="" class="timestamp hidden showOnHover" data-original-title="">{{momentDatetime createdAt 'h:mm'}}</a>
+      <a title="" class="timestamp hidden showOnHover quote pointer" data-original-title="{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss A'}}">{{momentDatetime createdAt 'h:mm'}}</a>
       <div class="media-body m-l-no-img">
         <div class="markdown-body">{{{markdown content}}}</div>
       </div>
@@ -127,7 +127,7 @@
   {{else}}
   <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message hover-display">
     <div class="media">
-      <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar thumb-sm" data-toggle="popover">
+      <img src="{{getUserAvatarByUserId creator 36}}" data-original-id="{{creator}}" data-placement="right" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar thumb-sm" data-toggle="popover" data-content="">
       <div class="media-body first-message">
         <div>
           <small class="text-muted" >
