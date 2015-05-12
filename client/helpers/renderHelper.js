@@ -30,7 +30,7 @@ render = function(){
     $(this).find('.showOnHover').toggleClass('hidden');
   })
 
-  $('body').off('click','#githubHelp').on('click','#githubHelp',function(){
+  $('body').off('click','.githubHelp').on('click','.githubHelp',function(){
     $('#githubHelpModal').modal('show');
   });
 
@@ -43,12 +43,11 @@ render = function(){
   //popover  
   $('body').off('mouseenter','[data-toggle="popover"]').off('mouseleave','[data-toggle="popover"]').on('mouseenter','[data-toggle="popover"]',function(){
     //加载资料
-    Session.set('currentOnHoverUser',$(this).data('originalId'));
     $(this).popover({
       html: true,
       delay: {show: 50, hide: 200},
-      trigger: 'click'
-    });
+      trigger: 'hover'
+    }).popover('show');
   })
 
   //点击quote class

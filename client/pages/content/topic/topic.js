@@ -190,7 +190,7 @@ Template.topic.helpers({
       return false;
     }
   },
-  settings: function() {
+  'settings': function() {
     return {
       position: "top",
       limit: 10,
@@ -224,5 +224,8 @@ Template.messageSteam.helpers({
       return Topics.findOne({_id: params._id, creator:creator});
     }
     return false;
+  },
+  'getNamecardContent': function(creator) {
+    return $('#namecard-'+creator).html();
   }
 })

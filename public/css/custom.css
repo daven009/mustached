@@ -522,9 +522,12 @@ code {
   border: 1px solid #ddd;
 }
 
-.popover-footer {
-  padding: 10px;
-  margin-top: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
+.popover {
+  padding:0;
+}
+.popover-content {
+  padding:0;
+}
+.popover-title {
+  display:none;
 }
