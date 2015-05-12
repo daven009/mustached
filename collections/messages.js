@@ -16,6 +16,10 @@ Schemas.Message = new SimpleSchema({
     label: "内容",
     optional: true
   },
+  isRead: {
+    type: Boolean,
+    defaultValue: false
+  },
   createdAt: {
     type: Date,
     autoValue: function() {
