@@ -521,3 +521,10 @@ code {
   background-color: #fff;
   border: 1px solid #ddd;
 }
+
+.popover-footer {
+  padding: 19px 20px 20px;
+  margin-top: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}

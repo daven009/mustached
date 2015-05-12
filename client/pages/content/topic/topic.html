@@ -85,7 +85,7 @@
             {{#each participants}}
             <li class="no-borders no-radius message m-b">
               <div class="media">
-                <img src="{{getUserAvatarByUserId this 36}}" data-original-title="@{{getUsernameByUserId this}}" class="img-rounded pointer quote user-avatar thumb-sm">
+                <img src="{{getUserAvatarByUserId this 36}}" data-original-title="@{{getUsernameByUserId this}}" class="img-rounded pointer quote user-avatar thumb-sm" data-toggle="popover">
                 <div class="media-body first-message">
                   <div>
                     <small class="text-muted" >
@@ -127,7 +127,7 @@
   {{else}}
   <li class="list-group-item no-borders no-radius padder-lg padder-t-n-b message hover-display">
     <div class="media">
-      <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar thumb-sm">
+      <img src="{{getUserAvatarByUserId creator 36}}" data-original-title="@{{getUsernameByUserId creator}}" class="img-rounded pointer quote user-avatar thumb-sm" data-toggle="popover">
       <div class="media-body first-message">
         <div>
           <small class="text-muted" >
