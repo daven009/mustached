@@ -2,19 +2,19 @@
 var autoScroll = true;
 Template.message.rendered = function() {
   render();
-  $(document).ready(function(){
-    $(".nano").nanoScroller();
-    $('.nano-content').scroll(function(e){
-      var elem = $(e.currentTarget);
-      if (elem[0].scrollHeight - elem[0].scrollTop - elem[0].clientHeight <= 5)
-      {
-        autoScroll = true;
-      }
-      else {
-        autoScroll = false;
-      }
-    })
-  })
+  // $(document).ready(function(){
+  //   $(".nano").nanoScroller();
+  //   $('.nano-content').scroll(function(e){
+  //     var elem = $(e.currentTarget);
+  //     if (elem[0].scrollHeight - elem[0].scrollTop - elem[0].clientHeight <= 5)
+  //     {
+  //       autoScroll = true;
+  //     }
+  //     else {
+  //       autoScroll = false;
+  //     }
+  //   })
+  // })
 
   //preset compose mode
   composeMode = 'chat';
@@ -140,12 +140,6 @@ Template.message.helpers({
           });  
         })
       }
-      console.log(1);
-      //自动置底
-      if (autoScroll) {
-        $('.nano-content').scrollTop('9999');
-      }
-      //   console.log(1);
       return groupedConversations;
     }
     else {

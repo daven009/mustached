@@ -145,11 +145,11 @@ Template.topic.helpers({
     }
 
     //自动置底
-    Tracker.afterFlush(function () {
-      if (autoScroll) {
-        $('.nano-content').scrollTop('9999');
-      }
-    });
+    // Tracker.afterFlush(function () {
+    //   if (autoScroll) {
+    //     $('.nano-content').scrollTop('9999');
+    //   }
+    // });
     return groupedConversations;
   },
   'participants': function() {
@@ -214,18 +214,5 @@ Template.topic.helpers({
       // }
       ]
     };
-  }
-})
-
-//消息流
-Template.messageSteam.helpers({
-  'isAuthor': function(creator) {
-    if (typeof params != 'undefined') {
-      return Topics.findOne({_id: params._id, creator:creator});
-    }
-    return false;
-  },
-  'getNamecardContent': function(creator) {
-    return $('#namecard-'+creator).html();
   }
 })
