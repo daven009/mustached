@@ -417,6 +417,7 @@ code {
   position: absolute;
   width: 280px;
   height: auto;
+  z-index: 999;
 }
 
 .notifications .notification {
@@ -428,6 +429,7 @@ code {
   padding: .5rem .75rem;
   position: relative;
   width: 100%;
+  border-radius: 3px;
 }
 
 .notifications .notification .icon-sync {
