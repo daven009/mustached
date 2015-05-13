@@ -42,6 +42,12 @@ Meteor.publish('currents', function(userId) {
   return Currents.find({user: userId});
 });
 
+//返回关于用户的所有当前参与私聊
+Meteor.publish('chats', function(userId) {
+  check(userId, String);
+  return Chats.find({creator: userId});
+});
+
 //计算用户数量
 Meteor.publish('totalUsers', function() {
   return Meteor.users.find({});

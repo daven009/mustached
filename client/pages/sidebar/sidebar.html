@@ -51,18 +51,41 @@
                   <a href="{{pathFor 'topic' _id=topic}}">{{getTopicNameById topic}}</a>
                 </span>
                 <div class="pull-right">
-                  <i class="fa fa-times-circle crossBtn showOnHover hidden pointer" data-refer-id="{{topic}}"></i>
+                  <i class="fa fa-times-circle crossBtnTopic showOnHover hidden pointer" data-refer-id="{{topic}}"></i>
                   <!-- <span class="btn btn-success btn-xs">15</span> -->
                 </div>
               </span>
             </li>
             {{/each}}
           </ul>
+          {{#if chats}}
           <ul class="nav nav-pills nav-stacked no-radius m-t-sm">
             <li class="padder dk text-sm l-h-2x">
-              <p>私人对话</p>
+              <p>私聊</p>
             </li>
-            <li class="m-l-xs">
+            {{#each chats}}
+            <li class="m-l-xs {{isChatActive chatWith}} hover-display">
+              <span class="r-l-2x clear padder-5">
+                <span class="pull-left m-r-xs max-150 text-ellipsis">
+                  <span class="m-r-xs icon-align">@</span>
+                  <a href="/message/@{{getUsernameByUserId chatWith}}">{{getUsernameByUserId chatWith}}</a>
+                </span>
+                <div class="pull-right">
+                  <i class="fa fa-times-circle crossBtnChat showOnHover hidden pointer" data-refer-id="{{chatWith}}"></i>
+                  {{#if newChatMessages chatWith}}
+                  <span class="btn btn-success btn-xs">{{newChatMessages chatWith}}</span>
+                  {{/if}}
+                </div>
+              </span>
+            </li>
+            {{/each}}
+          </ul>
+          {{/if}}
+          <ul class="nav nav-pills nav-stacked no-radius m-t-sm">
+            <li class="padder dk text-sm l-h-2x">
+              <p>助手功能</p>
+            </li>
+            <li class="m-l-xs {{isBotActive}}">
               <a href="/message/@mustachedbot" class="r-l-2x clear padder-5">
                 <i class="fa fa-heart pull-left m-r-xs m-t-5 icon-align"></i>
                 <span class="pull-left m-r-xs max-150 text-ellipsis m-t-2">超级管家</span>

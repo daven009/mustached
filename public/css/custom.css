@@ -503,7 +503,7 @@ code {
   flex-shrink: 1;
 }
 
-.crossBtn {
+.crossBtnTopic, .crossBtnChat {
   width:15px;
   opacity: .50
 }

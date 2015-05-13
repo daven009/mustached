@@ -11,14 +11,16 @@ Router.configure({
 
 if (Meteor.isClient) {
   Iron.Router.hooks.delCurrentTopic = function () {
+    delete Session.keys['currentChatWith'];
     delete Session.keys['currentTopicId'];
+    Session.set('chatWithBot', false);
     this.next();
   };
+
   Iron.Router.hooks.isLoggedIn = function () {
     if (!(Meteor.user() || Meteor.loggingIn())) {
       //, {category:Nodes.findOne().tag}
       // Router.go('home');
-      console.log(1);
       window.location = '/'+ Nodes.findOne().tag;
     }
     else {

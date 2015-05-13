@@ -17,6 +17,8 @@ RobotController = RouteController.extend({
     }
   },
   data: function () {
+    //设置当前位置session
+    Session.set('chatWithBot', true);
     return {};
   }
 });

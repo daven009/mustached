@@ -22,5 +22,16 @@ Meteor.methods({
     else {
       return false;
     }
-  }
+  },
+  readMessage: function(from) {
+    var user = Meteor.user();
+    if(!user){
+      throw new Meteor.Error(401, "Not allow");
+    }
+    Messages.update({to:user._id,creator:from},{$set:{isRead:true}},{multi:true}, function(err, res) {
+      if(err){
+        return false;
+      }
+    });
+  },
 })

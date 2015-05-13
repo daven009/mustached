@@ -56,6 +56,12 @@ Template.message.rendered = function() {
       //发送消息
       autoScroll = true;
       CommonHelper.sendPrivateMessage(chatWithId, content);
+      //让对方收到私聊窗口
+      Meteor.call('addChat', chatWithId, true, function(err){
+        if(err){
+          return false;
+        }
+      });
       $(this).val('');
     }
     if (e.keyCode in map) {
@@ -78,7 +84,7 @@ MessageController = RouteController.extend({
     chatWith = Meteor.users.findOne({'username':username});
     if (chatWith) {
       chatWithId = chatWith._id;
-      return Meteor.subscribe('messages', Meteor.userId(), chatWithId);
+      this.subscribe('messages', Meteor.userId(), chatWithId).wait();
     }
   },
   action: function () {
@@ -95,14 +101,14 @@ MessageController = RouteController.extend({
   data: function () {
     if (typeof chatWithId != 'undefined') {
       //加入私聊tab
-      Meteor.call('addChat', chatWithId, function(err, id){
+      Meteor.call('addChat', chatWithId, false, function(err){
         if(err){
           return false;
         }
-        console.log(id);
       });
       //设置当前位置session
-      // Session.set('currentChatId', chatWithId);
+      Session.set('currentChatWith', chatWithId);
+      Meteor.call('readMessage', chatWithId);
     }
     return {
       chatWith: chatWith
@@ -112,6 +118,8 @@ MessageController = RouteController.extend({
 
 Template.message.helpers({
   'conversations': function() {
+    //设置已读
+    // Meteor.call('readMessage', chatWithId);
     if (typeof chatWithId != 'undefined') {
       var conversations = Messages.find({$or:[{creator:Meteor.userId(), to:chatWithId},{creator:chatWithId, to:Meteor.userId()}]}).fetch();
       if (conversations) {
@@ -132,14 +140,12 @@ Template.message.helpers({
           });  
         })
       }
-
+      console.log(1);
       //自动置底
-      Tracker.afterFlush(function () {
-        if (autoScroll) {
-          $('.nano-content').scrollTop('9999');
-        }
-      });
-
+      if (autoScroll) {
+        $('.nano-content').scrollTop('9999');
+      }
+      //   console.log(1);
       return groupedConversations;
     }
     else {
