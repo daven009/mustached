@@ -1,3 +1,4 @@
+//私信消息
 Messages = new Meteor.Collection("messages");
 
 var Schemas = {};

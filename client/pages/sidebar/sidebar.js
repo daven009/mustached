@@ -28,9 +28,18 @@ Template.sidebar.helpers({
     }
     return false;
   },
-  'isActive': function(topicId) {
+  'isTopicActive': function(topicId) {
     var currentTopicId = Session.get('currentTopicId');
     if (currentTopicId == topicId) {
+      return 'active white';
+    }
+    else {
+      return null;
+    }
+  },
+  'isChatActive': function(chatId) {
+    var currentChatId = Session.get('currentChatId');
+    if (currentChatId == chatId) {
       return 'active white';
     }
     else {

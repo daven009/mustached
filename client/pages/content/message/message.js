@@ -93,6 +93,17 @@ MessageController = RouteController.extend({
     }
   },
   data: function () {
+    if (typeof chatWithId != 'undefined') {
+      //加入私聊tab
+      Meteor.call('addChat', chatWithId, function(err, id){
+        if(err){
+          return false;
+        }
+        console.log(id);
+      });
+      //设置当前位置session
+      // Session.set('currentChatId', chatWithId);
+    }
     return {
       chatWith: chatWith
     };

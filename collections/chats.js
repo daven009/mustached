@@ -1,14 +1,14 @@
-//当前参与的帖子
-Currents = new Meteor.Collection("currents");
+//当前参与的私聊
+Chats = new Meteor.Collection("chats");
 
 var Schemas = {};
 
-Schemas.Current = new SimpleSchema({
-  user: {
+Schemas.Chat = new SimpleSchema({
+  creator: {
     type: String,
     label: "用户ID"
   },
-  topic: {
+  chatWith: {
     type: String,
     label: "主题ID"
   },
@@ -28,4 +28,4 @@ Schemas.Current = new SimpleSchema({
   }
 });
 
-Currents.attachSchema(Schemas.Current);
+Chats.attachSchema(Schemas.Chat);

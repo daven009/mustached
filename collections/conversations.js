@@ -1,3 +1,4 @@
+//对帖子的评论
 Conversations = new Meteor.Collection("conversations");
 
 var Schemas = {};

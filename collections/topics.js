@@ -1,3 +1,4 @@
+//帖子
 Topics = new Meteor.Collection("topics");
 
 var Schemas = {};
