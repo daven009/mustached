@@ -1,20 +1,20 @@
 //global
-var autoScroll = true;
+autoScroll = true;
 Template.message.rendered = function() {
   render();
-  // $(document).ready(function(){
-  //   $(".nano").nanoScroller();
-  //   $('.nano-content').scroll(function(e){
-  //     var elem = $(e.currentTarget);
-  //     if (elem[0].scrollHeight - elem[0].scrollTop - elem[0].clientHeight <= 5)
-  //     {
-  //       autoScroll = true;
-  //     }
-  //     else {
-  //       autoScroll = false;
-  //     }
-  //   })
-  // })
+  $(document).ready(function(){
+    $(".nano").nanoScroller();
+    $('.nano-content').scroll(function(e){
+      var elem = $(e.currentTarget);
+      if (elem[0].scrollHeight - elem[0].scrollTop - elem[0].clientHeight <= 5)
+      {
+        autoScroll = true;
+      }
+      else {
+        autoScroll = false;
+      }
+    })
+  })
 
   //preset compose mode
   composeMode = 'chat';
@@ -118,8 +118,6 @@ MessageController = RouteController.extend({
 
 Template.message.helpers({
   'conversations': function() {
-    //设置已读
-    // Meteor.call('readMessage', chatWithId);
     if (typeof chatWithId != 'undefined') {
       var conversations = Messages.find({$or:[{creator:Meteor.userId(), to:chatWithId},{creator:chatWithId, to:Meteor.userId()}]}).fetch();
       if (conversations) {

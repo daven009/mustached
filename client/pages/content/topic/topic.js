@@ -1,5 +1,5 @@
 //global
-var autoScroll = true;
+autoScroll = true;
 Template.topic.rendered = function() {
   render();
   $(document).ready(function(){
@@ -143,13 +143,6 @@ Template.topic.helpers({
         });  
       })
     }
-
-    //自动置底
-    // Tracker.afterFlush(function () {
-    //   if (autoScroll) {
-    //     $('.nano-content').scrollTop('9999');
-    //   }
-    // });
     return groupedConversations;
   },
   'participants': function() {

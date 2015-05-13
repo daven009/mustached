@@ -1,0 +1,11 @@
+<template name="messageBlock">
+  <div class="padder-lg">
+    <div class="day-divider noselect">
+      <hr role="separator" aria-hidden="true">
+      <div class="day-divider-label" aria-label="{{name}}">{{name}} </div>
+    </div>
+  </div>
+  {{#each value}}
+  {{> messageStream}}
+  {{/each}}
+</template>
