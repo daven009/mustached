@@ -1,13 +1,13 @@
 <template name="namecard">
-  <div class="namecard hidden" id="namecard-{{this}}">
+  <div class="namecard hidden">
     <section class="panel m-b-none no-border" style="width:250px;">
       <header class="panel-heading bg-primary lter no-borders">
         <div class="clearfix">
           <a href="#" class="pull-left thumb avatar border m-r">
-            <img src="{{getUserAvatarByUserId this 58}}">
+            <img src="{{getUserAvatarByUserId current 58}}">
           </a>
           <div class="clear">
-            <div class="h3 m-t-xs m-b-xs">{{getUsernameByUserId this}} </div>
+            <div class="h3 m-t-xs m-b-xs">{{getUsernameByUserId current}} </div>
             <small class="text-muted">Smooth seas do not make good sailor</small>
           </div>                
         </div>
@@ -25,7 +25,7 @@
         </a>
         {{#if currentUser}}
         <div class="list-group-item">
-          <a href="/message/@{{getUsernameByUserId this}}" class="btn btn-primary btn-block">发起私聊</a>
+          <a href="/message/@{{getUsernameByUserId current}}" class="btn btn-primary btn-block">发起私聊</a>
         </div>
         {{/if}}
       </div>

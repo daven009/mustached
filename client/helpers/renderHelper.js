@@ -43,11 +43,20 @@ render = function(){
   //popover  
   $('body').off('mouseenter','[data-toggle="popover"]').off('mouseleave','[data-toggle="popover"]').on('mouseenter','[data-toggle="popover"]',function(){
     //加载资料
-    $(this).popover({
-      html: true,
-      delay: {show: 50, hide: 200},
-      trigger: 'hover'
-    }).popover('show');
+    var id = $(this).data('originalId');
+    Session.set('currentOnHoverUser',id);
+    var dom = $(this);
+    Meteor.setTimeout(function(){
+      dom.popover({
+        html: true,
+        animation: false,
+        delay: {show: 50, hide: 200},
+        trigger: 'hover',
+        content:  function() {
+          return $('.namecard').html();
+        }
+      }).popover('show');
+    },200);
   })
 
   //点击quote class

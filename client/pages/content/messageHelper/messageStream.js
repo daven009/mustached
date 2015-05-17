@@ -5,9 +5,6 @@ Template.messageStream.helpers({
       return Topics.findOne({_id: this.topic, creator:this.creator});
     }
     return false;
-  },
-  'getNamecardContent': function() {
-    return $('#namecard-'+this.creator).html();
   }
 })
 
