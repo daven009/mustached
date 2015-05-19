@@ -25,6 +25,9 @@ Template.sidebar.helpers({
     Meteor.subscribe("currents",Meteor.userId());
     return Currents.find({}).fetch();
   },
+  'currentUserId': function() {
+    return Meteor.userId();
+  },
   'chats': function(){
     Meteor.subscribe("chats",Meteor.userId());
     return Chats.find({}).fetch();

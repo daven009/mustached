@@ -126,3 +126,8 @@ Handlebars.registerHelper('isOnline', function(userId){
     return false;
   }
 })
+
+Handlebars.registerHelper('totalTopicsByUserId', function(userId) {
+  Meteor.subscribe('topicsByUserId',userId);
+  return Topics.find({creator: userId}).count();
+})

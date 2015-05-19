@@ -67,3 +67,8 @@ Meteor.publish('totalConversations', function() {
 Meteor.publish('messages', function(a, b) {
   return Messages.find({$or:[{creator:a,to:b},{creator:b,to:a}]});
 });
+
+//返回当前用户发布的帖子
+Meteor.publish('topicsByUserId', function(userId) {
+  return Topics.find({creator: userId});
+});

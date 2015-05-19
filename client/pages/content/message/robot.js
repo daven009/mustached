@@ -22,3 +22,21 @@ RobotController = RouteController.extend({
     return {};
   }
 });
+
+Template.robot.helpers({
+  settings: function() {
+    return {
+      position: "top",
+      limit: 10,
+      rules: [
+      {
+        token: '/',
+        collection: Meteor.users,
+        field: "username",
+        template: Template.userPill,
+        noMatchTemplate: Template.noMatch
+      }
+      ]
+    };
+  }
+})

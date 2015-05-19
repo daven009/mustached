@@ -45,17 +45,15 @@
         <li class="topicInput no-borders">
           <div class="media">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
-            {{#with composeMode}}
             <div class="composeIcons">
-              <i class="fa text-xl {{icon}} pointer" id="composeSwitch"></i>
+              <i class="fa text-xl fa-pencil-square-o"></i>
               <i class="fa text-xl fa-book pointer githubHelp"></i>
             </div>
             <div class="media-body">
               <div>
-                {{#textareaAutocomplete settings=settings id="chat-input-textarea" class="chat-input-text-area" placeholder=placeholder autofocus="" onfocus="this.value = this.value;" maxlength="4096"}}{{/textareaAutocomplete}}
+                {{#textareaAutocomplete settings=settings id="chat-input-textarea" class="chat-input-text-area" placeholder="点击此处并输入, 回车发送消息. 输入/ 获得选项" autofocus="" onfocus="this.value = this.value;" maxlength="4096"}}{{/textareaAutocomplete}}
               </div>
             </div>
-            {{/with}}
           </div>
         </li>
       </footer>
