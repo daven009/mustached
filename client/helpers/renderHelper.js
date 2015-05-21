@@ -43,6 +43,22 @@ render = function(){
     });
   })
 
+  $('body').off('mouseenter','[data-link-type="issue"]').off('mouseleave','[data-link-type="issue"]').on('mouseenter','[data-link-type="issue"]',function(){
+    //加载资料
+    var issue = $(this).data('issue').slice(1,-1);
+    Meteor.subscribe('topicsByTitle',issue);
+  })
+
+
+  $('body').off('click','[data-link-type="issue"]').off('mouseleave','[data-link-type="issue"]').on('click','[data-link-type="issue"]',function(){
+    var issue = $(this).data('issue').slice(1,-1);
+    var topic = Topics.findOne({title:issue});
+    if (topic) {
+      console.log(topic._id);
+      Router.go('topic',{_id:topic._id})
+    }
+  })
+
   //点击quote class
   $('body').off('click','.quote').on('click','.quote',function(){
     var originalTitle = $(this).data('originalTitle');

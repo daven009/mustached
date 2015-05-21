@@ -162,29 +162,28 @@ Template.message.helpers({
     return composeObj;
   },
   settings: function() {
+    Meteor.subscribe("currents",Meteor.userId());
+    var CurrentTopics = new Mongo.Collection(null);
+    Currents.find({}).fetch().forEach(function(e){
+      Meteor.subscribe('topic', e.topic);
+      var topic = Topics.findOne({_id:e.topic});
+      if (topic) {
+        CurrentTopics.insert({label:topic.title+'#'});
+      }
+    })
+    
     return {
       position: "top",
       limit: 10,
       rules: [
       {
-        token: '@',
-        collection: Meteor.users,
-        field: "username",
-        template: Template.userPill,
+        token: '#',
+        collection: CurrentTopics,
+        field: "label",
+        template: Template.topicPill,
         noMatchTemplate: Template.noMatch
       }
-      // ,
-      // {
-      //   token: '!',
-      //   collection: Dataset,
-      //   field: "_id",
-      //   options: '',
-      //   matchAll: true,
-      //   filter: { type: "autocomplete" },
-      //   template: Template.dataPiece
-      // }
       ]
     };
   }
-
 })

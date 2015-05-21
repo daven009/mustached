@@ -193,7 +193,7 @@ Template.topic.helpers({
         CurrentTopics.insert({label:topic.title+'#'});
       }
     })
-    console.log(CurrentTopics.find({}).fetch());
+
     return {
       position: "top",
       limit: 10,
@@ -204,8 +204,7 @@ Template.topic.helpers({
         field: "username",
         template: Template.userPill,
         noMatchTemplate: Template.noMatch
-      }
-      ,
+      },
       {
         token: '#',
         collection: CurrentTopics,

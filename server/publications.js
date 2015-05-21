@@ -72,3 +72,8 @@ Meteor.publish('messages', function(a, b) {
 Meteor.publish('topicsByUserId', function(userId) {
   return Topics.find({creator: userId});
 });
+
+//返回当前用户发布的帖子
+Meteor.publish('topicsByTitle', function(title) {
+  return Topics.find({title: title});
+});
