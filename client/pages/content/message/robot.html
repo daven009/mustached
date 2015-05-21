@@ -29,13 +29,13 @@
                     </span>
                   </small>
                 </div>
-                <div class="markdown-body">如果你是第一次使用胡子管家的话，不妨输入:帮助</div>
+                <div class="markdown-body">如果你是第一次使用胡子管家的话，不妨输入: /帮助</div>
               </div>
             </div>
           </li>
           <ul class="list-group alt no-padder m-b-xs">
             {{#each arrayify conversations}}
-            {{> messageSteam}}
+            {{> messageSteamBot}}
             {{/each}}
           </ul>
         </div>
@@ -45,10 +45,6 @@
         <li class="topicInput no-borders">
           <div class="media">
             <span class="pull-left thumb-sm"><img src="{{getCurrentUserAvatar 36}}" class="img-rounded"></span>
-            <div class="composeIcons">
-              <i class="fa text-xl fa-pencil-square-o"></i>
-              <i class="fa text-xl fa-book pointer githubHelp"></i>
-            </div>
             <div class="media-body">
               <div>
                 {{#textareaAutocomplete settings=settings id="chat-input-textarea" class="chat-input-text-area" placeholder="点击此处并输入, 回车发送消息. 输入/ 获得选项" autofocus="" onfocus="this.value = this.value;" maxlength="4096"}}{{/textareaAutocomplete}}

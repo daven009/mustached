@@ -1,3 +1,8 @@
+Helps=new Mongo.Collection(null);
+["帮助","搜索"].forEach(function(e){
+  Helps.insert({label:e})
+})
+
 RobotController = RouteController.extend({
   // waitOn: function () {
   //   var str = this.params.name;
@@ -31,9 +36,9 @@ Template.robot.helpers({
       rules: [
       {
         token: '/',
-        collection: Meteor.users,
-        field: "username",
-        template: Template.userPill,
+        collection: Helps,
+        field: "label",
+        template: Template.helpPill,
         noMatchTemplate: Template.noMatch
       }
       ]

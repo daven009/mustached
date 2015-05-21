@@ -1,27 +1,4 @@
 render = function(){
-  //override display regulations
-  var originalLeave = $.fn.popover.Constructor.prototype.leave;
-  $.fn.popover.Constructor.prototype.leave = function(obj){
-    var self = obj instanceof this.constructor ?
-    obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type)
-    var container, timeout;
-
-    originalLeave.call(this, obj);
-
-    if(obj.currentTarget) {
-      container = $(obj.currentTarget).siblings('.popover')
-      timeout = self.timeout;
-      container.one('mouseenter', function(){
-      //We entered the actual popover – call off the dogs
-      clearTimeout(timeout);
-      //Let's monitor popover content instead
-      container.one('mouseleave', function(){
-        $.fn.popover.Constructor.prototype.leave.call(self, self);
-      });
-    })
-    }
-  };
-
   $('.tool-tip').tooltip();
 
   $('body').off('mouseenter','.hover-display').off('mouseleave','.hover-display').on('mouseenter','.hover-display',function(){
@@ -45,18 +22,25 @@ render = function(){
     //加载资料
     var id = $(this).data('originalId');
     Session.set('currentOnHoverUser',id);
-    var dom = $(this);
-    Meteor.setTimeout(function(){
-      dom.popover({
-        html: true,
-        animation: false,
-        delay: {show: 50, hide: 200},
-        trigger: 'hover',
-        content:  function() {
-          return $('.namecard').html();
-        }
-      }).popover('show');
-    },200);
+  })
+
+  $('body').off('click','[data-toggle="popover"]').off('mouseleave','[data-toggle="popover"]').on('click','[data-toggle="popover"]',function(){
+    //加载资料
+    $(this).popover({
+      html: true,
+      animation: false,
+      delay: {show: 50, hide: 200},
+      trigger: 'click',
+      content:  function() {
+        return $('.namecard').html();
+      }
+    }).popover('toggle');
+    //隐藏其他popover
+    $('[data-toggle="popover"]').not(this).each(function(){
+      if ($(this).next('div.popover:visible').length) {
+        $(this).popover('hide');
+      }
+    });
   })
 
   //点击quote class

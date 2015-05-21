@@ -1,10 +1,10 @@
-<template name="messageStream">
+<template name="messageStreamBot">
   {{#if hasParent}}
   <li class="list-group-item no-borders no-radius padder-lg no-padder-v message hover-display">
     <div class="media">
       <a title="" class="timestamp hidden showOnHover quote pointer" data-original-title="{{momentDatetime createdAt 'MMMM Do YYYY, h:mm:ss A'}}">{{momentDatetime createdAt 'h:mm'}}</a>
       <div class="media-body m-l-no-img">
-        <div class="markdown-body">{{{markdown content}}}</div>
+        <div class="markdown-body">{{{content}}}</div>
       </div>
     </div>
   </li>
@@ -37,7 +37,7 @@
           </span>
           {{/if}}
         </div>
-        <div class="markdown-body">{{{markdown content}}}</div>
+        <div class="markdown-body">{{{content}}}</div>
       </div>
     </div>
   </li>
