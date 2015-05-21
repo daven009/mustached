@@ -1,5 +1,5 @@
 //对帖子的评论
-Conversations = new Meteor.Collection("conversations");
+Conversations = new Mongo.Collection("conversations");
 
 var Schemas = {};
 

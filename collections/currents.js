@@ -1,5 +1,5 @@
 //当前参与的帖子
-Currents = new Meteor.Collection("currents");
+Currents = new Mongo.Collection("currents");
 
 var Schemas = {};
 

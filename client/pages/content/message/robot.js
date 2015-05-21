@@ -1,4 +1,4 @@
-Helps=new Mongo.Collection(null);
+Helps = new Mongo.Collection(null);
 ["帮助","搜索"].forEach(function(e){
   Helps.insert({label:e})
 })

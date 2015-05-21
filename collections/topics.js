@@ -1,5 +1,5 @@
 //帖子
-Topics = new Meteor.Collection("topics");
+Topics = new Mongo.Collection("topics");
 
 var Schemas = {};
 

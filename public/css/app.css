@@ -544,8 +544,8 @@ a:hover .caret-white {
 html,
 body {
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+  height: 100vh !important;
+  overflow: hidden;
 }
 .hbox {
   display: table;

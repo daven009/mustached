@@ -1,5 +1,5 @@
 //当前参与的私聊
-Chats = new Meteor.Collection("chats");
+Chats = new Mongo.Collection("chats");
 
 var Schemas = {};
 

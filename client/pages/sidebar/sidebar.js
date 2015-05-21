@@ -32,14 +32,6 @@ Template.sidebar.helpers({
     Meteor.subscribe("chats",Meteor.userId());
     return Chats.find({}).fetch();
   },
-  'getTopicNameById': function(topicId) {
-    Meteor.subscribe('topic', topicId);
-    var topic = Topics.findOne({_id:topicId});
-    if (topic) {
-      return topic.title;
-    }
-    return false;
-  },
   'newChatMessages':function(chatWithId){
     Meteor.subscribe('messages', Meteor.userId(), chatWithId);
     var newMessages = Messages.find({to:Meteor.userId(),creator:chatWithId,isRead:false}).count();

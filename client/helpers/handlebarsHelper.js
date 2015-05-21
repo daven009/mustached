@@ -67,8 +67,8 @@ Handlebars.registerHelper('markdown',function(content){
 })
 
 Handlebars.registerHelper('arrayify',function(obj){
-    result = [];
-    for (var key in obj) result.push({name:key,value:obj[key]});
+  result = [];
+  for (var key in obj) result.push({name:key,value:obj[key]});
     return result;
 });
 
@@ -130,4 +130,13 @@ Handlebars.registerHelper('isOnline', function(userId){
 Handlebars.registerHelper('totalTopicsByUserId', function(userId) {
   Meteor.subscribe('topicsByUserId',userId);
   return Topics.find({creator: userId}).count();
+})
+
+Handlebars.registerHelper('getTopicNameById', function(topicId) {
+  Meteor.subscribe('topic', topicId);
+  var topic = Topics.findOne({_id:topicId});
+  if (topic) {
+    return topic.title;
+  }
+  return false;
 })

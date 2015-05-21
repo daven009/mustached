@@ -1,1 +1,1 @@
-Nodes = new Meteor.Collection("nodes");
+Nodes = new Mongo.Collection("nodes");
