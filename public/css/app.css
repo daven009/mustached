@@ -14,7 +14,7 @@ body {
 }
 a {
   color: #575757;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 a:hover,
 a:focus {
@@ -1277,8 +1277,8 @@ fieldset[disabled] .btn-twitter.active {
 .btn-primary,
 .btn-primary:focus {
   color: #fff !important;
-  background-color: #7266ba;
-  border-color: #7266ba;
+  background-color: #7266ba !important;
+  border-color: #7266ba !important;
 }
 .btn-primary:hover,
 .btn-primary:active,

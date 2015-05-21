@@ -18,13 +18,13 @@ render = function(){
   })
 
   //popover  
-  $('body').off('mouseenter','[data-toggle="popover"]').off('mouseleave','[data-toggle="popover"]').on('mouseenter','[data-toggle="popover"]',function(){
+  $('body').off('mouseenter','[data-link-type="mention"]').off('mouseleave','[data-link-type="mention"]').on('mouseenter','[data-link-type="mention"]',function(){
     //加载资料
-    var id = $(this).data('originalId');
-    Session.set('currentOnHoverUser',id);
+    var username = $(this).data('username');
+    Session.set('currentOnHoverUser',username);
   })
 
-  $('body').off('click','[data-toggle="popover"]').off('mouseleave','[data-toggle="popover"]').on('click','[data-toggle="popover"]',function(){
+  $('body').off('click','[data-link-type="mention"]').off('mouseleave','[data-link-type="mention"]').on('click','[data-link-type="mention"]',function(){
     //加载资料
     $(this).popover({
       html: true,
@@ -36,7 +36,7 @@ render = function(){
       }
     }).popover('toggle');
     //隐藏其他popover
-    $('[data-toggle="popover"]').not(this).each(function(){
+    $('[data-link-type="mention"]').not(this).each(function(){
       if ($(this).next('div.popover:visible').length) {
         $(this).popover('hide');
       }

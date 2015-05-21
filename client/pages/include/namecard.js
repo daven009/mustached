@@ -1,5 +1,7 @@
 Template.namecard.helpers({
   'current': function() {
-    return Session.get('currentOnHoverUser');
+    var username = Session.get('currentOnHoverUser');
+    var user = Meteor.users.findOne({username:username});
+    return user._id;
   }
 })
