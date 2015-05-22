@@ -25,10 +25,10 @@
             {{#each topics}}
             <li class="list-group-item no-radius" style="border-left:none; border-right:none">
               <div class="media padder">
-                <span class="pull-left pointer"><a href="{{pathFor 'topic' _id=_id}}"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded pointer"></a></span>
+                <span class="pull-left pointer"><img src="{{getUserAvatarByUserId creator 46}}" class="img-rounded"></span>
                 {{#if commentCount _id}}
                 <div class="pull-right text-success m-t-sm">
-                  <span class="badge read">{{commentCount _id}}</span>
+                  <a href="{{pathFor 'topic' _id=_id}}"><span class="badge read">{{commentCount _id}}</span></a>
                 </div>
                 {{/if}}
                 <div class="media-body">
@@ -38,7 +38,7 @@
                       <a href="{{pathFor 'nodesList' category=category node=tag}}">{{{getFullNodeName category node}}}</a>
                       <span class="chat-time">
                         <span>
-                          <span class="pointer">{{getUsernameByUserId creator}}</span>
+                          <span>{{getUsernameByUserId creator}}</span>
                         </span>
                       </span>
                       <span class="chat-time">

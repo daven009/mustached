@@ -10,6 +10,7 @@ Schemas.Current = new SimpleSchema({
   },
   topic: {
     type: String,
+    unique: true,
     label: "主题ID"
   },
   createdAt: {

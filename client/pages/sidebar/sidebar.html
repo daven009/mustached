@@ -20,9 +20,6 @@
           <div class="wrapper m-b">
             <div class="h3">
               胡子客
-              <button class="btn btn-icon btn-default btn-sm pull-right bg-dark no-borders loginBtn">
-                <i class="fa fa-sign-in"></i>
-              </button>
             </div>
           </div>
           {{/if}}
@@ -124,6 +121,8 @@
       <a href="{{pathFor 'home'}}" class="btn btn-primary btn-block">首页</a>
       {{#if currentUser}}
       <a href="{{pathFor 'compose'}}" class="btn btn-white btn-block m-b">创作新主题</a>
+      {{else}}
+      <input type="button" class="btn btn-white btn-block m-b loginBtn" value="登录账户">
       {{/if}}
     </footer>        
   </section>
