@@ -1084,7 +1084,7 @@ Renderer.prototype.email = function(href, title, text) {
 };
 
 Renderer.prototype.issue = function(repo, issue, text) {
-  var out = '<span class="issue"><a href="#" data-link-type="issue" data-issue="' + text + '"';
+  var out = '<span class="issue"><a data-link-type="issue" data-issue="' + text + '"';
   if(repo) {
     out += ' data-issue-repo="' + repo + '"';
   }

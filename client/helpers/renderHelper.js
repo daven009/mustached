@@ -55,7 +55,8 @@ render = function(){
     var topic = Topics.findOne({title:issue});
     if (topic) {
       console.log(topic._id);
-      Router.go('topic',{_id:topic._id})
+      Router.go('topic',{_id:topic._id});
+      // window.location = '/topic/'+ topic._id;
     }
   })
 

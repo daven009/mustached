@@ -68,6 +68,7 @@ Router.map(function() {
 
   this.route('topic', {
     path: '/topic/:_id/',
+    name: 'topic',
     controller: 'TopicController'
   });
   
