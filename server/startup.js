@@ -1,47 +1,47 @@
 var nodes = [
 {
-  'tag':'skill', 
-  'name': '技术',
+  'tag':'insurance', 
+  'name': '保险',
   'peak': true,
   'display': true,
   'sub': [
   {
-    'tag' :'meteor',
+    'tag' :'axa',
     'display': true,
-    'name':'Meteor'
+    'name':'AXA'
   },
   {
-    'tag' :'programmer',
+    'tag' :'prudential',
     'display': true,
-    'name':'程序员'
+    'name':'Prudential'
   },
   {
-    'tag' :'js',
+    'tag' :'aia',
     'display': false,
-    'name':'Javascript'
+    'name':'AIA'
   }
   ]
 },
 {
-  'tag' : 'creative',
-  'name': '创意',
+  'tag' : 'creditcard',
+  'name': '信用卡',
   'peak': false,
   'display': true,
   'sub': [
   {
-    'tag' :'share',
+    'tag' :'citibank',
     'display': true,
-    'name':'分享创造'
+    'name':'Citibank'
   },
   {
-    'tag' :'design',
+    'tag' :'uob',
     'display': true,
-    'name':'设计'
+    'name':'UOB'
   },
   {
-    'tag' :'idea',
+    'tag' :'hsbc',
     'display': true,
-    'name':'奇思妙想'
+    'name':'HSBC'
   }
   ]
 }

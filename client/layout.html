@@ -57,7 +57,7 @@
   {{#unless connected}}
   <div class="notifications">
     <div class="notification">
-    <span class="icon-sync fa fa-circle-o-notch fa-spin"></span>
+      <span class="icon-sync fa fa-circle-o-notch fa-spin"></span>
       <div class="meta">
         <div class="title-notification">尝试与服务器沟通</div>
         <div class="description">连接出现问题，正在重试</div>
@@ -71,4 +71,18 @@
   {{> githubHelp}}
   {{> namecard}}
   {{> quickView}}
+  <div id="app_id_handle" style="border-radius: 5px 5px 0px 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; padding: 0px; border: 0px; overflow: hidden; position: fixed; z-index: 16000002; width: 191px; height: 30px; right: 10px; bottom: 0px; background: transparent;">
+    <iframe frameborder="0" src="http://localhost:3000/widget/handle" style="vertical-align: text-bottom; position: relative; width: 100%; height: 100%; margin: 0px; overflow: hidden; background-color: transparent;"></iframe>
+  </div>
+  <div id="app_id_chatbox" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; padding: 0px; border: 0px; overflow: hidden; position: fixed; z-index: 16000001; right: 10px; bottom: 0px; border-top-left-radius: 5px; border-top-right-radius: 5px; display: block; width: 290px; height: 400px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 3px 2px; background: transparent; display:none">
+    <iframe frameborder="0" src="http://localhost:3000/widget/chatbox" style="vertical-align: text-bottom; position: relative; width: 100%; height: 100%; margin: 0px; overflow: hidden; background-color: transparent;"></iframe>
+  </div>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('body').off('click').on('click','#app_id_handle,#app_id_chatbox',function(){
+      $('#app_id_handle').toggle();
+      $('#app_id_chatbox').toggle();
+    })
+  })
+  </script>>
 </template>
