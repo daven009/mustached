@@ -38,7 +38,10 @@
           {{#if currentUser}}
           <ul class="nav nav-pills nav-stacked no-radius">
             <li class="padder dk text-sm l-h-2x">
-              <p data-navigate='view'>当前话题</p>
+              <a href="#" class="btn-link" data-toggle="quickview" data-toggle-element="#quickview">
+                Testing
+              </a>
+              <p>当前话题</p>
             </li>
             {{#each currents}}
             <li class="m-l-xs {{isTopicActive topic}} hover-display">
